@@ -1,0 +1,296 @@
+/*fddb17*/
+
+body {
+    background: url(../img/wallpaper.png) repeat;
+}
+
+a span {margin: 0 5px;}
+.menu-icon {
+    outline: none
+}
+.off-canvas {
+  background: url(../img/bg.svg) repeat;
+  background-color: white!important;
+    color: white;
+    padding: 50px 0;
+    min-height: 900px;
+}
+.off-canvas-content {
+    min-height: 900px;
+    background: transparent
+}
+.footWhitefont {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+.split.button {
+    width: 100%;
+}
+.split.button.facebook {
+    background: #3b5998;
+    text-transform: uppercase;
+}
+.split.button.facebook span {
+    background: #2d4373;
+}
+.split.button.facebook span:after {
+    border: none;
+    font-family: "foundation-icons";
+    content: "\f1c4";
+    font-size: 2rem;
+    line-height: 0.25rem;
+    margin-left: -0.7rem;
+}
+.split.button.twitter {
+    background: #55acee;
+    text-transform: uppercase;
+}
+.split.button.twitter span {
+    background: #2795e9;
+}
+.split.button.twitter span:after {
+    border: none;
+    font-family: "foundation-icons";
+    content: "\f1e4";
+    font-size: 2rem;
+    line-height: 0.25rem;
+    margin-left: -0.7rem;
+}
+.split.button.google {
+    background: #d50f25;
+    text-transform: uppercase;
+}
+.split.button.google span {
+    background: #a50c1d;
+}
+.split.button.google span:after {
+    border: none;
+    font-family: "foundation-icons";
+    content: "\f1ca";
+    font-size: 2rem;
+    line-height: 0.25rem;
+    margin-left: -0.7rem;
+}
+.split.button.left-icon {
+    text-align: right;
+}
+.split.button.left-icon span {
+    left: 0;
+}
+.cardsList {
+
+  padding:10px 0;
+
+}
+.cardsList .listHeader {
+    background: url(../img/wallpaper-blk.jpg) repeat;
+    color: #fefefe;
+    font-weight: 700;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.card {
+    background: url(../img/wallpaper-blk.jpg) repeat;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+    border-radius: 2px;
+}
+.card .title {
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.card .content {
+    padding: 1.3rem;
+    font-weight: 300;
+    border-radius: 0 0 2px 2px;
+}
+.card p {
+    margin: 0;
+}
+.card .action {
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 1.3rem;
+}
+.card a {
+    color: #ffab40;
+    margin-right: 1.3rem;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.card .image {
+    position: relative;
+}
+.card .image .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.3rem;
+    color: #fff;
+}
+.card .image img {
+    border-radius: 2px 2px 0 0;
+}
+.footer {
+    background: url(../img/bg.svg) repeat;
+    background-color: white!important;
+    text-align: center;
+    color:black;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+.footer .social a {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 2rem;
+    margin: 0 3px 0 0;
+}
+.footer .copywrite {
+    color: #4e4e4e;
+    font-size: 0.875rem;
+    margin: 1rem 0 1rem 0;
+}
+.footer .footer-form textarea,
+.footer .footer-form input {
+    border-radius: 3px;
+    background-color: #1f2022;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    border: none;
+    resize: none;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: #d1d2d2;
+    padding: 1.3rem;
+}
+.footer .footer-form label {
+
+  color: #4e4e4e;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+}
+.footer .footer-form .submit {
+    border-radius: 3px;
+    background-color: #33383b;
+    color: #ffffff;
+    border: 0;
+    padding: 1rem 3.5rem;
+    font-weight: bold;
+    float: right;
+    margin: 0 1rem 2rem 0;
+}
+.footer .footer-links a {
+    list-style: none;
+    font-weight: normal;
+    color: #4e4e4e;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    font-size: 0.875rem;
+}
+.footer .footer-links a::after {
+    content: "•";
+    padding: 0 0.2rem 0 0.4rem;
+}
+.footer .footer-links a:last-child::after {
+    content: "";
+    padding: 0 0.4rem 0 0.8rem;
+}
+@media only screen and (min-width: 40.063em) {
+    .footer {
+        padding: 4rem;
+    }
+    .footer p {
+        text-align: left;
+    }
+    .footer .social {
+        text-align: left;
+        margin: 0;
+    }
+    .footer .footer-form .contact {
+        position: absolute;
+        left: -45%;
+        top: 10%;
+    }
+}
+.logo {
+
+  color: #4e4e4e;
+    font-size: 1.5rem;
+}
+.logo i {
+    margin-right: 0.5rem;
+}
+.header.panel {
+    margin: 3rem auto;
+    border: 2px solid #444;
+    background: #fff;
+}
+.header.panel p {
+    font: 1rem "Avenir Next";
+    padding: 1rem 2rem 2rem 2rem;
+    margin-top: -1.25rem;
+}
+.header.panel p span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 75%;
+    font-weight: bold;
+}
+.header.panel .sign {
+    background: #fff;
+    width: 150px;
+    height: 2.4rem;
+    border: 2px solid #444;
+    position: relative;
+    top: -2.5rem;
+    margin: auto;
+}
+.header.panel .sign h1 {
+    text-transform: uppercase;
+    font: bolder 0.875rem "Avenir Next";
+    letter-spacing: 3px;
+    color: #666;
+    font-size: 70%;
+    text-align: center;
+    line-height: 2rem;
+}
+.reveal {background: url(../img/bg.svg) repeat;
+background-color: white!important;}
+.singleCard {margin-bottom: 10px;}
+/* Styles for search results */
+.singleCard img {
+  width: 8rem;
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px #888888; }
+.results {
+  margin-top: 50px;
+}
+.results .search-results {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.results img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.historyStyle {    color:black; font-size: 1rem;}
+.historyStyle  .innerBody {border:2px solid black; background: url(../img/bg.svg) repeat;background-color: white!important;}
+
+.section-container  section {border-bottom:1px solid black;margin-bottom:10px}
+.section-container  section h5 {margin:0;font-weight: bold}
