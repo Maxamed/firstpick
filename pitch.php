@@ -2,16 +2,24 @@
 <?php include_once 'partials/header.php';
 $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $user = getUser($id);
-
+$isAdmin = isAdmin($id);
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
   <ul class="header-subnav">
-    <li>   <a href="Dashboard.php" alt="Dashboard">Managment</a> </li>
+    <?php if($isAdmin){ ?>
+      <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+      <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
+      <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
+      <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+    <?php }else{ ?>
+    <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
+    <li>    <a href="createclub.php"  >Create a Club</a> </li>
+ <?php } ?>
+    <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
     <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
-    <li>   <a href="Pitch.php" alt="Pitch" class="is-active">Pitchs</a></li>
-    <li>   <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-    <li>  <a href="MatchSetup.php" >Setup a Match</a></li>
+    <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
   </ul>
 </header>

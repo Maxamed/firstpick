@@ -1,6 +1,6 @@
 <?php
 require_once("db.php");
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 $db = new Mysqlidb('localhost', 'root', 'mo', 'firstpick');
 if(!$db) die("Database error");
@@ -105,7 +105,17 @@ function clubCreation($clubDetails){
    $id = $db->insert('club', $data);
    return $id;
 }
+function isAdmin($uid){
+  $db = $GLOBALS['db'];
+  $db->where ("id", $uid);
+  $user = $db->getOne("users");
+   if($user['admin'] == 0) {
+     return false;
+   }else{
+     return true;
+   }
 
+}
 function setAdmin($uid,$clubid){
       $db = $GLOBALS['db'];
       $db->where ("id", $uid);
@@ -166,11 +176,8 @@ function GetPitchList($userID){
   $db->where ("$userID", $userID);
   $pitchs = $db->get("pitch");
   return $pitchs;
-
-
 }
 //Search box
-
 function DoSearch($term){
   $db = $GLOBALS['db'];
   if($term=="all"){

@@ -7,9 +7,10 @@ if (isset($_POST['login']) ) {
 
   $premission = loginUser($userDetails);
   if($premission['stats']=== 1){
-     $_SESSION['user'] = $premission['username'];
-     $_SESSION['id'] = $premission['id'];
-     $_SESSION['isAdmin'] = $premission['isAdmin'];
+        session_start();
+       $_SESSION['user'] = $premission['username'];
+       $_SESSION['id'] = $premission['id'];
+       $_SESSION['isAdmin'] = $premission['isAdmin'];
     if($premission['isAdmin']!=0){
         $response = "dashboard.php" ;
     }else{

@@ -1,20 +1,27 @@
-
 <?php include_once 'partials/header.php';
 $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 $user = getUser($id);
-
 $searchterm = $_POST["search"];
+$isAdmin = isAdmin($id);
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
-    <ul class="header-subnav">
-      <li>   <a href="Dashboard.php" alt="Dashboard"class="is-active">Managment</a> </li>
-      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
-      <li>   <a href="Pitch.php" alt="Pitch">Pitchs</a></li>
-      <li>   <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-      <li>  <a href="MatchSetup.php" >Setup a Match</a></li>
-      <li>   <a href="logout.php" alt="logout">logout</a> </li>
-    </ul>
+  <ul class="header-subnav">
+    <?php if($isAdmin){ ?>
+      <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Managment</a> </li>
+      <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
+      <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
+      <li>    <a href="Pitch.php" alt="Pitch">Pitchs</a></li>
+    <?php }else{ ?>
+    <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Your Clubs</a> </li>
+    <li>    <a href="createclub.php"  >Create a Club</a> </li>
+ <?php } ?>
+    <li>   <a href="Matchs.php" alt="upcoming" >Matchs</a> </li>
+    <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
+    <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
+    <li>   <a href="logout.php" alt="logout">logout</a> </li>
+  </ul>
 </header>
 <div class="row results">
   <div class="large-12 columns ">
@@ -40,10 +47,21 @@ $searchterm = $_POST["search"];
                     <p>Created on: <?php print_r($SRP[$key]['createdOn']);?></p>
             </div>
             <div class="action">
-              <a href='join/<?php print_r($SRP[$key]['id']);?>'>Join</a>
+              <a data-open="ClubRules" >Join</a>
             </div>
           </div>
         </div>
+        <!-- popup -->
+        <div class="tiny reveal"  class="reveal" id="ClubRules" data-reveal >
+          <h4> <?php print_r($SRP[$key]['name']);?> Rules</h4>
+          <p>Please read the rules before requesting to join the club:</p>
+          <hr>
+          <p><?php print_r($SRP[$key]['rules']);?></p>
+          <hr>
+          <button type="button" url=""class="success button" >Cancel</button>
+          <a href='club.php?clubid=<?php print_r($SRP[$key]['id']);?>' class="success button" >Join</a>
+        </div>
+        <!-- popup -->
         <!-- card end -->
         <?php
         }
@@ -51,5 +69,6 @@ $searchterm = $_POST["search"];
     </div>
   </div>
 </div>
+
 <?php include 'partials/modal.php'; ?>
 <?php include 'partials/footer.php'; ?>
