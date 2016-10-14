@@ -42,7 +42,7 @@ $isAdmin = isAdmin($id);
             </div>
             <div class="content">
                     <p>Members: <?php print_r($SRP[$key]['membersCount']);?></p>
-                    <p>Played Matchs: <?php print_r($SRP[$key]['membersCount']);?></p>
+                    <p>Played Matchs: </p>
                     <p>City: <?php print_r($SRP[$key]['country']);?></p>
                     <p>Created on: <?php print_r($SRP[$key]['createdOn']);?></p>
             </div>

@@ -127,14 +127,12 @@ function setAdmin($uid,$clubid){
 }
 function AdduserToClub($uid,$clubid){
 
-
       $db = $GLOBALS['db'];
       $data = Array(
           'clubid' => $clubid,
           'userid' => $uid,
           'joinedon' => $db->now()
       );
-
      $id = $db->insert('clubusers', $data);
 
      $ndb = $GLOBALS['db'];
@@ -143,7 +141,7 @@ function AdduserToClub($uid,$clubid){
      );
 
     $nid = $ndb->update('Club', $data);
-
+    return true;
 }
 //get club details
 function Clubpage($clubId){
@@ -206,6 +204,13 @@ function JoinClub($membership){
 
      $id = $db->insert('inboxjoin', $data);
    }
+//clean inbox
+function CleanInbox($transferID){
+  $db = $GLOBALS['db'];
+  $db->where('id', $transferID);
+  if($db->delete('inboxjoin'))
+  return true;
+}
 //get inbox messages for transfer
 function getTransfers($userID){
   $db = $GLOBALS['db'];

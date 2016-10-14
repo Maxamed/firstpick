@@ -9,6 +9,7 @@ $isAdmin = isAdmin($id);
   <ul class="header-subnav">
     <?php if($isAdmin){ ?>
       <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
       <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
       <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
       <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
@@ -17,7 +18,6 @@ $isAdmin = isAdmin($id);
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
  <?php } ?>
     <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
-    <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
     <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
     <li>   <a href="profile.php" alt="profile">Profile</a> </li>
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
@@ -35,10 +35,10 @@ $isAdmin = isAdmin($id);
   <div class="listHeader" style="">
       <div>Your Club</div>
   </div>
-<?php $clubs = getClubs($id);
-foreach ($clubs as $key => $value) {
+  <?php $clubs = getClubs($id);
+  foreach ($clubs as $key => $value) {
 
-?>
+  ?>
   <!-- club -->
   <div class="medium-3  float-right">
     <div class="card">
@@ -58,9 +58,7 @@ foreach ($clubs as $key => $value) {
     </div>
   </div>
 </div>
-<?php    }
-
-?>
+  <?php    } ?>
 <!-- popup -->
 <div class="tiny reveal"  class="reveal" id="DeleteClub" data-reveal >
   <p>delete your club ? </p> <p> This means you will lose all data and players created and added </p>

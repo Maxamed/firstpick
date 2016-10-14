@@ -41,8 +41,18 @@ $isAdmin = isAdmin($id);
         <p>Request date: <?php print_r($transfers[$key]['sentDate']);?></p>
       </div>
       <div class="action">
-        <a data-open="AcceptPlayer" >Accept<span class="fi-check"></span></a>
-        <a data-open="RejectPlayer"  >Reject<span class="fi-x"></span></a>
+        <form class="" action="process.php" method="post">
+          <input type="hidden" name="AddPlayer" value="AddPlayer">
+          <input type="hidden" name="transferID" value="<?php print_r($transfers[$key]['id']);?>">
+          <input type="hidden" name="senderID" value="<?php print_r($transfers[$key]['senderID']);?>">
+          <input type="hidden" name="clubID" value="<?php print_r($transfers[$key]['ClubID']);?>">
+          <div class="">
+            <input type="submit" class="nice success  radius button" value="Accept">
+            <span class="fi-check"></span>
+          </div>
+        </form>
+        <!-- <a data-open="AcceptPlayer" >Accept<span class="fi-check"></span></a>
+        <a data-open="RejectPlayer"  >Reject<span class="fi-x"></span></a> -->
       </div>
     </div>
   </div>

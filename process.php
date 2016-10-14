@@ -30,10 +30,10 @@ if (isset($_POST['register'])) {
   $userLogin['pass']    =   $_POST['password'];
 
   $userID = createUser($userLogin);
-  session_start();
-  $_SESSION['id'] = $userID;
-  $response = "profile.php";
-  header('Location: ' . $response);
+   session_start();
+    $_SESSION['id'] = $userID;
+ //var_dump($userID); var_dump($_SESSION);die();
+  header('Location: profile.php');
 
 }
 //edit profile
@@ -48,9 +48,7 @@ if (isset($_POST['editprofile'])) {
 
   $msg = editUser($userDetails);
 
-  $response = "index.php";
-  session_destroy();
-  header('Location: ' . $response);
+  header('Location: LockerRoom.php');
 
 
 }
@@ -100,6 +98,22 @@ $joinprocess['ownerid']     = filter_var($_POST['ownerid'], FILTER_SANITIZE_STRI
 
  $msg = JoinClub($joinprocess);
 header('Location: LockerRoom.php');
+
+}
+
+
+//Add player
+if (isset($_POST['AddPlayer'])) {
+$uid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
+$cludid  = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
+$transferid  = filter_var($_POST['transferID'], FILTER_SANITIZE_STRING);
+// AdduserToClub($uid,$cludid);
+// header('Location: inbox.php');
+if(AdduserToClub($uid,$cludid)){
+  CleanInbox($transferid);
+  header('Location: inbox.php');
+}
+
 
 }
 
