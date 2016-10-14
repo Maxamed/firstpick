@@ -59,7 +59,15 @@ $isAdmin = isAdmin($id);
           <p><?php print_r($SRP[$key]['rules']);?></p>
           <hr>
           <button type="button" url=""class="success button" >Cancel</button>
-          <a href='club.php?clubid=<?php print_r($SRP[$key]['id']);?>' class="success button" >Join</a>
+          <form class="" action="process.php" method="post">
+            <input type="hidden" name="joinClub" value="join">
+            <input type="hidden" name="username" value="<?php echo $user['username'];?>">
+            <input type="hidden" name="userid" value="<?php echo $user['id'];?>">
+            <input type="hidden" name="postion" value="<?php echo $user['position'];?>">
+            <input type="hidden" name="clubID" value="<?php print_r($SRP[$key]['id']);?>">
+            <input type="hidden" name="ownerid" value="<?php print_r($SRP[$key]['ownerid']);?>">
+            <input type="submit" class="nice success  radius button" value="Join">
+          </form>
         </div>
         <!-- popup -->
         <!-- card end -->

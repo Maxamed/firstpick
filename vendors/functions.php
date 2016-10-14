@@ -173,7 +173,7 @@ function SavePitch($pitchDetails){
 //[pitch list]
 function GetPitchList($userID){
   $db = $GLOBALS['db'];
-  $db->where ("$userID", $userID);
+  $db->where ("userID", $userID);
   $pitchs = $db->get("pitch");
   return $pitchs;
 }
@@ -190,6 +190,28 @@ function DoSearch($term){
     return $clubs;
   }
 
+}
+//request to join
+function JoinClub($membership){
+
+      $db = $GLOBALS['db'];
+      $data = Array(
+          'sendername' => $membership['username'],
+          'senderid' => $membership['userid'],
+          'senderpos' => $membership['userposition'],
+          'clubID' => $membership['clubID'],
+          'ownerid' => $membership['ownerid'],
+          'sentdate' => $db->now()
+      );
+
+     $id = $db->insert('inboxjoin', $data);
+   }
+//get inbox messages for transfer
+function getTransfers($userID){
+  $db = $GLOBALS['db'];
+  $db->where ("ownerid", $userID);
+  $transfers = $db->get("inboxjoin");
+  return $transfers;
 }
 
 ?>

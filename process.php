@@ -89,6 +89,20 @@ header('Location: pitch.php');
 
 }
 
+//joinClub
+if (isset($_POST['joinClub'])) {
+$joinprocess = [];
+$joinprocess['username']     = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+$joinprocess['userid']     = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
+$joinprocess['userposition']     = filter_var($_POST['postion'], FILTER_SANITIZE_STRING);
+$joinprocess['clubID']     = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
+$joinprocess['ownerid']     = filter_var($_POST['ownerid'], FILTER_SANITIZE_STRING);
+
+ $msg = JoinClub($joinprocess);
+header('Location: LockerRoom.php');
+
+}
+
 
 
 ?>
