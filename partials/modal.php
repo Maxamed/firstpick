@@ -1,67 +1,41 @@
-<!-- register -->
-<div id="RegBox" class="reveal" data-reveal>
-  <div class="large-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
-    <div class="signup-panel">
-      <!-- create  match-->
-          <div id="contactForm" class="">
-            <form method="post" action="process.php">
-
-                <h2>Register</h2>
-
-                <input type="hidden" name="register" value="register"/>
-                <label>User name</label>
-                <input type="text"   name="uname" placeholder="Ronaldo7">
-
-                <label>Email</label>
-                <input type="text"   name="email" placeholder="Mohamed.Jama@gmail.com">
-
-                <label>Password</label>
-                <input type="password"  name="password">
-
-                <label>Retype Password</label>
-                <input type="password"   name="npassword">
-
-                <input type="submit" class="button" value="Submit">
-
-              </form>
-          </div><!--end 8 columns-->
-      <!-- create match-->
-    </div>
-  </div>
-
-</div>
-<!-- login-social -->
 <div id="loginBox" class="reveal" data-reveal>
   <div class="row">
 
-    <div class="large-12 columns auth-plain">
+    <div class="large-6 columns auth-plain">
       <div class="signup-panel left-solid">
         <p class="welcome">Registered Users</p>
-          <form method="post" action="process.php">
-            <input type="hidden" name="login" value="login"/>
-            <div class="row collapse">
-              <div class="small-2  columns">
-                <span class="prefix"><i class="fi-torso-female"></i></span>
-              </div>
-              <div class="small-10  columns">
-                <input type="text" name="uname" placeholder="username">
-              </div>
+        <form>
+          <div class="row collapse">
+            <div class="small-2  columns">
+              <span class="prefix"><i class="fi-torso-female"></i></span>
             </div>
-            <div class="row collapse">
-              <div class="small-2 columns ">
-                <span class="prefix"><i class="fi-lock"></i></span>
-              </div>
-              <div class="small-10 columns ">
-                <input type="password" name="password" placeholder="password">
-              </div>
-              <input type="submit" class="button" value="Submit">
+            <div class="small-10  columns">
+              <input type="text" placeholder="username">
             </div>
-          </form>
+          </div>
+          <div class="row collapse">
+            <div class="small-2 columns ">
+              <span class="prefix"><i class="fi-lock"></i></span>
+            </div>
+            <div class="small-10 columns ">
+              <input type="text" placeholder="password">
+            </div>
+          </div>
+        </form>
+        <a href="#" class="button ">Log In </a>
+      </div>
+    </div>
+
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel newusers">
+        <a href="fb/fbconfig.php" class="facebook button split"> <span></span>sign in with facebook</a>
+        <button href="#" class="twitter button split"> <span></span>sign in with twitter</button>
+        <button href="#" class="google button split"> <span></span>sign in with google +</button>
       </div>
     </div>
   </div>
 </div>
-<!-- login-social -->
+
 <!-- modal create a match content -->
 <div id="CreateMatch" class="reveal" data-reveal>
   <div class="row">

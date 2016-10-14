@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['FBID'])) {
  } else {
-   header("location:home");
+   header("location:logout.php");
  }
 include_once 'vendors/functions.php';
 ?>

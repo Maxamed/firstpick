@@ -36,10 +36,10 @@ $isAdmin = isAdmin($id);
                   <input type="hidden" name="editprofile" value="editprofile">
                   <input type="hidden" name="uid" value="<?php echo $_SESSION['id'];?>">
                   <label>Name</label>
-                  <input type="text" disabled name ="name" value="<?php echo $user['username'];?>">
+                  <input type="text" disabled name ="name" value="<?php echo $_SESSION['FULLNAME'];?>">
 
                   <label>Email</label>
-                  <input type="text" disabled name="email" value="<?php echo $user['email'];?>">
+                  <input type="text" disabled name="email" value="<?php echo $_SESSION['EMAIL'];?>">
 
                   <label>Nickname</label>
                   <input type="text" required name="nickname" placeholder="Nickname">

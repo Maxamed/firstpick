@@ -2,7 +2,7 @@
 require_once("db.php");
 //error_reporting(E_ALL);
 
-$db = new Mysqlidb('localhost', 'root', 'mo', 'firstpick');
+$db = new Mysqlidb('localhost', 'root', 'mo', 'topbins');
 if(!$db) die("Database error");
 
 
@@ -66,6 +66,7 @@ function getUser($usrID){
   $user = $db->getOne("users");
   return $user;
 }
+ 
 //get club
 function getClubs($usrID){
   $db = $GLOBALS['db'];
