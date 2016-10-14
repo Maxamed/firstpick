@@ -40,25 +40,26 @@ function editUser($uDetails){
       }
       return $msg;
 }
-//login user
-function loginUser($uDetails){
-  $db = $GLOBALS['db'];
-  $db->where ("username", $uDetails['uname']);
-  $user = $db->getOne ("users");
-  $premission = Array();
-  if (password_verify($uDetails['pass'], $user['password'])) {
-    $premission = Array(
-        'stats'     => 1,
-        'username'  => $user['username'],
-        'isAdmin'   => $user['admin'],
-        'id'        => $user['id']
-    );
-  } else {
-    $premission = Array( 'stats'=> 0);
-  }
-  return $premission;
-
-}
+//login user -- old don't waste time
+// function loginUser($uDetails){
+//   $db = $GLOBALS['db'];
+//   $db->where ("username", $uDetails['uname']);
+//   $user = $db->getOne ("users");
+//   var_dump($user['admin']);die();
+//   $premission = Array();
+//   if (password_verify($uDetails['pass'], $user['password'])) {
+//     $premission = Array(
+//         'stats'     => 1,
+//         'username'  => $user['username'],
+//         'isAdmin'   => $user['admin'],
+//         'id'        => $user['id']
+//     );
+//   } else {
+//     $premission = Array( 'stats'=> 0);
+//   }
+//   return $premission;
+//
+// }
 //get user
 function getUser($usrID){
   $db = $GLOBALS['db'];
@@ -67,7 +68,7 @@ function getUser($usrID){
   return $user;
 }
 
-//get club
+//get clubs users are in
 function getClubs($usrID){
   $db = $GLOBALS['db'];
   $db->where ("userid", $usrID);
@@ -91,6 +92,26 @@ function getClubs($usrID){
   return $UserClub;
 
 }
+//get all users in a club
+function getClubsUsers($clubID){
+  $db = $GLOBALS['db'];
+  $db->where ("clubID", $clubID);
+  $users = $db->get('clubusers');
+
+  $ndb = $GLOBALS['db'];
+  $UserClub = array();
+  foreach($users as $key => $value)
+  {
+    $ndb->where ("id", $users[$key]['userID']);
+    $userDetails = $db->get('users');
+    array_push($UserClub, $userDetails);
+  }
+
+  return $UserClub;
+
+}
+
+
 //create club
 
 function clubCreation($clubDetails){

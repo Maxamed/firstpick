@@ -1,6 +1,7 @@
 
 <?php include_once 'partials/header.php';
 $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+//var_dump($_SESSION['isadmin']);die();
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -33,7 +34,7 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
   <div class="listHeader" style="">
       <div>Your Club</div>
   </div>
-  <?php $clubs = getClubs($_SESSION['isadmin']);
+  <?php $clubs = getClubs($id);
   foreach ($clubs as $key => $value) {
 
   ?>
@@ -70,30 +71,29 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
     <div class="listHeader" style="">
         <div>Club Squad</div>
     </div>
-    <?php $clubs = getClubsUsers($Clubid);
-    foreach ($clubs as $key => $value) {
+    <?php $clubUsers = getClubsUsers($_SESSION['isadmin']);
+    foreach ($clubUsers as $key => $value) {
+    //var_dump($clubUsers);die();
 
     ?>
-
+    <!-- users -->
+    <div class="medium-3 columns end singleCard">
+      <div class="card"><img src="https://graph.facebook.com/<?php print_r($value[$key]['Fuid']);?>/picture">
+        <div class="content">
+          <span class="title"><?php print_r($value[$key]['username']);?></span>
+          <p>Position: <?php print_r($value[$key]['position']);?></p>
+          <p>L:4-W:9-D:6</p>
+          <p>Scored:10 - Assists:4</p>
+        </div>
+          <div class="action">
+            <p><a href="mailto:<?php print_r($value[$key]['email']);?>"><?php print_r($value[$key]['email']);?></a><br/><a href="tel:<?php print_r($value[$key]['tel']);?>"><?php print_r($value[$key]['tel']);?></a><br/>
+            <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
+          </div>
+      </div>
+    </div>
+    <!-- users -->
 
     <?php }?>
-     <!-- users -->
-     <div class="medium-3 columns end singleCard">
-       <div class="card">
-         <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-         <div class="content">
-           <span class="title">Adbullahi Hussien</span>
-           <p>Position: RM</p>
-           <p>L:4-W:9-D:6</p>
-           <p>Scored:10 - Assists:4</p>
-         </div>
-           <div class="action">
-             <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-             <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-           </div>
-       </div>
-     </div>
-     <!-- users -->
 
      <!-- popup -->
      <div class="tiny reveal"  class="reveal" id="DeletePlayer" data-reveal >

@@ -43,7 +43,7 @@ if ( isset( $session ) ) {
       checkuser($fbid,$fbfullname,$femail);
     /* ---- header location after session ----*/
 
-} else { 
+} else {
   $loginUrl = $helper->getLoginUrl(array('scope' => 'email'));
  header("Location: ".$loginUrl);
 }

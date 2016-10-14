@@ -29,11 +29,10 @@ function checkuser($fuid,$username,$email){
 
     $_SESSION['FBID'] = $fuid;
     $_SESSION['id'] = $user['id'];
-    $_SESSION['isadmin'] = $user['isadmin'];
-    $_SESSION['username'] = $fbfullname;
+    $_SESSION['isadmin'] = $user['admin'];
+    $_SESSION['username'] = $username;
     $_SESSION['EMAIL'] =  $femail;
-
-    if($user['isAdmin']==0){
+    if($user['admin']===0){
         $response = "../LockerRoom.php";
     }else{
     $response = "../dashboard.php" ;

@@ -1,27 +1,28 @@
 
 <?php include_once 'vendors/functions.php';
 //login
-if (isset($_POST['login']) ) {
-  $userDetails['uname'] =  $_POST['uname'];
-  $userDetails['pass'] =  $_POST['password'];
-
-  $premission = loginUser($userDetails);
-  if($premission['stats']=== 1){
-        session_start();
-       $_SESSION['user'] = $premission['username'];
-       $_SESSION['id'] = $premission['id'];
-       $_SESSION['isAdmin'] = $premission['isAdmin'];
-    if($premission['isAdmin']!=0){
-        $response = "dashboard.php" ;
-    }else{
-        $response = "LockerRoom.php";
-    }
-    }else{
-        $response = "index.php" ;
-      }
-       header('Location: ' . $response);
-      die();
-}
+// if (isset($_POST['login']) ) {
+//   $userDetails['uname'] =  $_POST['uname'];
+//   $userDetails['pass'] =  $_POST['password'];
+//
+//   $premission = loginUser($userDetails);
+//   if($premission['stats']=== 1){
+//         session_start();
+//        $_SESSION['user'] = $premission['username'];
+//        $_SESSION['id'] = $premission['id'];
+//        $_SESSION['isAdmin'] = $premission['isAdmin'];
+//        var_dump($_SESSION['isAdmin']);die();
+//     if($premission['isadmin']!=0){
+//         $response = "dashboard.php" ;
+//     }else{
+//         $response = "LockerRoom.php";
+//     }
+//     }else{
+//         $response = "index.php" ;
+//       }
+//        header('Location: ' . $response);
+//       die();
+// }
 //register_
 if (isset($_POST['register'])) {
   $userLogin = [];
