@@ -66,7 +66,7 @@ function getUser($usrID){
   $user = $db->getOne("users");
   return $user;
 }
- 
+
 //get club
 function getClubs($usrID){
   $db = $GLOBALS['db'];

@@ -3,9 +3,9 @@
 $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 ?>
 <header class="header">
-    <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
+    <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
-    <?php if($_SESSION['isadmin']===Null){ ?>
+    <?php if($_SESSION['isadmin']===0){ ?>
     <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
     <?php }else{ ?>
@@ -33,7 +33,7 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
   <div class="listHeader" style="">
       <div>Your Club</div>
   </div>
-  <?php $clubs = getClubs($id);
+  <?php $clubs = getClubs($_SESSION['isadmin']);
   foreach ($clubs as $key => $value) {
 
   ?>
@@ -70,7 +70,13 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
     <div class="listHeader" style="">
         <div>Club Squad</div>
     </div>
+    <?php $clubs = getClubsUsers($Clubid);
+    foreach ($clubs as $key => $value) {
 
+    ?>
+
+
+    <?php }?>
      <!-- users -->
      <div class="medium-3 columns end singleCard">
        <div class="card">
@@ -89,131 +95,6 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
      </div>
      <!-- users -->
 
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-        <div class="card">
-          <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-          <div class="content">
-            <span class="title">Adbullahi Hussien</span>
-            <p>Position: RM</p>
-            <p>L:4-W:9-D:6</p>
-            <p>Scored:10 - Assists:4</p>
-          </div>
-            <div class="action">
-              <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-              <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-            </div>
-        </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-       <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-       <div class="content">
-         <span class="title">Adbullahi Hussien</span>
-         <p>Position: RM</p>
-         <p>L:4-W:9-D:6</p>
-         <p>Scored:10 - Assists:4</p>
-       </div>
-         <div class="action">
-           <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-           <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-         </div>
-      </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-        <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-        <div class="content">
-          <span class="title">Adbullahi Hussien</span>
-          <p>Position: RM</p>
-          <p>L:4-W:9-D:6</p>
-          <p>Scored:10 - Assists:4</p>
-        </div>
-          <div class="action">
-            <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-            <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-          </div>
-      </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-      <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-      <div class="content">
-       <span class="title">Adbullahi Hussien</span>
-       <p>Position: RM</p>
-       <p>L:4-W:9-D:6</p>
-       <p>Scored:10 - Assists:4</p>
-      </div>
-       <div class="action">
-         <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-         <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-       </div>
-      </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-      <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-      <div class="content">
-        <span class="title">Adbullahi Hussien</span>
-        <p>Position: RM</p>
-        <p>L:4-W:9-D:6</p>
-        <p>Scored:10 - Assists:4</p>
-      </div>
-        <div class="action">
-          <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-          <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-        </div>
-      </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-      <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-      <div class="content">
-       <span class="title">Adbullahi Hussien</span>
-       <p>Position: RM</p>
-       <p>L:4-W:9-D:6</p>
-       <p>Scored:10 - Assists:4</p>
-      </div>
-       <div class="action">
-         <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-         <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-       </div>
-      </div>
-      </div>
-      <!-- users -->
-
-      <!-- users -->
-      <div class="medium-3 columns end singleCard">
-      <div class="card">
-      <img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
-      <div class="content">
-        <span class="title">Adbullahi Hussien</span>
-        <p>Position: RM</p>
-        <p>L:4-W:9-D:6</p>
-        <p>Scored:10 - Assists:4</p>
-      </div>
-        <div class="action">
-          <p><a href="mailto:Mohamed.jama@gmail.com">Mohamed.jama@gmail.com</a><br/><a href="http://zurb.com/ink/">0524968339</a><br/>
-          <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
-        </div>
-      </div>
-      </div>
-      <!-- users -->
      <!-- popup -->
      <div class="tiny reveal"  class="reveal" id="DeletePlayer" data-reveal >
        <p>delete this player? </p> <p> Thats a shame, he must've been naughty</p>
