@@ -24,19 +24,19 @@
 //       die();
 // }
 //register_
-if (isset($_POST['register'])) {
-  $userLogin = [];
-  $userLogin['uname']   =   $_POST['uname'];
-  $userLogin['email']   =   $_POST['email'];
-  $userLogin['pass']    =   $_POST['password'];
-
-  $userID = createUser($userLogin);
-   session_start();
-    $_SESSION['id'] = $userID;
- //var_dump($userID); var_dump($_SESSION);die();
-  header('Location: profile.php');
-
-}
+// if (isset($_POST['register'])) {
+//   $userLogin = [];
+//   $userLogin['uname']   =   $_POST['uname'];
+//   $userLogin['email']   =   $_POST['email'];
+//   $userLogin['pass']    =   $_POST['password'];
+//
+//   $userID = createUser($userLogin);
+//    session_start();
+//     $_SESSION['id'] = $userID;
+//  //var_dump($userID); var_dump($_SESSION);die();
+//   header('Location: profile.php');
+//
+// }
 //edit profile
 if (isset($_POST['editprofile'])) {
 
@@ -82,7 +82,6 @@ $pitchDetails['lon']          = filter_var($_POST['lon'], FILTER_SANITIZE_STRING
 $pitchDetails['usrID']        = filter_var($_POST['usrID'], FILTER_SANITIZE_STRING);
 $pitchDetails['pitchaddress'] = filter_var($_POST['pitchaddress'], FILTER_SANITIZE_STRING);
 
-
  $msg = SavePitch($pitchDetails);
 header('Location: pitch.php');
 
@@ -108,8 +107,6 @@ if (isset($_POST['AddPlayer'])) {
 $uid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
 $cludid  = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
 $transferid  = filter_var($_POST['transferID'], FILTER_SANITIZE_STRING);
-// AdduserToClub($uid,$cludid);
-// header('Location: inbox.php');
 if(AdduserToClub($uid,$cludid)){
   CleanInbox($transferid);
   header('Location: inbox.php');

@@ -1,6 +1,5 @@
 
-<?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+<?php include_once 'partials/header.php'; 
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -50,7 +49,7 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
       </div>
   </div>
   <div class="large-7 columns">
-    <?php  $Pitchs = GetPitchList($_SESSION['username']);?>
+    <?php  $Pitchs = GetPitchList($_SESSION['id']);?>
     <table>
   <thead>
     <tr>

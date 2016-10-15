@@ -1,6 +1,4 @@
 <?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$user = getUser($id);
 $searchterm = $_POST["search"];
 ?>
 <header class="header">
@@ -30,6 +28,7 @@ $searchterm = $_POST["search"];
         </div>
         <?php
           $SRP =DoSearch($searchterm);
+          //var_dump($SRP);die();
           foreach ($SRP as $key => $value) {
         ?>
         <!-- cards -->
@@ -46,12 +45,12 @@ $searchterm = $_POST["search"];
                     <p>Created on: <?php print_r($SRP[$key]['createdOn']);?></p>
             </div>
             <div class="action">
-              <a data-open="ClubRules" >Join</a>
+              <a data-open="ClubRules_<?php print_r($SRP[$key]['id']);?>" >Join</a>
             </div>
           </div>
         </div>
         <!-- popup -->
-        <div class="tiny reveal"  class="reveal" id="ClubRules" data-reveal >
+        <div class="tiny reveal"  class="reveal" id="ClubRules_<?php print_r($SRP[$key]['id']);?>" data-reveal >
           <h4> <?php print_r($SRP[$key]['name']);?> Rules</h4>
           <p>Please read the rules before requesting to join the club:</p>
           <hr>

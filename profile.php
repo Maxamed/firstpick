@@ -1,8 +1,5 @@
 
 <?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$user = getUser($id);
-$isAdmin = isAdmin($id);
 ?>
 <header class="header">
   <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -36,10 +33,10 @@ $isAdmin = isAdmin($id);
                   <input type="hidden" name="editprofile" value="editprofile">
                   <input type="hidden" name="uid" value="<?php echo $_SESSION['id'];?>">
                   <label>Name</label>
-                  <input type="text" disabled name ="name" value="<?php echo $_SESSION['FULLNAME'];?>">
+                  <input type="text" disabled name ="name" value="<?php echo $_SESSION['username'];?>">
 
                   <label>Email</label>
-                  <input type="text" disabled name="email" value="<?php echo $_SESSION['EMAIL'];?>">
+                  <input type="text" disabled name="email" value="<?php echo $_SESSION['email'];?>">
 
                   <label>Nickname</label>
                   <input type="text" required name="nickname" placeholder="Nickname">

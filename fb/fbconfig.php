@@ -35,15 +35,13 @@ if ( isset( $session ) ) {
      	$fbid = $graphObject->getProperty('id');              // To Get Facebook ID
  	    $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
 	    $femail = $graphObject->getProperty('email');    // To Get Facebook email ID
-    //  var_dump($graphObject);die();
+      //var_dump('1',$fbid,$fbfullname,$femail);
 	/* ---- Session Variables -----*/
-	    $_SESSION['FBID'] = $fbid;
-      $_SESSION['FULLNAME'] = $fbfullname;
-	    $_SESSION['EMAIL'] =  $femail;
       checkuser($fbid,$fbfullname,$femail);
     /* ---- header location after session ----*/
 
 } else {
+//var_dump('wtf');die();
   $loginUrl = $helper->getLoginUrl(array('scope' => 'email'));
  header("Location: ".$loginUrl);
 }

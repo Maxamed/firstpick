@@ -1,9 +1,6 @@
 
 
 <?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$user = getUser($id);
-$isAdmin = isAdmin($id);
 $clubdata = Clubpage($_GET['clubid']);
 ?>
 <header class="header">

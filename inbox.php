@@ -1,8 +1,5 @@
 
-<?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-$user = getUser($id);
-$isAdmin = isAdmin($id);
+<?php include_once 'partials/header.php';  
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
@@ -11,8 +8,8 @@ $isAdmin = isAdmin($id);
       <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
       <li>    <a href="createclub.php"  >Create a Club</a> </li>
       <?php }else{ ?>
-        <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
-        <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
+        <li>    <a href="Dashboard.php" alt="Dashboard">Management</a> </li>
+        <li>   <a href="Inbox.php" alt="Inbox" class="is-active">Inbox</a></li>
         <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
         <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
         <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
@@ -27,7 +24,7 @@ $isAdmin = isAdmin($id);
   <div class="listHeader" style="">
       <div>Transfer In</div>
   </div>
-  <?php
+  <?php //var_dump($id);die();
       $transfers = getTransfers($id);
       //var_dump($transfers);die();
       foreach ($transfers as $key => $value) {

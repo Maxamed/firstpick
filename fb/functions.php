@@ -5,11 +5,12 @@ if(!$db) die("Database error");
 
 
 function checkuser($fuid,$username,$email){
-
+//
   $db = $GLOBALS['db'];
   $db->where ("fuid", $fuid);
   $user = $db->getOne("users");
   if($user === NULL){
+    //new users, doesn't exist on local database
     $data = Array(
         'fuid' => $fuid,
         'username' => $username,
@@ -17,25 +18,27 @@ function checkuser($fuid,$username,$email){
         'createdAt' => $db->now()
     );
    $id = $db->insert('users', $data);
+   $_SESSION['id'] = $id;
+   $_SESSION['FBID'] = $fuid;
+   $_SESSION['email'] =  $email;
+   $_SESSION['username'] =  $username;
+   //var_dump('2',$fuid,$username,$email);die();
 
- 	    $_SESSION['id'] = $id;
    header("Location: ../profile.php");
+
   }else{
-
-    $db = $GLOBALS['db'];
-    $db->where ("fuid", $fuid);
-    $user = $db->getOne("users");
-
 
     $_SESSION['FBID'] = $fuid;
     $_SESSION['id'] = $user['id'];
+    $_SESSION['email'] =  $email;
     $_SESSION['isadmin'] = $user['admin'];
     $_SESSION['username'] = $username;
-    $_SESSION['EMAIL'] =  $femail;
+
+
     if($user['admin']===0){
         $response = "../LockerRoom.php";
     }else{
-    $response = "../dashboard.php" ;
+        $response = "../dashboard.php" ;
     }
 
     header("Location: ".$response);

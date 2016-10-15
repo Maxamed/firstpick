@@ -1,10 +1,20 @@
 <?php
 session_start();
 if (isset($_SESSION['FBID'])) {
+  include_once 'vendors/functions.php';
+
+  $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+  $user = getUser($id);
+  $isAdmin = isAdmin($id);
+
+$_SESSION['isadmin'] = $isAdmin;
  } else {
    header("location:logout.php");
  }
-include_once 'vendors/functions.php';
+
+echo '<div style="background:white">';
+var_dump($_SESSION);
+echo '</div>';
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

@@ -1,7 +1,5 @@
 
-<?php include_once 'partials/header.php';
-$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-//var_dump($_SESSION['isadmin']);die();
+<?php include_once 'partials/header.php';  
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>

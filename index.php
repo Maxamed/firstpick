@@ -1,4 +1,7 @@
-
+<?php echo '<div style="background:white">';
+var_dump($_SESSION);
+echo '</div>';
+ ?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>

@@ -131,11 +131,12 @@ function isAdmin($uid){
   $db = $GLOBALS['db'];
   $db->where ("id", $uid);
   $user = $db->getOne("users");
-   if($user['admin'] == 0) {
-     return false;
+   if($user['admin'] === 0) {
+     $val = 0;
    }else{
-     return true;
+     $val = $user['admin'];
    }
+   return $val;
 
 }
 function setAdmin($uid,$clubid){
@@ -145,6 +146,7 @@ function setAdmin($uid,$clubid){
          'admin' => $clubid
        );
     $id = $db->update('users', $updateuser);
+    $_SESSION['isadmin'] = $clubid;
     return $id;
 }
 function AdduserToClub($uid,$clubid){
@@ -175,6 +177,7 @@ function Clubpage($clubId){
 //save Pitch
 function SavePitch($pitchDetails){
   $db = $GLOBALS['db'];
+
   $data = Array(
       'name' => $pitchDetails['pitchname'],
       'userid' => $pitchDetails['usrID'],
@@ -213,7 +216,7 @@ function DoSearch($term){
 }
 //request to join
 function JoinClub($membership){
-
+//var_dump($membership );die();
       $db = $GLOBALS['db'];
       $data = Array(
           'sendername' => $membership['username'],
