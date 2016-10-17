@@ -269,8 +269,8 @@ function ProcessInvite($inviteCode,$userDetails){
 
   $db = $GLOBALS['db'];
   $db->where ("invite", $inviteCode);
+  $db->where ("accepted", "0");
   $transfers = $db->get("clubInvites");
-//  var_dump($transfers );die();
     $data = Array(
         'sendername' => $userDetails['nickname'],
         'senderid' => $userDetails['uid'],
@@ -279,7 +279,12 @@ function ProcessInvite($inviteCode,$userDetails){
         'ownerid' => $transfers[0]['ClubOwner'],
         'sentdate' => $db->now()
     );
-  $id = $db->insert('inboxjoin', $data);  
+  $id = $db->insert('inboxjoin', $data);
+  $data2 = Array(
+      'accepted' => 1
+  );
+  $db->where ("id", $transfers[0]['id']);
+  $id1 = $db->update('clubInvites', $data2);
 }
 
 //request to join
@@ -312,4 +317,55 @@ function getTransfers($userID){
   return $transfers;
 }
 
+//create match
+function CreateMatch($matchDetails){
+  $db = $GLOBALS['db'];
+  $date = DateTime::createFromFormat('m-d-Y H:i',$matchDetails['datetime']);
+  $from_date = $date->format("Y-m-d H:i");
+  $data = Array(
+      'clubid' => $matchDetails['clubid'],
+      'date' => $from_date,
+      'noplayers' => $matchDetails['noplayers'] - 1,
+      'cost' => $matchDetails['cost'],
+      'pitchid' => $matchDetails['pitch'],
+      'usrid' => $matchDetails['userid'],
+      'createdon' => $db->now()
+  );
+
+ $id = $db->insert('matchday', $data);
+   //var_dump( $data);die();
+ return $id;
+
+}
+//add user to match
+function AdduserToMatch($matchid,$matchClubid, $matchUserid){
+
+      $db = $GLOBALS['db'];
+      $data = Array(
+          'clubid' => $matchClubid,
+          'userid' => $matchUserid,
+          'matchid' => $matchid,
+          'rsvpon' => $db->now()
+      );
+     $id = $db->insert('matchusers', $data);
+    //var_dump( $data);die();
+
+    //  $ndb = $GLOBALS['db'];
+    //  $data = Array(
+    //      'membersCount' => $db->inc(1)
+    //  );
+    //
+    // $nid = $ndb->update('Club', $data);
+    return true;
+}
+//Get active matchsetup
+function GetMatchs($clubID){
+
+  $db = $GLOBALS['db'];
+  $db->where ("clubid", $clubID);
+  $matchs = $db->get("matchday");
+  var_dump( $matchs);die();
+  return $matchs;
+
+}
 ?>

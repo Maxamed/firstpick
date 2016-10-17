@@ -20,7 +20,56 @@
       <li>   <a href="logout.php" alt="logout">logout</a> </li>
     </ul>
 </header>
-
+<div class="row cardsList">
+  <div class="listHeader" >
+      <div>Search for a ground</div>
+  </div>
+  <div class="large-5 columns" style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
+    <form method="post" id="geocoding_form">
+      <div class="input-group">
+        <span class="input-group-label">Search</span>
+        <input class="input-group-field" type="text" placeholder="Sports City, Dubai" id="address" name="address">
+        <div class="input-group-button">
+          <input type="submit" class="button" value="Submit">
+        </div>
+      </div>
+    </form>
+      <div id="map" style=" height:300px;"></div>
+      <div id="result" style="background-color:white;padding:10px;">
+        <form class="hide" id="savepitch"  method="post" action="process.php">
+          <input type="hidden" name="savepitch" value="savepitch">
+          <p>We got the longtiude and latittude, now customise your pitch</p>
+          <label>Pitch name<input type="text" name="pitchname" placeholder="Home Ground"></label>
+          <input type="hidden" name="lat" value="">
+          <input type="hidden" name="lon" value="">
+          <input type="hidden" name="usrID" value="<?php echo $_SESSION['id'];?>">
+          <label>Pitch address<input type="text" name="pitchaddress" placeholder=""></label>
+          <input type="submit" class="button" value="Submit">
+        </form>
+      </div>
+  </div>
+  <div class="large-7 columns">
+    <?php  $Pitchs = GetPitchList($_SESSION['id']);?>
+    <table>
+  <thead>
+    <tr>
+      <th width="150">Pitch name</th>
+      <th>Pitch address</th>
+      <th width="50">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php  foreach ($Pitchs as $key => $value) {?>
+    <tr>
+      <td><?php print_r($Pitchs[$key]['name']);?></td>
+      <td><a target="_blank" href="https://www.google.com/maps/place/<?php print_r($Pitchs[$key]['lat']);?>,<?php print_r($Pitchs[$key]['lng']);?>"><?php print_r($Pitchs[$key]['pitchaddress']);?></a></td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+    <?php }?>
+  </tbody>
+</table>
+  </div>
+</div>
 
 <script src="assets/js/vendor/jquery.js"></script>
 <script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyC49xjd7Oum8acc0G5tDCQcmPJlj8H0WD0"></script>

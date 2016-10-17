@@ -76,6 +76,24 @@ if (isset($_POST['createclub'])) {
     }else{ die();}
 
 }
+//create match
+if (isset($_POST['creatematch'])) {
+
+  $matchDetails = [];
+  $matchDetails['clubid'] = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
+  $matchDetails['datetime'] = filter_var($_POST['datetime'], FILTER_SANITIZE_STRING);
+  $matchDetails['noplayers'] = filter_var($_POST['noplayers'], FILTER_SANITIZE_STRING);
+  $matchDetails['cost'] = filter_var($_POST['cost'], FILTER_SANITIZE_STRING);
+  $matchDetails['pitch'] = filter_var($_POST['pitch'], FILTER_SANITIZE_STRING);
+  $matchDetails['userid'] = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
+
+   //var_dump($matchDetails);die();
+  $matchid = CreateMatch($matchDetails);
+  AdduserToMatch($matchid,$matchDetails['clubid'], $matchDetails['userid']);
+  header('Location: matchsetup.php');
+  //var_dump($matchDetails);die();
+}
+
 //Generate invite code
 if (isset($_POST['inviteForm'])) {
 
