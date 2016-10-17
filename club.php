@@ -1,27 +1,28 @@
 
 
 <?php include_once 'partials/header.php';
-$clubdata = Clubpage($_GET['clubid']);
+
+$clubdata = Clubpage($_GET['id']);
+//var_dump($clubdata);
 ?>
 <header class="header">
-    <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
+    <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
-    <ul class="header-subnav">
-      <?php if($_SESSION['isadmin']===0){ ?>
-      <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
-      <li>    <a href="createclub.php"  >Create a Club</a> </li>
-      <?php }else{ ?>
-        <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
-        <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
-        <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-        <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
-        <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
-   <?php } ?>
-      <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
-      <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
-      <li>   <a href="profile.php" alt="profile">Profile</a> </li>
-      <li>   <a href="logout.php" alt="logout">logout</a> </li>
-    </ul>
+    <?php if($_SESSION['isadmin']===0){ ?>
+    <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
+    <li>    <a href="createclub.php"  >Create a Club</a> </li>
+    <?php }else{ ?>
+      <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
+      <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
+      <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
+      <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+ <?php } ?>
+    <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
+    <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
+    <li>   <a href="logout.php" alt="logout">logout</a> </li>
+  </ul>
 </header>
 
 <div class="row" style="margin-top:20px;">
@@ -32,7 +33,7 @@ $clubdata = Clubpage($_GET['clubid']);
     <div class="row">
       <div class="large-12 columns">
         <div class="panel">
-          <h1><?php echo $clubdata[name] ?></h1>
+          <h1><?php echo $clubdata['name'] ?></h1>
         </div>
       </div>
     </div>
@@ -45,16 +46,16 @@ $clubdata = Clubpage($_GET['clubid']);
           <a href="#"><img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg" /></a>
           <div class="section-container vertical-nav" style="background-color:white;padding:15px;"data-section data-options="deep_linking: false; one_up: true">
             <section class="section">
-              <h5 class="title">Created on</h5><span><?php echo $clubdata[createdOn] ?></span>
+              <h5 class="title">Created on</h5><span><?php echo $clubdata['createdOn'] ?></span>
             </section>
             <section class="section">
               <h5 class="title">Created By</h5><span>James Brown</span>
             </section>
             <section class="section">
-              <h5 class="title">Number of Members</h5><span><?php echo $clubdata[membersCount] ?> members</span>
+              <h5 class="title">Number of Members</h5><span><?php echo $clubdata['membersCount'] ?> members</span>
             </section>
             <section class="section">
-              <h5 class="title">Number of Games to date</h5><span><?php echo $clubdata[matchCount] ?>  games</span>
+              <h5 class="title">Number of Games to date</h5><span><?php echo $clubdata['matchCount'] ?>  games</span>
             </section>
             <!-- <section class="section">
               <h5 class="title">Home Ground</h5><span>Sports City, Dubai</span>
@@ -74,8 +75,45 @@ $clubdata = Clubpage($_GET['clubid']);
       <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
       <div class="large-8 columns" >
 
+        <form  method="post" action="process.php">
+            <h2>Create your unique invite code</h2>
 
+            <input type="hidden" name="inviteForm" value="inviteForm">
+            <input type="hidden" name="clubid" value="<?php echo $clubdata['id'] ?>">
+            <input type="hidden" name="ownderid" value="<?php echo $clubdata['ownerid'] ?>">
+            <label>Name</label>
+            <input type="text"   name ="name" placeholder="My trusted wingman">
+            <label>Email</label>
+            <input type="text"   name="email" placeholder="email">
+          <input type="submit" class="nice blue radius button" value="Generate Code">
+          </form>
 
+            <?php  $invites = GetInviteList($_SESSION['id']);
+            ?>
+            <p>Pending Invites</p>
+        <table style="border:1px solid red">
+          <thead>
+            <tr>
+              <th width="150">Invitee</th>
+              <th width="150">Email</th>
+              <th width="150">Unique Code</th>
+              <th width="150">Date</th>
+              <th width="50">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php  foreach ($invites as $key => $value) {
+            ?>
+            <tr>
+              <td><?php print_r($invites[$key]['NewUser']);?></td>
+              <td><?php print_r($invites[$key]['Email']);?></td>
+              <td>http://topbins.local/invite.php?invite=<?php print_r($invites[$key]['invite']);?></td>
+              <td><?php print_r($invites[$key]['InviteDate']);?></td>
+              <td>Still under progress</td>
+            </tr>
+            <?php }?>
+          </tbody>
+        </table>
 
       </div>
 

@@ -21,7 +21,15 @@
 </ul>
 </header>
 <!-- modal create a match content -->
-
+<?php if($_SESSION['invitecode']){?>
+  <div class="row" style="margin:20px;position:relative">
+    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
+      <div class="signup-panel">
+        You have a Pending invitation, once you complete your registeration you'll be added automatically to the club.
+      </div>
+    </div>
+  </div>
+<?php } ?>
   <div class="row" style="margin:20px;position:relative">
     <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
       <div class="signup-panel">
@@ -29,7 +37,7 @@
             <div id="contactForm" class="">
               <form  method="post" action="process.php">
                   <h2>Complete your profile profile</h2>
-
+                  <input type="hidden" name="invitecode" value="<?php echo $_SESSION['invitecode'];?>">  
                   <input type="hidden" name="editprofile" value="editprofile">
                   <input type="hidden" name="uid" value="<?php echo $_SESSION['id'];?>">
                   <label>Name</label>

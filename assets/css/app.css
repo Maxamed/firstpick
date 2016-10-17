@@ -265,7 +265,7 @@ a span {margin: 0 5px;}
     text-align: center;
     line-height: 2rem;
 }
-.reveal {background: url(../img/bg.svg) repeat;
+.reveal,.authbox {background: url(../img/bg.svg) repeat;
 background-color: white!important;}
 .singleCard {margin-bottom: 10px;}
 /* Styles for search results */

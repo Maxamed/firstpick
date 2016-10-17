@@ -7,19 +7,19 @@ if(!$db) die("Database error");
 
 
 //create new user
-function createUser($uDetails){
-    $db = $GLOBALS['db'];
-    $hash = password_hash($uDetails['pass'], PASSWORD_DEFAULT);
-    $data = Array(
-        'username' => $uDetails['uname'],
-        'email' => $uDetails['email'],
-        'password' => $hash,
-        'createdAt' => $db->now()
-    );
-
-   $id = $db->insert('users', $data);
-   return $id;
-  }
+// function createUser($uDetails){
+//     $db = $GLOBALS['db'];
+//     $hash = password_hash($uDetails['pass'], PASSWORD_DEFAULT);
+//     $data = Array(
+//         'username' => $uDetails['uname'],
+//         'email' => $uDetails['email'],
+//         'password' => $hash,
+//         'createdAt' => $db->now()
+//     );
+//
+//    $id = $db->insert('users', $data);
+//    return $id;
+//   }
 //edit user
 function editUser($uDetails){
 
@@ -88,26 +88,38 @@ function getClubs($usrID){
     //var_dump($club);
     array_push($UserClub, $club);
   }
-
-  return $UserClub;
+  if(count($UserClub)===0){$array=0;}else{
+  $array = call_user_func_array('array_merge', array_map('array_values', $UserClub));
+}
+  return $array;
 
 }
 //get all users in a club
 function getClubsUsers($clubID){
+
   $db = $GLOBALS['db'];
-  $db->where ("clubID", $clubID);
-  $users = $db->get('clubusers');
+  $db->where('clubID', $clubID);
+  $ids = $db->get('clubusers',null,'userID');
 
+    //var_dump($ids);die();
   $ndb = $GLOBALS['db'];
-  $UserClub = array();
-  foreach($users as $key => $value)
-  {
-    $ndb->where ("id", $users[$key]['userID']);
-    $userDetails = $db->get('users');
-    array_push($UserClub, $userDetails);
-  }
+$UserDetails = Array();
 
-  return $UserClub;
+
+  foreach ($ids as $key => $value) {
+
+      $ndb->where("id", $value['userID']);
+      $UserDetails[$key] = $ndb->get("users");
+      //var_dump($UserDetails[$key]);
+  }
+  //var_dump($UserDetails);
+
+  if(count($UserDetails)===0){$array=0;}else{
+  $array = call_user_func_array('array_merge', array_map('array_values', $UserDetails));
+}
+  return $array;
+
+
 
 }
 
@@ -200,6 +212,7 @@ function GetPitchList($userID){
   $pitchs = $db->get("pitch");
   return $pitchs;
 }
+
 //Search box
 function DoSearch($term){
   $db = $GLOBALS['db'];
@@ -214,6 +227,61 @@ function DoSearch($term){
   }
 
 }
+
+//club inviteDetails
+function ClubInvites($inviteDetails){
+
+  $length = 20;
+  $inviteCode ='';
+  $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+  for ($p = 0; $p < $length; $p++) {
+  	$inviteCode .= $characters[mt_rand(0, strlen($characters))];
+  }
+
+  $db = $GLOBALS['db'];
+  $data = Array(
+      'NewUser' => $inviteDetails['name'],
+      'email' => $inviteDetails['email'],
+      'clubowner' => $inviteDetails['ownderid'],
+      'clubID' => $inviteDetails['clubid'],
+      'invite' => $inviteCode,
+      'invitedate' => $db->now()
+  );
+
+ $id = $db->insert('clubinvites', $data);
+
+return $inviteCode;
+
+}
+
+//getinvite lcfirst
+
+function GetInviteList($userID){
+  $db = $GLOBALS['db'];
+  $db->where ("clubowner", $userID);
+  $invites = $db->get("clubinvites");
+  return $invites;
+}
+
+//process invites
+function ProcessInvite($inviteCode,$userDetails){
+
+
+  $db = $GLOBALS['db'];
+  $db->where ("invite", $inviteCode);
+  $transfers = $db->get("clubInvites");
+//  var_dump($transfers );die();
+    $data = Array(
+        'sendername' => $userDetails['nickname'],
+        'senderid' => $userDetails['uid'],
+        'senderpos' => $userDetails['position'],
+        'clubID' => $transfers[0]['clubID'],
+        'ownerid' => $transfers[0]['ClubOwner'],
+        'sentdate' => $db->now()
+    );
+  $id = $db->insert('inboxjoin', $data);  
+}
+
 //request to join
 function JoinClub($membership){
 //var_dump($membership );die();

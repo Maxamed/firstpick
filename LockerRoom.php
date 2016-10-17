@@ -1,5 +1,5 @@
 
-<?php include_once 'partials/header.php';  
+<?php include_once 'partials/header.php';
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
@@ -35,28 +35,28 @@
   </div>
   <div class="row" style="margin:10px">
     <?php $clubs = getClubs($id);
+    if($clubs===0){}else{
     foreach ($clubs as $key => $value) {
-
     ?>
     <!-- club -->
     <div class="medium-3  float-right">
       <div class="card">
         <div class="image">
           <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-          <span class="title"><?php print_r($value[$key]['name']);?></span>
+          <span class="title"><?php print_r($value['name']);?></span>
         </div>
         <div class="content">
-          <p>Members: <?php print_r($value[$key]['membersCount']);?></p>
-          <p>City: <?php print_r($value[$key]['country']);?></p>
-          <p>Created on: <?php print_r($value[$key]['createdOn']);?></p>
+          <p>Members: <?php print_r($value['membersCount']);?></p>
+          <p>City: <?php print_r($value['country']);?></p>
+          <p>Created on: <?php print_r($value['createdOn']);?></p>
         </div>
         <div class="action">
-          <a href="club.php?id=<?php print_r($value[$key]['id']);?>" >View</a>
+          <a href="club.php?id=<?php print_r($value['id']);?>" >View</a>
         </div>
       </div>
     </div>
   </div>
-    <?php    } ?>
+    <?php    }} ?>
     <!-- club -->
     <!-- <div class="medium-3 column">
       <div class="card">

@@ -48,6 +48,11 @@ if (isset($_POST['editprofile'])) {
   $userDetails['uid']       = $_POST['uid'];
 
   $msg = editUser($userDetails);
+  if(isset($_POST['invitecode']) ){
+
+    $msg = ProcessInvite($_POST['invitecode'],$userDetails);
+
+  }
 
   header('Location: LockerRoom.php');
 
@@ -69,6 +74,20 @@ if (isset($_POST['createclub'])) {
       AdduserToClub($clubDetails['userid'],$Clubid);
       header('Location: dashboard.php');
     }else{ die();}
+
+}
+//Generate invite code
+if (isset($_POST['inviteForm'])) {
+
+  $inviteDetails = [];
+  $inviteDetails['name'] = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+  $inviteDetails['clubid'] = filter_var($_POST['clubid'], FILTER_SANITIZE_STRING);
+  $inviteDetails['ownderid'] = filter_var($_POST['ownderid'], FILTER_SANITIZE_STRING);
+  $inviteDetails['email'] = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+
+  $inviteInfo = ClubInvites($inviteDetails);
+  header('Location: dashboard.php');
+
 
 }
 

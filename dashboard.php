@@ -1,5 +1,5 @@
 
-<?php include_once 'partials/header.php';  
+<?php include_once 'partials/header.php';
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -33,29 +33,29 @@
       <div>Your Club</div>
   </div>
   <?php $clubs = getClubs($id);
+  if($clubs===0){}else{
   foreach ($clubs as $key => $value) {
-
   ?>
   <!-- club -->
   <div class="medium-3  float-right">
     <div class="card">
       <div class="image">
         <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-        <span class="title"><?php print_r($value[$key]['name']);?></span>
+        <span class="title"><?php print_r($value['name']);?></span>
       </div>
       <div class="content">
-        <p>Members: <?php print_r($value[$key]['membersCount']);?></p>
-        <p>City: <?php print_r($value[$key]['country']);?></p>
-        <p>Created on: <?php print_r($value[$key]['createdOn']);?></p>
+        <p>Members: <?php print_r($value['membersCount']);?></p>
+        <p>City: <?php print_r($value['country']);?></p>
+        <p>Created on: <?php print_r($value['createdOn']);?></p>
       </div>
       <div class="action">
-        <a href="club.php?id=<?php print_r($value[$key]['id']);?>" >View</a>
+        <a href="club.php?id=<?php print_r($value['id']);?>" >View</a>
         <a data-open="DeleteClub" >Delete</a>
       </div>
     </div>
   </div>
 </div>
-  <?php    } ?>
+  <?php    } }?>
 <!-- popup -->
 <div class="tiny reveal"  class="reveal" id="DeleteClub" data-reveal >
   <p>delete your club ? </p> <p> This means you will lose all data and players created and added </p>
@@ -70,28 +70,29 @@
         <div>Club Squad</div>
     </div>
     <?php $clubUsers = getClubsUsers($_SESSION['isadmin']);
+//ar_dump($clubUsers);die();
+    if($clubUsers===0){}else{
     foreach ($clubUsers as $key => $value) {
-    //var_dump($clubUsers);die();
 
     ?>
     <!-- users -->
     <div class="medium-3 columns end singleCard">
-      <div class="card"><img src="https://graph.facebook.com/<?php print_r($value[$key]['Fuid']);?>/picture">
+      <div class="card"><img src="https://graph.facebook.com/<?php print_r($value['Fuid']);?>/picture">
         <div class="content">
-          <span class="title"><?php print_r($value[$key]['username']);?></span>
-          <p>Position: <?php print_r($value[$key]['position']);?></p>
+          <span class="title"><?php print_r($value['username']);?></span>
+          <p>Position: <?php print_r($value['position']);?></p>
           <p>L:4-W:9-D:6</p>
           <p>Scored:10 - Assists:4</p>
         </div>
           <div class="action">
-            <p><a href="mailto:<?php print_r($value[$key]['email']);?>"><?php print_r($value[$key]['email']);?></a><br/><a href="tel:<?php print_r($value[$key]['tel']);?>"><?php print_r($value[$key]['tel']);?></a><br/>
+            <p><a href="mailto:<?php print_r($value['email']);?>"><?php print_r($value['email']);?></a><br/><a href="tel:<?php print_r($value['tel']);?>"><?php print_r($value['tel']);?></a><br/>
             <a <a data-open="DeletePlayer" >Delete Player<span class="fi-x"></span></a></p>
           </div>
       </div>
     </div>
     <!-- users -->
 
-    <?php }?>
+    <?php }}?>
 
      <!-- popup -->
      <div class="tiny reveal"  class="reveal" id="DeletePlayer" data-reveal >
