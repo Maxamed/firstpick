@@ -22,8 +22,14 @@
 </header>
 <div class="row large-12" >
   <form action="results.php" method="post">
-  <ul class="menu float-right">
+  <ul class="menu float-right" style="margin-top:10px;">
     <li><input type="search" name="search" placeholder="Try all for every club.."></li>
+    <li>
+    <select name="searchtype" style="margin:0;">
+      <option value="match">Matchs</option>
+      <option value="club">Clubs</option>
+    </select>
+    </li>
     <li>
       <input type="submit" class="button" value="Search"></li>
   </ul></form>
@@ -33,12 +39,14 @@
       <div>Your Club</div>
   </div>
   <?php $clubs = getClubs($id);
+
   if($clubs===0){}else{
   foreach ($clubs as $key => $value) {
+    if($value['ownerid'] == $_SESSION['id']){$ClubStyle="owner";}else{$ClubStyle="";}
   ?>
   <!-- club -->
-  <div class="medium-3  float-right">
-    <div class="card">
+  <div class="medium-3 float-left" style="margin:0 10px;">
+    <div class="card <?php print_r($ClubStyle);?>">
       <div class="image">
         <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
         <span class="title"><?php print_r($value['name']);?></span>
@@ -50,18 +58,23 @@
       </div>
       <div class="action">
         <a href="club.php?id=<?php print_r($value['id']);?>" >View</a>
-        <a data-open="DeleteClub" >Delete</a>
+        <?php
+          if($value['ownerid'] == $_SESSION['id']){
+          ?>
+        <a data-open="DeleteClub_<?php print_r($value['id']);?>" >Delete</a>
+        <div class="tiny reveal"  class="reveal" id="DeleteClub<?php print_r($value['id']);?>" data-reveal >
+          <p>delete your club ? </p> <p> This means you will lose all data and players created and added </p>
+          <button type="button" class="success button" >Cancel</button>
+          <button type="button" class="alert button">Delete</button>
+        </div>
+        <?php }?>
       </div>
     </div>
   </div>
-</div>
+
   <?php    } }?>
 <!-- popup -->
-<div class="tiny reveal"  class="reveal" id="DeleteClub" data-reveal >
-  <p>delete your club ? </p> <p> This means you will lose all data and players created and added </p>
-  <button type="button" class="success button" >Cancel</button>
-  <button type="button" class="alert button">Delete</button>
-</div>
+
 <!-- popup -->
   <!-- club -->
   <hr>

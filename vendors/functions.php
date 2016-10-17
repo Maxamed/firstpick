@@ -1,6 +1,6 @@
 <?php
 require_once("db.php");
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 $db = new Mysqlidb('localhost', 'root', 'mo', 'topbins');
 if(!$db) die("Database error");
@@ -213,6 +213,14 @@ function GetPitchList($userID){
   return $pitchs;
 }
 
+//[pitch detail]
+function GetPitchDetails($pitchID){
+  $db = $GLOBALS['db'];
+  $db->where ("id", $pitchID);
+  $pitchs = $db->getOne("pitch");
+  return $pitchs;
+}
+
 //Search box
 function DoSearch($term){
   $db = $GLOBALS['db'];
@@ -359,13 +367,11 @@ function AdduserToMatch($matchid,$matchClubid, $matchUserid){
     return true;
 }
 //Get active matchsetup
-function GetMatchs($clubID){
-
+function GetGames($clubID){
   $db = $GLOBALS['db'];
-  $db->where ("clubid", $clubID);
-  $matchs = $db->get("matchday");
-  var_dump( $matchs);die();
-  return $matchs;
+  $db->where("usrid", $clubID);
+  $id = $db->get("matchday");
+return $id;
 
 }
 ?>

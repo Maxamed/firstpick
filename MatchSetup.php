@@ -25,7 +25,10 @@
   </ul>
 </header>
 
- <div class="row" style="margin-top:20px">
+ <div class="row cardsList" style="margin-top:20px">
+   <div class="listHeader column" style="">
+       <div>Current Matchs</div>
+   </div>
     <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
         <div class="signup-panel left-solid">
         <!-- create  match-->
@@ -35,7 +38,7 @@
                   <input type="hidden" name="clubID" value="<?php echo $_SESSION['isadmin'];?>">
                   <input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>">
 
-                  <h2>Create a Match</h2>
+
                   <label>Match Date</label>
                   <input type="text" name="datetime" placeholder="22/12/2019"  id="dp10">
 
@@ -91,18 +94,29 @@
 <!-- current matchs -->
 <div class="row cardsList">
   <div class="listHeader column" style="">
-      <div>Current Matchs</div>
+      <div>Your Matchs</div>
   </div>
+
+    <?php $matchs = GetGames($id);
+      if($matchs===0){}else{
+      foreach ($matchs as $key => $value) {
+        $ClubName = Clubpage($value['clubid']);
+        $pitchName = GetPitchDetails($value['pitchID']); 
+    ?>
   <!-- cards -->
   <div class="medium-3 column"  >
     <div class="card">
       <div class="image">
         <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-        <span class="title">Thursday Night Football</span>
+        <span class="title"></span>
       </div>
       <div class="content">
-        <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-        <p>Players In: 20</p>
+        <p><?php print_r($ClubName['name']);?></p>
+        <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
+
+
+        <p>Kick off: <?php print_r($value['date']);?></p>
+        <p>Players In: <?php print_r($value['noplayers']);?></p>
       </div>
       <div class="action">
         <a href='#'>Edit Match</a>
@@ -110,23 +124,7 @@
     </div>
   </div>
   <!-- card end -->
-  <!-- cards -->
-  <div class="medium-3 column" style="">
-    <div class="card">
-      <div class="image">
-        <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-        <span class="title">Thursday Night Football</span>
-      </div>
-      <div class="content">
-        <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-        <p>Players In: 20</p>
-      </div>
-      <div class="action">
-        <a href='#'>Edit Match</a>
-      </div>
-    </div>
-  </div>
-  <!-- card end -->
+  <?php }}?>
 </div>
 <!-- modal create a match content -->
 
