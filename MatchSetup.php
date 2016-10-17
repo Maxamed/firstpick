@@ -97,11 +97,11 @@
       <div>Your Matchs</div>
   </div>
 
-    <?php $matchs = GetGames($id);
+    <?php $matchs = GetUserGames($id);
       if($matchs===0){}else{
       foreach ($matchs as $key => $value) {
         $ClubName = Clubpage($value['clubid']);
-        $pitchName = GetPitchDetails($value['pitchID']); 
+        $pitchName = GetPitchDetails($value['pitchID']);
     ?>
   <!-- cards -->
   <div class="medium-3 column"  >

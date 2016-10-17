@@ -39,7 +39,7 @@
     foreach ($clubs as $key => $value) {
     ?>
     <!-- club -->
-    <div class="medium-3  float-right">
+  <div class="medium-3 float-left" style="margin:0 10px;">
       <div class="card">
         <div class="image">
           <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
@@ -53,8 +53,7 @@
         <div class="action">
           <a href="club.php?id=<?php print_r($value['id']);?>" >View</a>
         </div>
-      </div>
-    </div>
+      </div> 
   </div>
     <?php    }} ?>
     <!-- club -->

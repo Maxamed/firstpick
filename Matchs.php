@@ -1,9 +1,8 @@
 
 <?php include_once 'partials/header.php';
 
-     $Pitchs = GetPitchList($_SESSION['id']);
-  $clubUsers = getClubsUsers($_SESSION['isadmin']);
-
+     $MatchDetails = GetClubGames($_SESSION['id']);
+//var_dump($MatchDetails);die();
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
@@ -14,10 +13,10 @@
       <li>    <a href="MatchSetup.php" class="is-active">Setup a Match</a></li>
       <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
     <?php }else{ ?>
-    <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
+    <li>    <a href="LockerRoom.php" alt="Your Clubs" >Locker Room</a> </li>
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
  <?php } ?>
-    <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
+    <li>   <a href="Matchs.php" alt="upcoming"  class="is-active">Matches</a> </li>
     <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
     <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
     <li>   <a href="profile.php" alt="profile">Profile</a> </li>
@@ -31,9 +30,9 @@
       <div>Your Matchs</div>
   </div>
 
-    <?php $matchs = GetGames($id);
-      if($matchs===0){}else{
-      foreach ($matchs as $key => $value) {
+    <?php
+      if($MatchDetails===0){}else{
+      foreach ($MatchDetails as $key => $value) {
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
     ?>
@@ -47,19 +46,28 @@
       <div class="content">
         <p><?php print_r($ClubName['name']);?></p>
         <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-
-
         <p>Kick off: <?php print_r($value['date']);?></p>
         <p>Players In: <?php print_r($value['noplayers']);?></p>
       </div>
       <div class="action">
-        <a href='#'>Edit Match</a>
+        <form class="" action="process.php" method="post">
+          <input type="hidden" name="RSVPMatch" value="RSVPMatch">
+          <input type="hidden" name="username" value="<?php echo $user['username'];?>">
+          <input type="hidden" name="kickoff" value="<?php echo $value['date'];?>"> 
+          <input type="hidden" name="matchid" value="<?php echo $value['id'];?>">
+          <input type="hidden" name="userid" value="<?php echo $user['id'];?>">
+          <input type="hidden" name="postion" value="<?php echo $user['position'];?>">
+          <input type="hidden" name="clubID" value="<?php print_r($value['clubid']);?>">
+          <input type="hidden" name="ownerid" value="<?php print_r($ClubName['ownerid']);?>">
+          <input type="submit" class="nice success  radius button" value="RSVP Match">
+        </form>
       </div>
     </div>
   </div>
   <!-- card end -->
   <?php }}?>
 </div>
+
 <!-- modal create a match content -->
 
 <?php include 'partials/modal.php'; ?>

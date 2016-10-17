@@ -1,5 +1,5 @@
 
-<?php include_once 'partials/header.php';  
+<?php include_once 'partials/header.php';
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
@@ -71,6 +71,45 @@
 </div>
 <!-- popup -->
 
+
+<div class="row cardsList">
+  <div class="listHeader" style="">
+      <div>RSVP In</div>
+  </div>
+  <?php //var_dump($id);die();
+  $transfers = getRSVP($id);
+  //var_dump($transfers);
+  foreach ($transfers as $key => $value) {
+  ?>
+  <!-- users -->
+  <div class="medium-3 columns end singleCard">
+    <div class="card">
+      <div class="content">
+        <span class="title"><?php print_r($transfers[$key]['senderName']);?></span>
+        <p>Position: <?php print_r($transfers[$key]['SenderPos']);?></p>
+        <p>Kick Off: <?php print_r($transfers[$key]['kickoff']);?></p>
+        <p>Request date: <?php print_r($transfers[$key]['sentDate']);?></p>
+      </div>
+      <div class="action">
+        <form class="" action="process.php" method="post">
+          <input type="hidden" name="MatchPlayer" value="MatchPlayer">
+          <input type="hidden" name="matchid" value="<?php print_r($transfers[$key]['matchid']);?>">
+          <input type="hidden" name="senderID" value="<?php print_r($transfers[$key]['senderID']);?>">
+          <input type="hidden" name="sentDate" value="<?php print_r($transfers[$key]['sentDate']);?>">
+          <input type="hidden" name="clubid" value="<?php print_r($transfers[$key]['clubid']);?>">
+          <div class="">
+            <input type="submit" class="nice success  radius button" value="Accept">
+            <span class="fi-check"></span>
+          </div>
+        </form>
+        <!-- <a data-open="AcceptPlayer" >Accept<span class="fi-check"></span></a>
+        <a data-open="RejectPlayer"  >Reject<span class="fi-x"></span></a> -->
+      </div>
+    </div>
+  </div>
+  <!-- users -->
+  <?php } ?>
+</div>
 
   <!-- content end -->
   <?php include 'partials/modal.php'; ?>

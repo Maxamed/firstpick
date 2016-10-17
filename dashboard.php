@@ -25,12 +25,6 @@
   <ul class="menu float-right" style="margin-top:10px;">
     <li><input type="search" name="search" placeholder="Try all for every club.."></li>
     <li>
-    <select name="searchtype" style="margin:0;">
-      <option value="match">Matchs</option>
-      <option value="club">Clubs</option>
-    </select>
-    </li>
-    <li>
       <input type="submit" class="button" value="Search"></li>
   </ul></form>
 </div>

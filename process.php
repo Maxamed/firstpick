@@ -138,16 +138,51 @@ header('Location: LockerRoom.php');
 
 }
 
+//RSVPMatch
+if (isset($_POST['RSVPMatch'])) {
+$rsvpprocess = [];
+$rsvpprocess['username']     = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+$rsvpprocess['matchid']     = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
+$rsvpprocess['userid']     = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
+$rsvpprocess['userposition']     = filter_var($_POST['postion'], FILTER_SANITIZE_STRING);
+$rsvpprocess['clubID']     = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
+$rsvpprocess['ownerid']     = filter_var($_POST['ownerid'], FILTER_SANITIZE_STRING);
+$rsvpprocess['kickoff']     = filter_var($_POST['kickoff'], FILTER_SANITIZE_STRING);
 
-//Add player
+ $msg = PlayMatch($rsvpprocess);
+ if(isAdmin($_POST['userid'])===0){header('Location: LockerRoom.php'); }else{header('Location: dashboard.php');}
+
+
+}
+
+
+//Add player to club
 if (isset($_POST['AddPlayer'])) {
 $uid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
 $cludid  = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
 $transferid  = filter_var($_POST['transferID'], FILTER_SANITIZE_STRING);
 if(AdduserToClub($uid,$cludid)){
-  CleanInbox($transferid);
-  header('Location: inbox.php');
+    CleanInbox($transferid);
+    header('Location: inbox.php');
+  }
+
+
 }
+//Add player to club
+if (isset($_POST['MatchPlayer'])) {
+  $uid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
+  $cludid  = filter_var($_POST['clubid'], FILTER_SANITIZE_STRING);
+  $matchid  = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
+  $rsvpon  = filter_var($_POST['sentDate'], FILTER_SANITIZE_STRING);
+
+AdduserToMatch($uid,$cludid,$matchid);
+header('Location: inbox.php');
+// TODO: CleanInbox
+// if(AdduserToMatch($uid,$cludid)){
+//     $table = "inboxrsvp";
+//     CleanInbox($transferid,$table);
+//     header('Location: inbox.php');
+//   }
 
 
 }
