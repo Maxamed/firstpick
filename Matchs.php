@@ -1,7 +1,5 @@
 
 <?php include_once 'partials/header.php';
-
-     $MatchDetails = GetClubGames($_SESSION['id']);
      $dateTimeNow = date('Y-m-d H:i:s', time());
      //var_dump($dateTimeNow);
 ?>
@@ -25,13 +23,62 @@
   </ul>
 </header>
 
-<!-- current matchs -->
+<!-- available matchs thats not yours-->
 <div class="row cardsList">
   <div class="listHeader column" style="">
-      <div>Your Matchs</div>
+      <div>Confirmed Matchs</div>
+  </div>
+    <?php
+      $confirmed = GetUpcoming($id);
+
+      if($confirmed===0){}else{
+      foreach ($confirmed as $key => $value) {
+        $kickoff = kickOff($value['date'],$dateTimeNow);
+        $ClubName = Clubpage($value['clubid']);
+        $pitchName = GetPitchDetails($value['pitchID']);
+    ?>
+  <!-- cards -->
+  <div class="medium-3 column"  >
+    <div class="card">
+      <div class="image">
+        <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+        <span class="title"></span>
+      </div>
+      <div class="content">
+        <p><?php print_r($ClubName['name']);?></p>
+        <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
+        <p>Kick off: <?php print_r($kickoff); ?> Hours</p>
+        <p>Players In: <?php print_r($value['noplayers']);?></p>
+      </div>
+      <div class="action">
+        <form class="" action="process.php" method="post">
+          <input type="hidden" name="RSVPMatch" value="RSVPMatch">
+          <input type="hidden" name="username" value="<?php echo $user['username'];?>">
+          <input type="hidden" name="kickoff" value="<?php //echo $value['date'];?>">
+          <input type="hidden" name="matchid" value="<?php echo $value['id'];?>">
+          <input type="hidden" name="userid" value="<?php echo $user['id'];?>">
+          <input type="hidden" name="postion" value="<?php echo $user['position'];?>">
+          <input type="hidden" name="clubID" value="<?php print_r($value['clubid']);?>">
+          <input type="hidden" name="ownerid" value="<?php print_r($ClubName['ownerid']);?>">
+          <input type="submit" class="nice success  radius button" value="Drop out Match">
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- card end -->
+  <?php }}?>
+</div>
+<!-- end available matchs -->
+
+<!-- current clubs matchs -->
+<div class="row cardsList">
+  <div class="listHeader column" style="">
+      <div>Avilable Matchs</div>
   </div>
 
     <?php
+
+      $MatchDetails = GetClubGames($_SESSION['id'],$_SESSION['isadmin']);
       if($MatchDetails===0){}else{
       foreach ($MatchDetails as $key => $value) {
         $kickoff = kickOff($value['date'],$dateTimeNow);

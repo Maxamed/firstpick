@@ -356,6 +356,7 @@ function CreateMatch($matchDetails){
       'cost' => $matchDetails['cost'],
       'pitchid' => $matchDetails['pitch'],
       'usrid' => $matchDetails['userid'],
+      'matchowner' => $matchDetails['userid'],
       'createdon' => $db->now()
   );
 
@@ -365,7 +366,7 @@ function CreateMatch($matchDetails){
 
 }
 //add user to match
-function AdduserToMatch($uid,$cludid,$matchid){
+function AdduserToMatch($matchid,$cludid,$uid){
 
       $db = $GLOBALS['db'];
       $data = Array(
@@ -393,24 +394,22 @@ function GetUserGames($usr){
   return $id;
 }
 //Get active matchsetup
-function GetClubGames($userID){
+function GetClubGames($userID,$userclub){
   $db = $GLOBALS['db'];
   $db->where('userID', $userID);
   $ids = $db->get('clubusers',null,'clubid');
 
-  //var_dump($ids);die();
-
   $ndb = $GLOBALS['db'];
   $MatchDetails = Array();
-
-
   foreach ($ids as $key => $value) {
-
-      $ndb->where("id", $value['clubid']);
+      if($value['clubid'] == $userclub){
+         
+      }else{
+      $ndb->where("clubid", $value['clubid']);
+      $ndb->where("status", "0");
       $MatchDetails[$key] = $ndb->get("matchday");
-    //  var_dump($MatchDetails[$key]);
+    }
   }
-
   if(count($MatchDetails)===0){$array=0;}else{
   $array = call_user_func_array('array_merge', array_map('array_values', $MatchDetails));
   }
@@ -427,11 +426,29 @@ function kickOff($timenow,$timegame){
 
   return $hours;
 }
-//get clubs where user exist
-// function UserExistClub($usrid,$rclubs){
-//
-//   var_dump($uclubs);
-//   var_dump($rclubs);
-//
-// }
+
+//get upcoming matchs
+function GetUpcoming($userid){
+  $db = $GLOBALS['db'];
+  $db->where('userID', $userid);
+  $ids = $db->get('matchusers',null, 'matchid');
+
+  $ndb = $GLOBALS['db'];
+  $MatchDetails = Array();
+  foreach ($ids as $key => $value) {
+
+      $ndb->where("id", $value['matchid']);
+      $ndb->where("status", "0");
+      $MatchDetails[$key] = $ndb->get("matchday");
+  }
+
+  if(count($MatchDetails)===0){$array=0;}else{
+  $array = call_user_func_array('array_merge', array_map('array_values', $MatchDetails));
+  }
+  //var_dump($array);die();
+  return $array;
+
+}
+
+
 ?>

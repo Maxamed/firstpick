@@ -9,7 +9,7 @@ if (isset($_SESSION['FBID'])) {
   $user = getUser($id);
   $isAdmin = isAdmin($id);
 
-$_SESSION['isadmin'] = $isAdmin;
+  $_SESSION['isadmin'] = $isAdmin;
  } else {
    header("location:logout.php");
  }

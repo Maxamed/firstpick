@@ -141,7 +141,7 @@ if (isset($_POST['MatchPlayer'])) {
 // header('Location: inbox.php');
 // TODO: CleanInbox
 
-if(AdduserToMatch($senderid,$cludid,$matchid)){
+if(AdduserToMatch($matchid ,$cludid,$senderid)){
     $table = "inboxrsvp";
     CleanRSVPInbox($senderid,$matchid);
     header('Location: inbox.php');
