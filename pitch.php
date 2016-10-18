@@ -8,11 +8,11 @@
       <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
       <li>    <a href="createclub.php"  >Create a Club</a> </li>
       <?php }else{ ?>
-        <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+        <li>    <a href="Dashboard.php" alt="Dashboard">Management</a> </li>
         <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
         <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
         <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
-        <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+        <li>    <a href="Pitch.php" alt="Pitch" class="is-active">Pitches</a></li>
    <?php } ?>
       <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
       <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>

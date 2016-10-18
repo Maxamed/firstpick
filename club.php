@@ -74,7 +74,7 @@ $clubdata = Clubpage($_GET['id']);
       <!-- Main Feed -->
       <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
       <div class="large-8 columns" >
-
+<?php if($_SESSION['isadmin']!=0){ ?>
         <form  method="post" action="process.php">
             <h2>Create your unique invite code</h2>
 
@@ -114,7 +114,7 @@ $clubdata = Clubpage($_GET['id']);
             <?php }?>
           </tbody>
         </table>
-
+<?php }?>
       </div>
 
 

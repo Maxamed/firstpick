@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+date_default_timezone_set('Asia/Dubai');
 if (isset($_SESSION['FBID'])) {
   include_once 'vendors/functions.php';
 

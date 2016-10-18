@@ -254,23 +254,48 @@ function ProcessInvite($inviteCode,$userDetails){
   $id1 = $db->update('clubInvites', $data2);
 }
 //request to join
+//TODO: AJAX call back to tell user he already in club
 function JoinClub($membership){
   //var_dump($membership );die();
-      $db = $GLOBALS['db'];
-      $data = Array(
-          'sendername' => $membership['username'],
-          'senderid' => $membership['userid'],
-          'senderpos' => $membership['userposition'],
-          'clubID' => $membership['clubID'],
-          'ownerid' => $membership['ownerid'],
-          'sentdate' => $db->now()
-      );
+      $ndb = $GLOBALS['db'];
 
-     $id = $db->insert('inboxjoin', $data);
+      $ndb->where ("userid", $membership['userid']);
+      $ndb->where ("clubid", $membership['clubID']);
+      $res = $ndb->getOne("clubusers","joinedOn");
+
+      if($res){
+          return false;
+      }else{
+          $db = $GLOBALS['db'];
+          $data = Array(
+              'sendername' => $membership['username'],
+              'senderid' => $membership['userid'],
+              'senderpos' => $membership['userposition'],
+              'clubID' => $membership['clubID'],
+              'ownerid' => $membership['ownerid'],
+              'sentdate' => $db->now()
+          );
+
+         $id = $db->insert('inboxjoin', $data);
+         return true;
+      }
+
+
    }
 //request to play
 function PlayMatch($membership){
-  $date = date_create($membership['kickoff'])->format('Y-m-d H:i:s');
+
+  $ndb = $GLOBALS['db'];
+
+  $ndb->where ("userid", $membership['userid']);
+  $ndb->where ("matchid", $membership['matchid']);
+  $res = $ndb->getOne("matchusers","rsvpon");
+
+  if($res){
+      return false;
+  }else{
+
+    $date = date_create($membership['kickoff'])->format('Y-m-d H:i:s');
     //var_dump($date);die();
 
      $db = $GLOBALS['db'];
@@ -286,14 +311,24 @@ function PlayMatch($membership){
      );
 
     $id = $db->insert('inboxrsvp', $data);
+    return true;
+  }
     //var_dump($id);die();
   }
 //clean inbox
-function CleanInbox($transferID){
+function CleanInbox($actionID,$tableID){
   $db = $GLOBALS['db'];
-  $db->where('id', $transferID);
-  if($db->delete('inboxjoin'))
+  $db->where('id', $actionID);
+  if($db->delete("inboxjoin"))
   return true;
+}
+//clean inboxrsvp
+function CleanRSVPInbox($uid,$matchid){
+  $db = $GLOBALS['db'];
+  $db->where('senderid', $uid);
+  $db->where('matchid', $matchid);
+  $id =$db->delete("inboxrsvp") ;
+//  var_dump($id);die();
 }
 //get inbox messages for transfer
 function getTransfers($userID){
@@ -382,6 +417,21 @@ function GetClubGames($userID){
   //var_dump($array);die();
   return $array;
 }
+//get kick off hours remaining
+function kickOff($timenow,$timegame){
+  $TN = new DateTime($timenow);
+  $TG = new DateTime($timegame);
+  $diff = $TN->diff($TG);
+  $hours = $diff->h;
+  $hours = $hours + ($diff->days*24);
 
-
+  return $hours;
+}
+//get clubs where user exist
+// function UserExistClub($usrid,$rclubs){
+//
+//   var_dump($uclubs);
+//   var_dump($rclubs);
+//
+// }
 ?>
