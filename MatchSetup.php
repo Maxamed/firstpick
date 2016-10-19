@@ -37,27 +37,40 @@
       foreach ($matchs as $key => $value) {
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
-      //  $kickoff = kickOff($value['date'],$dateTimeNow);
-    ?>
-  <!-- cards -->
-  <div class="medium-3 column"  >
-    <div class="card">
-      <div class="image">
-        <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-        <span class="title"></span>
-      </div>
-      <div class="content">
-        <p><?php print_r($ClubName['name']);?></p>
-        <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-        <p>Kick off: <?php print_r($value['date']);?> Hours</p>
-        <p>Players In: <?php print_r($value['noplayers']);?></p>
-      </div>
-      <div class="action">
-        <a href='#'>Delete Match</a>
-      </div>
-    </div>
-  </div>
-  <!-- card end -->
+        $kickoff = kickOff($value['date'],$dateTimeNow);
+        //var_dump($dateTimeNow);die();
+    //$EndMatch = EndMatch($value['id']);
+        ?>
+        <!-- cards -->
+        <div class="medium-3 column"  >
+          <div class="card">
+            <div class="image">
+              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <span class="title"></span>
+            </div>
+            <div class="content">
+              <p><?php print_r($ClubName['name']);?></p>
+              <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
+              <p>Players In: <?php print_r($value['noplayers']);?></p>
+              <?php if($value['date'] <= $dateTimeNow){ ?>
+                  <p>Match Ended</p>
+                </div>
+                <div class="action">
+                  <a href='closematch.php?matchid=<?php print_r($value["id"]);?>'>Add Stats and results</a>
+                </div>
+              <?php
+            }else{ ?>
+              <p>Kick off: <?php print_r($kickoff);?> </p>
+            </div>
+            <div class="action">
+              <a href='#'>Cancel Match</a>
+            </div>
+            <?php } ?>
+          </div>
+        </div>
+        <!-- card end -->
+
+
   <?php }}?>
 </div>
 <!-- modal create a match content -->

@@ -390,6 +390,7 @@ function AdduserToMatch($matchid,$cludid,$uid){
 function GetUserGames($usr){
   $db = $GLOBALS['db'];
   $db->where("usrid", $usr);
+  $db->where("status", "0");
   $id = $db->get("matchday");
   return $id;
 }
@@ -420,17 +421,11 @@ function GetClubGames($userID,$userclub){
 function kickOff($timenow,$timegame){
 
 
-  $datetime1 = new DateTime($timenow);
-  $datetime2 = new DateTime($timegame);
+  $datetime2 = new DateTime($timenow);
+  $datetime1 = new DateTime($timegame);
   $interval = $datetime1->diff($datetime2);
-  //echo $interval->format("%H:%I:%S");die();
-  echo $interval->format('%H%a');die();
-  // $start_date = new DateTime($timenow);
-  // $end_date = new DateTime($timegame);
-  // $interval = $end_date->diff($start_date);
-  // $hours   = $interval->format('%r%i');
-  //echo  'Diff. in minutes is: '.($hours * 60 + $minutes);
-  //return $hours;
+  $ko = $interval->format('%a days  %H hours %I minutes');
+  return $ko;
 }
 
 //get upcoming matchs
@@ -455,6 +450,17 @@ function GetUpcoming($userid){
   return $array;
 
 }
+//Close Match
+function EndMatch($matchid){
+  $db = $GLOBALS['db'];
+  $data = Array (
+    'status' => 1
+  );
 
+  $db->where("id", $matchid);
+  $id = $db->update("matchday",$data);
+  return $id;
+
+}
 
 ?>
