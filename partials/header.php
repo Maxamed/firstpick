@@ -14,9 +14,9 @@ if (isset($_SESSION['FBID'])) {
    header("location:logout.php");
  }
 
-echo '<div style="background:white">';
-var_dump($_SESSION);
-echo '</div>';
+// echo '<div style="background:white">';
+// var_dump($_SESSION);
+// echo '</div>';
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

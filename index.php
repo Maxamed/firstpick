@@ -12,124 +12,117 @@ echo '</div>';
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/icons.css">
-
+<style>
+  .content {min-height: 700px;}
+  video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 700px;
+      z-index: -100;
+      transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
+    opacity: .5;
+  }
+  .cardsList {float:left;}
+  .bodyc {padding:10px;}
+  .searchbox {margin-top:300px;}
+</style>
   </head>
   <body>
-          <div class="title-bar">
-            <div class="title-bar-left">
-              <span class="title-bar-title">Amatuer Football League</span>
+    <div class="title-bar">
+      <div class="title-bar-left">
+        <span class="title-bar-title">Amatuer Football League</span>
+      </div>
+
+        <div class="title-bar-right">
+          <a class="login footWhitefont" href="#" >How it works ?</a> -
+          <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> -
+          <a class="login footWhitefont" href="#" data-open="loginBox">Login</a>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="content row">
+      <video poster="" id="bgvid" playsinline autoplay muted loop>
+      <source src="assets/video/video.mp4" type="video/mp4">
+      </video>
+      <form action="results.php" method="post" class="searchbox column large-12">
+        <ul class="menu">
+          <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
+          <li>
+            <input type="submit" class="button column wide" value="find a club"></li>
+        </ul>
+      </form>
+      <div class="row cardsList" >
+
+        <!-- cards -->
+        <div class="medium-3  column" style="">
+          <div class="card">
+            <div class="image">
+              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <span class="title">Thursday Night Football</span>
             </div>
-
-              <div class="title-bar-right">
-              <a class="login footWhitefont" href="#" >How it works ?</a> -
-              <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> -
-              <a class="login footWhitefont" href="#" data-open="loginBox">Login</a>
-              </div>
-          </div>
-          <!-- content -->
-          <div class="content">
-            <div class="row" style="margin-top:30px">
-              <div class="small-6 column">
-                <!-- carousel -->
-                <div class="orbit "   role="region" aria-label="Favorite Space Pictures" data-orbit>
-                  <ul class="orbit-container">
-                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
-                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
-                    <li class="is-active orbit-slide">
-                      <img class="orbit-image" src="assets/img/carousel.jpg" alt="Space">
-                      <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                      <img class="orbit-image" src="assets/img/carousel.jpg" alt="Space">
-                      <figcaption class="orbit-caption">Lets Rocket!</figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                      <img class="orbit-image" src="assets/img/carousel.jpg" alt="Space">
-                      <figcaption class="orbit-caption">Encapsulating</figcaption>
-                    </li>
-                    <li class="orbit-slide">
-                      <img class="orbit-image" src="assets/img/carousel.jpg" alt="Space">
-                      <figcaption class="orbit-caption">Outta This World</figcaption>
-                    </li>
-                  </ul>
-                </div>
-                <!-- carousel -->
-              </div>
-
+            <div class="bodyc">
+              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
             </div>
-
-            <div class="row cardsList">
-              <div class="listHeader" style="">
-                  <div>Current Matchs</div>
-              </div>
-              <!-- cards -->
-              <div class="medium-3 column">
-                <div class="card">
-                  <div class="image">
-                    <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-                    <span class="title">Thursday Night Football</span>
-                  </div>
-                  <div class="content">
-                    <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-                  </div>
-                  <div class="action">
-                    <a href='#'>Join</a>
-                  </div>
-                </div>
-              </div>
-              <!-- card end -->
-              <!-- cards -->
-              <div class="medium-3 column">
-                <div class="card">
-                  <div class="image">
-                    <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-                    <span class="title">Thursday Night Football</span>
-                  </div>
-                  <div class="content">
-                    <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-                  </div>
-                  <div class="action">
-                    <a href='#'>Join</a>
-                  </div>
-                </div>
-              </div>
-              <!-- card end -->
-              <!-- cards -->
-              <div class="medium-3 column">
-                <div class="card">
-                  <div class="image">
-                    <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-                    <span class="title">Thursday Night Football</span>
-                  </div>
-                  <div class="content">
-                    <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-                  </div>
-                  <div class="action">
-                    <a href='#'>Join</a>
-                  </div>
-                </div>
-              </div>
-              <!-- card end -->
-              <!-- cards -->
-              <div class="medium-3 column">
-                <div class="card">
-                  <div class="image">
-                    <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-                    <span class="title">Thursday Night Football</span>
-                  </div>
-                  <div class="content">
-                    <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-                  </div>
-                  <div class="action">
-                    <a href='#'>Join</a>
-                  </div>
-                </div>
-              </div>
-              <!-- card end -->
+            <div class="action">
+              <a href='#'>Join</a>
             </div>
-
           </div>
         </div>
+        <!-- card end -->
+        <!-- cards -->
+        <div class="medium-3  column" style="">
+          <div class="card">
+            <div class="image">
+              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <span class="title">Thursday Night Football</span>
+            </div>
+            <div class="bodyc">
+              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
+            </div>
+            <div class="action">
+              <a href='#'>Join</a>
+            </div>
+          </div>
+        </div>
+        <!-- card end -->
+        <!-- cards -->
+        <div class="medium-3  column" style="">
+          <div class="card">
+            <div class="image">
+              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <span class="title">Thursday Night Football</span>
+            </div>
+            <div class="bodyc">
+              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
+            </div>
+            <div class="action">
+              <a href='#'>Join</a>
+            </div>
+          </div>
+        </div>
+        <!-- card end -->
+        <!-- cards -->
+        <div class="medium-3  column" style="">
+          <div class="card">
+            <div class="image">
+              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <span class="title">Thursday Night Football</span>
+            </div>
+            <div class="bodyc">
+              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
+            </div>
+            <div class="action">
+              <a href='#'>Join</a>
+            </div>
+          </div>
+        </div>
+        <!-- card end -->
+      </div>
+    </div>
 
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>
@@ -179,7 +172,7 @@ echo '</div>';
   </div>
 </footer>
     <script src="assets/js/vendor/jquery.js"></script>
-    <script src="assets/js/vendor/foundation.min.js"></script> 
+    <script src="assets/js/vendor/foundation.min.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

@@ -403,7 +403,7 @@ function GetClubGames($userID,$userclub){
   $MatchDetails = Array();
   foreach ($ids as $key => $value) {
       if($value['clubid'] == $userclub){
-         
+
       }else{
       $ndb->where("clubid", $value['clubid']);
       $ndb->where("status", "0");
@@ -418,13 +418,19 @@ function GetClubGames($userID,$userclub){
 }
 //get kick off hours remaining
 function kickOff($timenow,$timegame){
-  $TN = new DateTime($timenow);
-  $TG = new DateTime($timegame);
-  $diff = $TN->diff($TG);
-  $hours = $diff->h;
-  $hours = $hours + ($diff->days*24);
 
-  return $hours;
+
+  $datetime1 = new DateTime($timenow);
+  $datetime2 = new DateTime($timegame);
+  $interval = $datetime1->diff($datetime2);
+  //echo $interval->format("%H:%I:%S");die();
+  echo $interval->format('%H%a');die();
+  // $start_date = new DateTime($timenow);
+  // $end_date = new DateTime($timegame);
+  // $interval = $end_date->diff($start_date);
+  // $hours   = $interval->format('%r%i');
+  //echo  'Diff. in minutes is: '.($hours * 60 + $minutes);
+  //return $hours;
 }
 
 //get upcoming matchs

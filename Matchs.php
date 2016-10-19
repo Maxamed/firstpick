@@ -33,9 +33,11 @@
 
       if($confirmed===0){}else{
       foreach ($confirmed as $key => $value) {
-        $kickoff = kickOff($value['date'],$dateTimeNow);
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
+        //$kickoff = kickOff($value['date'],$dateTimeNow);
+      //  var_dump($dateTimeNow,$value['date']);die();
+        //if($kickoff <= 0){ print_r($kickoff.' less');}else{ print_r($kickoff.' more');}
     ?>
   <!-- cards -->
   <div class="medium-3 column"  >
@@ -47,14 +49,14 @@
       <div class="content">
         <p><?php print_r($ClubName['name']);?></p>
         <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-        <p>Kick off: <?php print_r($kickoff); ?> Hours</p>
+        <p>Kick off: <?php print_r($value['date']); ?> </p>
         <p>Players In: <?php print_r($value['noplayers']);?></p>
       </div>
       <div class="action">
         <form class="" action="process.php" method="post">
           <input type="hidden" name="RSVPMatch" value="RSVPMatch">
           <input type="hidden" name="username" value="<?php echo $user['username'];?>">
-          <input type="hidden" name="kickoff" value="<?php //echo $value['date'];?>">
+          <input type="hidden" name="kickoff" value="<?php echo $value['date'];?>">
           <input type="hidden" name="matchid" value="<?php echo $value['id'];?>">
           <input type="hidden" name="userid" value="<?php echo $user['id'];?>">
           <input type="hidden" name="postion" value="<?php echo $user['position'];?>">
@@ -66,7 +68,7 @@
     </div>
   </div>
   <!-- card end -->
-  <?php }}?>
+  <?php }} ?>
 </div>
 <!-- end available matchs -->
 
@@ -81,7 +83,7 @@
       $MatchDetails = GetClubGames($_SESSION['id'],$_SESSION['isadmin']);
       if($MatchDetails===0){}else{
       foreach ($MatchDetails as $key => $value) {
-        $kickoff = kickOff($value['date'],$dateTimeNow);
+        //$kickoff = kickOff($value['date'],$dateTimeNow);
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
     ?>
@@ -95,7 +97,7 @@
       <div class="content">
         <p><?php print_r($ClubName['name']);?></p>
         <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-        <p>Kick off: <?php print_r($kickoff); ?> Hours</p>
+        <p>Kick off: <?php print_r($value['date']); ?> </p>
         <p>Players In: <?php print_r($value['noplayers']);?></p>
       </div>
       <div class="action">

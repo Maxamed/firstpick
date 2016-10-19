@@ -37,7 +37,7 @@
       foreach ($matchs as $key => $value) {
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
-        $kickoff = kickOff($value['date'],$dateTimeNow);
+      //  $kickoff = kickOff($value['date'],$dateTimeNow);
     ?>
   <!-- cards -->
   <div class="medium-3 column"  >
@@ -49,7 +49,7 @@
       <div class="content">
         <p><?php print_r($ClubName['name']);?></p>
         <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-        <p>Kick off: <?php print_r($kickoff);?> Hours</p>
+        <p>Kick off: <?php print_r($value['date']);?> Hours</p>
         <p>Players In: <?php print_r($value['noplayers']);?></p>
       </div>
       <div class="action">
