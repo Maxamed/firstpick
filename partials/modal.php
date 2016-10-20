@@ -1,7 +1,7 @@
 <div id="loginBox" class="reveal" data-reveal>
   <div class="row">
 
-    <div class="large-6 columns auth-plain">
+    <!-- <div class="large-6 columns auth-plain">
       <div class="signup-panel left-solid">
         <p class="welcome">Registered Users</p>
         <form>
@@ -24,7 +24,7 @@
         </form>
         <a href="#" class="button ">Log In </a>
       </div>
-    </div>
+    </div> -->
 
     <div class="large-6 columns auth-plain">
       <div class="signup-panel newusers">
