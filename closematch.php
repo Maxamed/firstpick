@@ -1,5 +1,7 @@
 
-<?php include_once 'partials/header.php';
+<?php
+  include_once 'partials/header.php';
+  $matchid = $_GET['matchid'];
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -24,10 +26,10 @@
   <div class="listHeader" style="">
       <div>Add Players Stats</div>
   </div>
-  <?php $clubUsers = getClubsUsers($_SESSION['isadmin']);
-//ar_dump($clubUsers);die();
-  if($clubUsers===0){}else{
-  foreach ($clubUsers as $key => $value) {
+  <?php $MatchUsers = getMatchUsers($matchid);
+//var_dump($MatchUsers);
+  if($MatchUsers===0){}else{
+  foreach ($MatchUsers as $key => $value) {
 
   ?>
   <!-- users -->
@@ -35,10 +37,10 @@
     <div class="card">
       <div class="content">
         <span class="title"><?php print_r($value['username']);?></span>
-          <form class="endmatch" method="post" action="process.php">
-              <input type="hidden" name="creatematch" value="creatematch">
-              <input type="hidden" name="clubID" value="<?php echo $_SESSION['isadmin'];?>">
-              <input type="hidden" name="userid" value="<?php echo $_SESSION['id'];?>">
+          <form class="endmatch">
+              <input type="hidden" name="usrdata" value="usrdata">
+              <input type="hidden" name="userid" value="<?php print_r($value['id']);?>">
+              <input type="hidden" name="matchID" value="<?php echo $matchid;?>">
               <label>Result
               <select name="result">
                 <option value="1">Loss</option>
@@ -73,11 +75,11 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select></label>
-            </form>
-      </div>
-        <div class="action">
-          <a>Add stats</a></p>
         </div>
+        <div class="action">
+          <input type="submit" class="nice blue radius button" value="Add Stats">
+        </div>
+    </form>
     </div>
   </div>
   <!-- users -->

@@ -7,6 +7,26 @@ if(!$db) die("Database error");
 
 
 //edit user
+function editUserStats($uDetails){
+
+    $db = $GLOBALS['db'];
+    $data = Array(
+        'matchid' => $uDetails['matchid'],
+        'userid' =>  $uDetails['userid'],
+        'goals' =>  $uDetails['goals'],
+        'assists' =>  $uDetails['assists'],
+        'result' =>  $uDetails['result']
+    );
+   $db->where("matchid", $uDetails['matchid']);
+   $db->where("userid", $uDetails['userid']);
+   if ($db->update('matchusers', $data)){
+      $msg = 'Profile updated';
+    }else{
+        $msg = 'update failed: ' . $db->getLastError();
+      }
+      return $msg;
+}
+//editUserStats
 function editUser($uDetails){
 
     $db = $GLOBALS['db'];
@@ -57,6 +77,32 @@ function getClubs($usrID){
   $array = call_user_func_array('array_merge', array_map('array_values', $UserClub));
   }
   return $array;
+
+}
+//get Match users
+function getMatchUsers($matchId){
+  $db = $GLOBALS['db'];
+  $db->where('matchid', $matchId);
+  $ids = $db->get('matchusers',null,'userid');
+
+  $ndb = $GLOBALS['db'];
+  $UserDetails = Array();
+
+
+  foreach ($ids as $key => $value) {
+
+      $ndb->where("id", $value['userid']);
+      $UserDetails[$key] = $ndb->get("users");
+      //var_dump($UserDetails[$key]);
+  }
+  //var_dump($UserDetails);
+
+  if(count($UserDetails)===0){$array=0;}else{
+  $array = call_user_func_array('array_merge', array_map('array_values', $UserDetails));
+  }
+  return $array;
+
+
 
 }
 //get all users in a club

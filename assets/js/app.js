@@ -1,5 +1,19 @@
 $(document).foundation();
 
+
+$( ".endmatch").submit(  function( event ) {
+  //console.log( $( this ).serializeArray() );
+  var data =$( this ).serializeArray() ;
+  $.post( "process.php", data)
+  .done(function( data ) {
+    console.log( "Data Loaded: " + data );
+  });
+  event.preventDefault();
+});
+
+
+
+
 var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 $('#dp1').fdatepicker({
@@ -7,7 +21,7 @@ $('#dp1').fdatepicker({
     disableDblClickSelection: true,
     pickTime: true,
     onRender: function (date) {
-        console.log(date);
+        //console.log(date);
         return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
 });
@@ -18,7 +32,7 @@ $('#dp10').fdatepicker({
     disableDblClickSelection: true,
     pickTime: true,
     onRender: function (date) {
-        console.log(date);
+        //console.log(date);
         return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
 });

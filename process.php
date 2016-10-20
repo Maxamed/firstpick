@@ -23,6 +23,24 @@ if (isset($_POST['editprofile'])) {
 
 }
 
+
+//edit user stats
+if (isset($_POST['usrdata'])) {
+  $userDetails = [];
+  $userDetails['userid']  = $_POST['userid'];
+  $userDetails['matchid']       = $_POST['matchID'];
+  $userDetails['goals']  = $_POST['goals'];
+  $userDetails['result']     = $_POST['result'];
+  $userDetails['assists']       = $_POST['assists'];
+
+   $msg = editUserStats($userDetails);
+   var_dump($msg);die();
+
+
+
+
+}
+
 //create club
 if (isset($_POST['createclub'])) {
 
