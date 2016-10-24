@@ -8,7 +8,8 @@ if (isset($_SESSION['FBID'])) {
   $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
   $user = getUser($id);
   $isAdmin = isAdmin($id);
-
+  $msgs  = notifications($isAdmin,$id);
+  $_SESSION['msgs'] = $msgs;
   $_SESSION['isadmin'] = $isAdmin;
  } else {
    header("location:logout.php");

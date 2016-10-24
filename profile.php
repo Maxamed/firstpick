@@ -3,40 +3,42 @@
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
-  <ul class="header-subnav">
-    <?php if($_SESSION['isadmin']===0){ ?>
-    <li>    <a href="LockerRoom.php" alt="Your Clubs" >Locker Room</a> </li>
-    <li>    <a href="createclub.php"  >Create a Club</a> </li>
-    <?php }else{ ?>
-      <li>    <a href="Dashboard.php" alt="Dashboard">Management</a> </li>
-      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
-      <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-      <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
-      <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
- <?php } ?>
-    <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
-    <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
-    <li>   <a href="profile.php" alt="profile" class="is-active">Profile</a> </li>
-    <li>   <a href="logout.php" alt="logout">logout</a> </li>
-  </ul>
+    <ul class="header-subnav">
+      <?php if($_SESSION['isadmin']===0){ ?>
+      <li>    <a href="LockerRoom.php" alt="Your Clubs">Locker Room</a> </li>
+      <li>    <a href="createclub.php" >Create a Club</a> </li>
+      <?php }else{ ?>
+        <li>    <a href="Dashboard.php" alt="Dashboard" >Management</a> </li>
+        <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
+        <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
+        <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+   <?php } ?>
+      <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
+      <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+      <li>   <a href="logout.php" alt="logout">logout</a> </li>
+      <li>   <a href="profile.php"   class="is-active" ><i class="fi-torso large"></i></a></li>
+      <li>   <a href="Inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
+    </ul>
 </header>
 <!-- modal create a match content -->
-<?php  if(isset($_SESSION['invitecode'])) {?>
-  <div class="row" style="margin:20px;position:relative">
-    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
-      <div class="signup-panel">
-        You have a Pending invitation, once you complete your registeration you'll be added automatically to the club.
+<div class="container">
+  <?php  if(isset($_SESSION['invitecode'])) {?>
+    <div class="row" style="margin:20px;position:relative">
+      <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
+        <div class="signup-panel">
+          You have a Pending invitation, once you complete your registeration you'll be added automatically to the club.
+        </div>
       </div>
     </div>
-  </div>
-<?php } ?>
-  <div class="row" style="margin:20px;position:relative">
-    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;">
-      <div class="signup-panel">
-        <!-- create  match-->
-            <div id="contactForm" class="">
+  <?php } ?>
+  <div class="row cardsList">
+    <div class="listHeader" style="">
+        <div>Your Profile</div>
+    </div>
+    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
+
+    <!-- create  match-->
               <form  method="post" action="process.php">
-                  <h2>Complete your profile profile</h2>
                   <input type="hidden" name="invitecode" value="<?php echo $_SESSION['invitecode'];?>">
                   <input type="hidden" name="editprofile" value="editprofile">
                   <input type="hidden" name="uid" value="<?php echo $_SESSION['id'];?>">
@@ -73,11 +75,10 @@
 
                 <input type="submit" class="nice blue radius button" value="Lets go">
                 </form>
-            </div><!--end 8 columns-->
         <!-- create match-->
       </div>
-    </div>
   </div>
+</div>
 <!-- modal create a match content -->
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>

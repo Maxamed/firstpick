@@ -2,25 +2,25 @@
 <?php include_once 'partials/header.php';
 ?>
 <header class="header">
-    <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
+  <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
     <?php if($_SESSION['isadmin']===0){ ?>
-    <li>    <a href="LockerRoom.php" alt="Your Clubs"  class="is-active">Locker Room</a> </li>
-    <li>    <a href="createclub.php"  >Create a Club</a> </li>
+    <li>    <a href="LockerRoom.php" alt="Your Clubs">Locker Room</a> </li>
+    <li>    <a href="createclub.php"    class="is-active">Create a Club</a> </li>
     <?php }else{ ?>
       <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
-      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
       <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
       <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
       <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
  <?php } ?>
     <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
     <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
-    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
+    <li>   <a href="profile.php"><i class="fi-torso large"></i></a></li>
+    <li>   <a href="Inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
   </ul>
 </header>
-<div class="row large-12" >
+<div class="row large-12 clearfix" >
   <form action="results.php" method="post">
   <ul class="menu float-right" style="margin-top:10px;">
     <li><input type="search" name="search" placeholder="Try all for every club.."></li>
@@ -34,7 +34,11 @@
   </div>
   <?php $clubs = getClubs($id);
 
-  if($clubs===0){}else{
+  if($clubs===0){
+    ?>
+
+
+  <?php }else{
   foreach ($clubs as $key => $value) {
     if($value['ownerid'] == $_SESSION['id']){$ClubStyle="owner";}else{$ClubStyle="";}
   ?>
@@ -68,7 +72,7 @@
 
   <?php    } }?>
 <!-- popup -->
-
+</div>
 <!-- popup -->
   <!-- club -->
   <hr>
@@ -76,11 +80,11 @@
     <div class="listHeader" style="">
         <div>Club Squad</div>
     </div>
-    <?php $clubUsers = getClubsUsers($_SESSION['isadmin']);
-//ar_dump($clubUsers);die();
+    <?php
+    $clubUsers = getClubsUsers($_SESSION['isadmin']);
     if($clubUsers===0){}else{
     foreach ($clubUsers as $key => $value) {
-
+    $stats = getUserStats($value['id']);
     ?>
     <!-- users -->
     <div class="medium-3 columns end singleCard">
@@ -88,8 +92,9 @@
         <div class="content">
           <span class="title"><?php print_r($value['username']);?></span>
           <p>Position: <?php print_r($value['position']);?></p>
-          <p>L:4-W:9-D:6</p>
-          <p>Scored:10 - Assists:4</p>
+          <p>L:<?php print_r($stats['loss']);?> - W:<?php print_r($stats['win']);?> - D:<?php print_r($stats['draw']);?></p>
+          <p>Scored:<?php print_r($stats['goals']);?> - Assists:<?php print_r($stats['assists']);?></p>
+          <p>Red Cards:<?php print_r($stats['red']);?> - Yellow Cards:<?php print_r($stats['yellow']);?></p>
         </div>
           <div class="action">
             <p><a href="mailto:<?php print_r($value['email']);?>"><?php print_r($value['email']);?></a><br/><a href="tel:<?php print_r($value['tel']);?>"><?php print_r($value['tel']);?></a><br/>
@@ -108,7 +113,8 @@
        <button type="button" class="alert button">Delete</button>
      </div>
      <!-- popup -->
-  </div>
+ </div>
+</div>
 
   <!-- content end -->
   <?php include 'partials/modal.php'; ?>

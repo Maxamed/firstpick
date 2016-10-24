@@ -53,6 +53,33 @@ function getUser($usrID){
   $user = $db->getOne("users");
   return $user;
 }
+//get user stats
+function getUserStats($usrid){
+  $rgoal= 0; $rassist= 0;$rred= 0;$ryellow = 0;$rw = 0;$rl = 0;$rd = 0;
+  $stats = [];
+  $db = $GLOBALS['db'];
+  $db->where ("userid", $usrid);
+  $userid = $db->get("matchusers");
+  if(count($userid)===0){
+      $stats['goals'] = 0; $stats['assists'] = 0; $stats['red'] = 0;
+      $stats['yellow'] = 0; $stats['win'] = 0; $stats['loss'] = 0; $stats['draw'] = 0;
+      return $stats;
+    }else{
+      $goals    = $db->getValue ("matchusers", "goals", null); $assists  = $db->getValue ("matchusers", "assists", null);
+      $reds     = $db->getValue ("matchusers", "red", null); $yellows  = $db->getValue ("matchusers", "yellow", null);
+      $wins      = $db->getValue ("matchusers", "w", null); $losss     = $db->getValue ("matchusers", "l", null);
+      $draws     = $db->getValue ("matchusers", "d", null);
+
+      foreach ($goals as $goal)     { $rgoal    =  $rgoal + $goal;}     $stats['goals'] = $rgoal;
+      foreach ($assists as $assist) { $rassist  =  $rassist + $assist;} $stats['assists'] = $rassist;
+      foreach ($reds as $red)       { $rred     =  $rred+$red;}         $stats['red'] = $rred;
+      foreach ($yellows as $yellow) { $ryellow  =  $ryellow+$yellow;}   $stats['yellow'] = $ryellow;
+      foreach ($wins as $win)       { $rw       =  $ryellow+$win;}      $stats['win'] = $rw;
+      foreach ($losss as $loss)     { $rl       =  $rl+$loss;}          $stats['loss'] = $rl;
+      foreach ($draws as $draw)     { $rd       =  $rd+$draw;}          $stats['draw'] = $rd;
+      return $stats;
+  }
+}
 //get clubs users are in
 function getClubs($usrID){
   $db = $GLOBALS['db'];
@@ -183,11 +210,16 @@ function AdduserToClub($uid,$clubid){
      $id = $db->insert('clubusers', $data);
 
      $ndb = $GLOBALS['db'];
-     $data = Array(
-         'membersCount' => $db->inc(1)
-     );
+     $data = Array( 'membersCount' => $db->inc(1) );
+     $nid = $ndb->update('Club', $data);
 
-    $nid = $ndb->update('Club', $data);
+     $mdb = $GLOBALS['db'];
+     $data = Array(
+         'clubid' => $clubid,
+         'userid' => $uid,
+         'sentdate' => $mdb->now()
+     );
+    $id = $mdb->insert('inboxadded', $data);
     return true;
 }
 //get club details
@@ -243,6 +275,14 @@ function DoSearch($term){
     return $clubs;
   }
 
+}
+
+//get club requests results
+function getClubJoinTransfers($id){
+  $db = $GLOBALS['db'];
+  $db->where('userid', $id);
+  $result =$db->get("inboxadded") ;
+  return $result;
 }
 //club inviteDetails
 function ClubInvites($inviteDetails){
@@ -365,7 +405,7 @@ function PlayMatch($membership){
 function CleanInbox($actionID,$tableID){
   $db = $GLOBALS['db'];
   $db->where('id', $actionID);
-  if($db->delete("inboxjoin"))
+  if($db->delete($tableID))
   return true;
 }
 //clean inboxrsvp
@@ -375,6 +415,44 @@ function CleanRSVPInbox($uid,$matchid){
   $db->where('matchid', $matchid);
   $id =$db->delete("inboxrsvp") ;
 //  var_dump($id);die();
+}
+//get inbox for all users
+function notifications($isadmin,$id){
+  if($isadmin===0){
+    // inbox added / inbox playing
+    $db = $GLOBALS['db'];
+    $db->where('userid', $id);
+    $msg1 = $db->get("inboxadded");
+
+    $xdb = $GLOBALS['db'];
+    $xdb->where('userid', $id);
+    $msg2 = $xdb->get("inboxplaying");
+    $msgs = count($msg1)+count($msg2);
+
+    return $msgs;
+  }else{
+    // inbox added / inbox playing / inbox rsvp / inbox join
+    $db = $GLOBALS['db'];
+    $db->where('userid', $id);
+    $msg1 = $db->get("inboxadded");
+
+    $xdb = $GLOBALS['db'];
+    $xdb->where('userid', $id);
+    $msg2 = $xdb->get("inboxplaying");
+
+    $rdb = $GLOBALS['db'];
+    $rdb->where ("ownerid", $id);
+    $msg3 = $rdb->get("inboxjoin");
+
+    $tdb = $GLOBALS['db'];
+    $tdb->where ("ownerid", $id);
+    $msg4 = $tdb->get("inboxrsvp");
+    $msgs = count($msg1)+count($msg2)+count($msg3)+count($msg4);
+
+    return $msgs;
+
+  }
+  return count($msgs);
 }
 //get inbox messages for transfer
 function getTransfers($userID){

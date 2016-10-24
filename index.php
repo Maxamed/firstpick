@@ -1,7 +1,4 @@
-<?php echo '<div style="background:white">';
-var_dump($_SESSION);
-echo '</div>';
- ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -28,7 +25,9 @@ echo '</div>';
   }
   .cardsList {float:left;}
   .bodyc {padding:10px;}
-  .searchbox {margin-top:300px;}
+  .searchbox {margin-top:0;}
+
+  .logoicon {margin:100px 0 0 400px}
 </style>
   </head>
   <body>
@@ -36,11 +35,10 @@ echo '</div>';
       <div class="title-bar-left">
         <span class="title-bar-title">Amatuer Football League</span>
       </div>
-
         <div class="title-bar-right">
-          <a class="login footWhitefont" href="#" >How it works ?</a> -
-          <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> -
-          <a class="login footWhitefont" href="#" data-open="loginBox">Login</a>
+        <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
+          <a class="login footWhitefont" href="#" >How it works ?</a> 
+          <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>
     </div>
     <!-- content -->
@@ -48,6 +46,7 @@ echo '</div>';
       <video poster="" id="bgvid" playsinline autoplay muted loop>
       <source src="assets/video/video.mp4" type="video/mp4">
       </video>
+      <img src="assets/img/topbins.png" class='logoicon text-center' />
       <form action="results.php" method="post" class="searchbox column large-12">
         <ul class="menu">
           <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
@@ -55,77 +54,12 @@ echo '</div>';
             <input type="submit" class="button column wide" value="find a club"></li>
         </ul>
       </form>
-      <div class="row cardsList" >
 
-        <!-- cards -->
-        <div class="medium-3  column" style="">
-          <div class="card">
-            <div class="image">
-              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-              <span class="title">Thursday Night Football</span>
-            </div>
-            <div class="bodyc">
-              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-            </div>
-            <div class="action">
-              <a href='#'>Join</a>
-            </div>
-          </div>
-        </div>
-        <!-- card end -->
-        <!-- cards -->
-        <div class="medium-3  column" style="">
-          <div class="card">
-            <div class="image">
-              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-              <span class="title">Thursday Night Football</span>
-            </div>
-            <div class="bodyc">
-              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-            </div>
-            <div class="action">
-              <a href='#'>Join</a>
-            </div>
-          </div>
-        </div>
-        <!-- card end -->
-        <!-- cards -->
-        <div class="medium-3  column" style="">
-          <div class="card">
-            <div class="image">
-              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-              <span class="title">Thursday Night Football</span>
-            </div>
-            <div class="bodyc">
-              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-            </div>
-            <div class="action">
-              <a href='#'>Join</a>
-            </div>
-          </div>
-        </div>
-        <!-- card end -->
-        <!-- cards -->
-        <div class="medium-3  column" style="">
-          <div class="card">
-            <div class="image">
-              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
-              <span class="title">Thursday Night Football</span>
-            </div>
-            <div class="bodyc">
-              <p>Thursday night football Match @ SportsCity. kick off: 8.20</p>
-            </div>
-            <div class="action">
-              <a href='#'>Join</a>
-            </div>
-          </div>
-        </div>
-        <!-- card end -->
-      </div>
     </div>
 
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>
+<!-- footer -->
 <!-- footer -->
 <footer class="footer">
   <div class="row">
@@ -173,6 +107,8 @@ echo '</div>';
 </footer>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
+    <script src="assets/js/vendor/datepicker.js"></script>
+    <script src="assets/js/vendor/multiselect.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>

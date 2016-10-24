@@ -142,10 +142,17 @@ if (isset($_POST['AddPlayer'])) {
   $cludid  = filter_var($_POST['clubID'], FILTER_SANITIZE_STRING);
   $transferid  = filter_var($_POST['transferID'], FILTER_SANITIZE_STRING);
   if(AdduserToClub($uid,$cludid)){
-      CleanInbox($transferid);
+      CleanInbox($transferid,"inboxjoin");
       header('Location: inbox.php');
     }
-
+}
+//clean inbox
+if (isset($_POST['cleaninbox'])) {
+  $notficationid    = filter_var($_POST['notficationid'], FILTER_SANITIZE_STRING);
+  $userid  = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
+  $tablename  = filter_var($_POST['tablename'], FILTER_SANITIZE_STRING);
+  CleanInbox($notficationid,$tablename); 
+  header('Location: inbox.php');
 
 }
 //Add player to match
