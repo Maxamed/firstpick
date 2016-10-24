@@ -461,6 +461,25 @@ function getTransfers($userID){
   $transfers = $db->get("inboxjoin");
   return $transfers;
 }
+//confirm playing
+function ConfirmPlaying($matchid,$senderid){
+  $db = $GLOBALS['db'];
+  $data = Array (
+                "matchid" => $matchid,
+                "userid" => $senderid
+  );
+  $id = $db->insert ('inboxplaying', $data);
+  return $id;
+}
+//get getRSVPnotifications
+function getRSVPnotifications($id){
+  $db = $GLOBALS['db'];
+  $db->where ("userid", $id);
+  $rsvpnot = $db->get("inboxplaying");
+  //var_dump($rsvpnot);die();
+  return $rsvpnot;
+
+}
 //get inbox messages for rsvp
 function getRSVP($userID){
   $db = $GLOBALS['db'];
@@ -476,7 +495,7 @@ function CreateMatch($matchDetails){
   $data = Array(
       'clubid' => $matchDetails['clubid'],
       'date' => $from_date,
-      'noplayers' => $matchDetails['noplayers'] - 1,
+      'noplayers' => $matchDetails['noplayers'],
       'cost' => $matchDetails['cost'],
       'pitchid' => $matchDetails['pitch'],
       'usrid' => $matchDetails['userid'],
@@ -551,7 +570,13 @@ function kickOff($timenow,$timegame){
   $ko = $interval->format('%a days  %H hours %I minutes');
   return $ko;
 }
-
+//get single match
+function GetMatch($matchid){
+  $db = $GLOBALS['db'];
+  $db->where ("id", $matchid);
+  $matchs = $db->getOne("matchday");
+  return $matchs;
+}
 //get upcoming matchs
 function GetUpcoming($userid){
   $db = $GLOBALS['db'];

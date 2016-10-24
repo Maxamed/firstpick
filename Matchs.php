@@ -10,7 +10,7 @@
       <li>    <a href="LockerRoom.php" alt="Your Clubs">Locker Room</a> </li>
       <li>    <a href="createclub.php" >Create a Club</a> </li>
       <?php }else{ ?>
-        <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+        <li>    <a href="Dashboard.php" alt="Dashboard">Management</a> </li>
         <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
         <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
         <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>

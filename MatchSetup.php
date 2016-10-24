@@ -4,7 +4,7 @@
      $Pitchs = GetPitchList($_SESSION['id']);
   $clubUsers = getClubsUsers($_SESSION['isadmin']);
   $MatchDetails = GetClubGames($_SESSION['id'],$_SESSION['isadmin']);
-  $dateTimeNow = "2016-10-27 20:30:00";
+  $dateTimeNow = date('Y-m-d H:i:s', time());
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -38,8 +38,6 @@
         $ClubName = Clubpage($value['clubid']);
         $pitchName = GetPitchDetails($value['pitchID']);
         $kickoff = kickOff($value['date'],$dateTimeNow);
-        //var_dump($dateTimeNow);die();
-    //$EndMatch = EndMatch($value['id']);
         ?>
         <!-- cards -->
         <div class="medium-3 column"  >
@@ -69,8 +67,6 @@
           </div>
         </div>
         <!-- card end -->
-
-
   <?php }}?>
 </div>
 <!-- modal create a match content -->

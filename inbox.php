@@ -44,7 +44,7 @@
                 foreach ($transfers as $key => $value) {
             ?>
             <!-- users -->
-            <div class="medium-3 columns end singleCard">
+            <div class="medium-4 columns end singleCard">
               <div class="card">
                 <div class="content">
                   <span class="title"><?php print_r($transfers[$key]['senderName']);?></span>
@@ -82,7 +82,7 @@
           foreach ($transfers as $key => $value) {
           ?>
           <!-- users -->
-          <div class="medium-3 columns end singleCard">
+          <div class="medium-4 columns end singleCard">
             <div class="card">
               <div class="content">
                 <span class="title"><?php print_r($transfers[$key]['senderName']);?></span>
@@ -131,7 +131,24 @@
           <?php } ?>
         </div>
         <div class="tabs-panel" id="panel4v">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <?php
+              $inboxRSVP = getRSVPnotifications($id);
+              foreach ($inboxRSVP as $key => $value) {
+              $matches = GetMatch($value['matchid']);
+          ?>
+          <div class="success callout" data-closable="slide-out-right">
+            <h5>You've been added to the match</h5>
+            <p>kick off on  <b><?php echo $matches['date'];?></b>, and it cost <b><?php echo $matches['cost'];?></b> </p>
+            <p> Full details can be seen in your Matches Tab. </p>
+            <form id="myForm" method="post" action="process.php">
+              <input type="hidden" name="cleaninbox" value="cleaninbox">
+              <input type="hidden" name="tablename" value="inboxplaying">
+              <input type="hidden" name="notficationid" value="<?php echo $value['id'] ?>">
+              <input type="hidden" name="userid" value="<?php echo $id ?>">
+              <input type="submit"  class="alert hollow button" value="Delete">
+            </form>
+          </div>
+          <?php } ?>
         </div>
       </div>
     </div>

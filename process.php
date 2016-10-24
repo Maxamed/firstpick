@@ -151,7 +151,7 @@ if (isset($_POST['cleaninbox'])) {
   $notficationid    = filter_var($_POST['notficationid'], FILTER_SANITIZE_STRING);
   $userid  = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
   $tablename  = filter_var($_POST['tablename'], FILTER_SANITIZE_STRING);
-  CleanInbox($notficationid,$tablename); 
+  CleanInbox($notficationid,$tablename);
   header('Location: inbox.php');
 
 }
@@ -162,12 +162,9 @@ if (isset($_POST['MatchPlayer'])) {
   $matchid  = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
   $rsvpon  = filter_var($_POST['sentDate'], FILTER_SANITIZE_STRING);
 
-// AdduserToMatch($uid,$cludid,$matchid);
-// header('Location: inbox.php');
-// TODO: CleanInbox
 
 if(AdduserToMatch($matchid ,$cludid,$senderid)){
-    $table = "inboxrsvp";
+    ConfirmPlaying($matchid,$senderid);
     CleanRSVPInbox($senderid,$matchid);
     header('Location: inbox.php');
   }
