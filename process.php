@@ -154,7 +154,7 @@ if (isset($_POST['cleaninbox'])) {
   CleanInbox($notficationid,$tablename);
   header('Location: inbox.php');
 
-}
+} 
 //Add player to match
 if (isset($_POST['MatchPlayer'])) {
   $senderid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
