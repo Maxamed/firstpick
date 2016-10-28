@@ -41,11 +41,37 @@
               <input type="hidden" name="usrdata" value="usrdata">
               <input type="hidden" name="userid" value="<?php print_r($value['id']);?>">
               <input type="hidden" name="matchID" value="<?php echo $matchid;?>">
-              <label>Result
-              <select name="result">
-                <option value="1">Loss</option>
-                <option value="2">Draw</option>
-                <option value="3">Win</option>
+              <input type="radio" name="result" value="win" checked><label for="win">win</label>
+              <input type="radio" name="result" value="loss"><label for="loss">loss</label>
+              <input type="radio" name="result" value="draw"><label for="draw">draw</label>
+
+              <label>Red Cards
+              <select name="rcards">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select></label>
+              <label>Yellow Cards
+              <select name="ycards">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
               </select></label>
               <label>Goals Scored
               <select name="goals">

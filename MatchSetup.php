@@ -5,6 +5,8 @@
   $clubUsers = getClubsUsers($_SESSION['isadmin']);
   $MatchDetails = GetClubGames($_SESSION['id'],$_SESSION['isadmin']);
   $dateTimeNow = date('Y-m-d H:i:s', time());
+
+ //$dateTimeNow =  "2016-10-29 11:55:00";
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>

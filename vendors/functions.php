@@ -15,6 +15,8 @@ function editUserStats($uDetails){
         'userid' =>  $uDetails['userid'],
         'goals' =>  $uDetails['goals'],
         'assists' =>  $uDetails['assists'],
+        'red' =>  $uDetails['rcards'],
+        'yellow' =>  $uDetails['ycards'],
         'result' =>  $uDetails['result']
     );
    $db->where("matchid", $uDetails['matchid']);
@@ -55,7 +57,7 @@ function getUser($usrID){
 }
 //get user stats
 function getUserStats($usrid){
-  $rgoal= 0; $rassist= 0;$rred= 0;$ryellow = 0;$rw = 0;$rl = 0;$rd = 0;
+  $rgoal= 0; $rassist= 0;$rred= 0;$ryellow = 0;
   $stats = [];
   $db = $GLOBALS['db'];
   $db->where ("userid", $usrid);
@@ -67,16 +69,19 @@ function getUserStats($usrid){
     }else{
       $goals    = $db->getValue ("matchusers", "goals", null); $assists  = $db->getValue ("matchusers", "assists", null);
       $reds     = $db->getValue ("matchusers", "red", null); $yellows  = $db->getValue ("matchusers", "yellow", null);
-      $wins      = $db->getValue ("matchusers", "w", null); $losss     = $db->getValue ("matchusers", "l", null);
-      $draws     = $db->getValue ("matchusers", "d", null);
+      // $wins      = $db->getValue ("matchusers", "w", null); $losss     = $db->getValue ("matchusers", "l", null);
+      // $draws     = $db->getValue ("matchusers", "d", null);
 
       foreach ($goals as $goal)     { $rgoal    =  $rgoal + $goal;}     $stats['goals'] = $rgoal;
       foreach ($assists as $assist) { $rassist  =  $rassist + $assist;} $stats['assists'] = $rassist;
       foreach ($reds as $red)       { $rred     =  $rred+$red;}         $stats['red'] = $rred;
       foreach ($yellows as $yellow) { $ryellow  =  $ryellow+$yellow;}   $stats['yellow'] = $ryellow;
-      foreach ($wins as $win)       { $rw       =  $ryellow+$win;}      $stats['win'] = $rw;
-      foreach ($losss as $loss)     { $rl       =  $rl+$loss;}          $stats['loss'] = $rl;
-      foreach ($draws as $draw)     { $rd       =  $rd+$draw;}          $stats['draw'] = $rd;
+      $result = $db->rawQuery("SELECT SUM(result = 'win') AS w, SUM(result = 'loss') AS l, SUM(result = 'draw') as d
+FROM matchusers");
+      $stats['win'] = $result[0]["w"];
+      $stats['loss'] = $result[0]["l"];
+      $stats['draw'] = $result[0]["d"]; 
+
       return $stats;
   }
 }

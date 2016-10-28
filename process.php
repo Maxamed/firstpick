@@ -32,9 +32,11 @@ if (isset($_POST['usrdata'])) {
   $userDetails['goals']  = $_POST['goals'];
   $userDetails['result']     = $_POST['result'];
   $userDetails['assists']       = $_POST['assists'];
+  $userDetails['rcards']     = $_POST['rcards'];
+  $userDetails['ycards']       = $_POST['ycards'];
 
-   $msg = editUserStats($userDetails);
-   var_dump($msg);die();
+  $msg = editUserStats($userDetails);
+  var_dump($userDetails);die();
 
 
 
@@ -154,7 +156,7 @@ if (isset($_POST['cleaninbox'])) {
   CleanInbox($notficationid,$tablename);
   header('Location: inbox.php');
 
-} 
+}
 //Add player to match
 if (isset($_POST['MatchPlayer'])) {
   $senderid    = filter_var($_POST['senderID'], FILTER_SANITIZE_STRING);
