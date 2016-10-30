@@ -46,7 +46,7 @@
   <div class="medium-3 float-left" style="margin:0 10px;">
     <div class="card <?php print_r($ClubStyle);?>">
       <div class="image">
-        <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+        <img src="assets/img/club.jpg">
         <span class="title"><?php print_r($value['name']);?></span>
       </div>
       <div class="content">

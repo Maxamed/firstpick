@@ -1,6 +1,6 @@
 <?php
 require '../vendors/db.php';
-$db = new Mysqlidb('localhost', 'root', 'mo', 'topbins');
+$db = new Mysqlidb('46.32.240.37', 'topbins', 'cairocairo', 'topbins');
 if(!$db) die("Database error");
 
 

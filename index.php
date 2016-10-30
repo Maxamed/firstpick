@@ -1,4 +1,34 @@
 
+<?php
+session_start();
+require_once 'sdk/facebook/autoload.php';
+use Facebook\FacebookSession;
+use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
+use Facebook\FacebookSDKException;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookAuthorizationException;
+use Facebook\GraphObject;
+use Facebook\Entities\AccessToken;
+use Facebook\HttpClients\FacebookCurlHttpClient;
+use Facebook\HttpClients\FacebookHttpable;
+
+$fb = new Facebook\Facebook([
+  'app_id' => '537836766412726', // Replace {app-id} with your app id
+  'app_secret' => '6f528be8aa1e5b38a1ff1d0cfdd0daa5',
+  'default_graph_version' => 'v2.2',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('http://topbins.local/sdk/callback.php', $permissions);
+
+$url =  '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -37,7 +67,7 @@
       </div>
         <div class="title-bar-right">
         <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
-          <a class="login footWhitefont" href="#" >How it works ?</a> 
+          <a class="login footWhitefont" href="#" >How it works ?</a>
           <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>
     </div>

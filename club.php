@@ -43,7 +43,7 @@ $clubdata = Clubpage($_GET['id']);
       <!-- This is source ordered to be pulled to the left on larger screens -->
       <div class="large-4 columns ">
         <div class="panel">
-          <a href="#"><img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg" /></a>
+          <a href="#"><img src="assets/img/club.jpg" /></a>
           <div class="section-container vertical-nav" style="background-color:white;padding:15px;"data-section data-options="deep_linking: false; one_up: true">
             <section class="section">
               <h5 class="title">Created on</h5><span><?php echo $clubdata['createdOn'] ?></span>

@@ -15,9 +15,13 @@ use Facebook\Entities\AccessToken;
 use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 // init app with app id and secret
-FacebookSession::setDefaultApplication( '760229594115367','1b87a49e309931d22c85a19a49f0a4d4' );
+FacebookSession::setDefaultApplication( '537836766412726','6f528be8aa1e5b38a1ff1d0cfdd0daa5' );
 // login helper with redirect_uri
-    $helper = new FacebookRedirectLoginHelper('http://topbins.local/fb/fbconfig.php' );
+    $helper = new FacebookRedirectLoginHelper('http://futballteam.com/fb/fbconfig.php' );
+
+
+    var_dump($helper);die();
+
 try {
   $session = $helper->getSessionFromRedirect();
 } catch( FacebookRequestException $ex ) {

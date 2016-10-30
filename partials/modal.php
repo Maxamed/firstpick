@@ -28,6 +28,7 @@
 
     <div class="large-6 columns auth-plain">
       <div class="signup-panel newusers">
+        <?php echo $url ?>
         <a href="fb/fbconfig.php" class="facebook button split"> <span></span>sign in with facebook</a>
         <button href="#" class="twitter button split"> <span></span>sign in with twitter</button>
         <button href="#" class="google button split"> <span></span>sign in with google +</button>

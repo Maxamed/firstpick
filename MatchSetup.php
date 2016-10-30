@@ -45,7 +45,7 @@
         <div class="medium-3 column"  >
           <div class="card">
             <div class="image">
-              <img src="http://static.pexels.com/wp-content/uploads/2014/07/alone-clouds-hills-1909-527x350.jpg">
+              <img src="assets/img/club.jpg">
               <span class="title"></span>
             </div>
             <div class="content">

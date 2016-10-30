@@ -80,7 +80,7 @@ function getUserStats($usrid){
 FROM matchusers");
       $stats['win'] = $result[0]["w"];
       $stats['loss'] = $result[0]["l"];
-      $stats['draw'] = $result[0]["d"]; 
+      $stats['draw'] = $result[0]["d"];
 
       return $stats;
   }
