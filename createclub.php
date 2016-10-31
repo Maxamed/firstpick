@@ -5,19 +5,19 @@
     <h1 class="headline">Welcome <small><?php echo $user['username'];?></small></h1>
     <ul class="header-subnav">
       <?php if($_SESSION['isadmin']===0){ ?>
-      <li>    <a href="LockerRoom.php" alt="Your Clubs">Locker Room</a> </li>
+      <li>    <a href="lockerroom.php" alt="Your Clubs">Locker Room</a> </li>
       <li>    <a href="createclub.php"    class="is-active">Create a Club</a> </li>
       <?php }else{ ?>
-        <li>    <a href="Dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
-        <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-        <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
-        <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+        <li>    <a href="dashboard.php" alt="Dashboard"class="is-active">Management</a> </li>
+        <li>    <a href="previousmatchs.php" alt="HistoryMatchs">Match History</a> </li>
+        <li>    <a href="matchsetup.php" >Setup a Match</a></li>
+        <li>    <a href="pitch.php" alt="Pitch">Pitches</a></li>
    <?php } ?>
-      <li>   <a href="Matchs.php" alt="upcoming" >Matches</a> </li>
-      <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+      <li>   <a href="matchs.php" alt="upcoming" >Matches</a> </li>
+      <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
       <li>   <a href="logout.php" alt="logout">logout</a> </li>
       <li>   <a href="profile.php"><i class="fi-torso large"></i></a></li>
-      <li>   <a href="Inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
+      <li>   <a href="inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
     </ul>
 </header>
 <div class="container">
@@ -31,13 +31,13 @@
           <!-- create  club-->
         <form id="myForm" method="post" action="process.php">
             <input type="hidden" name="createclub" value="createclub">
-            <label>Club Name <input type="text" name="clubname" placeholder="Club Name"></label>
+            <label>Club Name <input type="text" name="clubname" placeholder="Club Name" required></label>
             <p class="help-text" id="clubname">You need a club name, make it fierce.</p>
             <input type="hidden" name="userid" value="<?php echo $user['id']?>">
             <label>Club Rules</label>
-            <textarea placeholder="Lets have some order here" name="rules" height="240"></textarea></label>
+            <textarea placeholder="Lets have some order here" required name="rules" height="240"></textarea></label>
             <p class="help-text" id="clubrules">Rules: 1. no slide tackle?, 2. don't be late</p>
-            <label>Club City <input type="text" name="clubcountry" placeholder="clubcountry"></label>
+            <label>Club City <input type="text" name="clubcountry" required placeholder="city"></label>
             <p class="help-text" id="clubcountry">You need a club name, make it fierce.</p>
             <input type="submit" class="nice blue radius button" value="Create your club">
         </form>

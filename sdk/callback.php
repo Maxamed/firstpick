@@ -1,7 +1,7 @@
 <?php
 session_start();
-date_default_timezone_set('Europe/Bucharest');
-require_once 'facebook/autoload.php';
+date_default_timezone_set('Asia/Dubai');
+require_once 'Facebook/autoload.php';
 require 'functions.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;

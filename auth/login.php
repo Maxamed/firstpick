@@ -56,7 +56,7 @@ if( isset( $_REQUEST["provider"] ) )
 
 
       if($user_exist->admin===0){
-          $response = "../LockerRoom.php";
+          $response = "../lockerroom.php";
       }else{
           $response = "../dashboard.php" ;
       }

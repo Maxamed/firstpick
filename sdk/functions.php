@@ -1,6 +1,6 @@
 <?php
 require '../vendors/db.php';
-$db = new Mysqlidb('localhost', 'root', 'mo', 'topbins');
+$db = new Mysqlidb('10.16.16.3', 'topbi-a2d-u-078621', 'cairocairo', 'topbi-a2d-u-078621');
 if(!$db) die("Database error");
 
 
@@ -35,12 +35,13 @@ function checkuser($fuid,$username,$email){
 
 
     if($user['admin']===0){
-        $response = "../LockerRoom.php";
+        $response = "../lockerroom.php";
     }else{
         $response = "../dashboard.php" ;
     }
 
     header("Location: ".$response);
+    exit();
   }
   //var_dump($user);die();
 }

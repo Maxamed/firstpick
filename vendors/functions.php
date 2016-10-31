@@ -2,7 +2,7 @@
 require_once("db.php");
 error_reporting(E_ALL);
 
-$db = new Mysqlidb('localhost', 'root', 'mo', 'topbins');
+$db = new Mysqlidb('10.16.16.3', 'topbi-a2d-u-078621', 'cairocairo', 'topbi-a2d-u-078621');
 if(!$db) die("Database error");
 
 
@@ -101,7 +101,7 @@ function getClubs($usrID){
   foreach($newClubID as $key => $value)
   {
     $ndb->where ("id", $value);
-    $club = $db->get('Club');
+    $club = $db->get('club');
     //var_dump($club);
     array_push($UserClub, $club);
   }
@@ -176,7 +176,7 @@ function clubCreation($clubDetails){
       'country' => $clubDetails['clubcountry'],
       'rules' => $clubDetails['rules']
     );
-   $id = $db->insert('club', $data);
+    $id = $db->insert('club', $data);
    return $id;
 }
 //is user admin
@@ -216,7 +216,7 @@ function AdduserToClub($uid,$clubid){
 
      $ndb = $GLOBALS['db'];
      $data = Array( 'membersCount' => $db->inc(1) );
-     $nid = $ndb->update('Club', $data);
+     $nid = $ndb->update('club', $data);
 
      $mdb = $GLOBALS['db'];
      $data = Array(
@@ -328,7 +328,7 @@ function ProcessInvite($inviteCode,$userDetails){
   $db = $GLOBALS['db'];
   $db->where ("invite", $inviteCode);
   $db->where ("accepted", "0");
-  $transfers = $db->get("clubInvites");
+  $transfers = $db->get("clubinvites");
     $data = Array(
         'sendername' => $userDetails['nickname'],
         'senderid' => $userDetails['uid'],
@@ -342,7 +342,7 @@ function ProcessInvite($inviteCode,$userDetails){
       'accepted' => 1
   );
   $db->where ("id", $transfers[0]['id']);
-  $id1 = $db->update('clubInvites', $data2);
+  $id1 = $db->update('clubinvites', $data2);
 }
 //request to join
 //TODO: AJAX call back to tell user he already in club
@@ -353,7 +353,6 @@ function JoinClub($membership){
       $ndb->where ("userid", $membership['userid']);
       $ndb->where ("clubid", $membership['clubID']);
       $res = $ndb->getOne("clubusers","joinedOn");
-
       if($res){
           return false;
       }else{

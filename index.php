@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require_once 'sdk/facebook/autoload.php';
+require_once 'sdk/Facebook/autoload.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -23,9 +23,9 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('http://topbins.local/sdk/callback.php', $permissions);
+$loginUrl = $helper->getLoginUrl('http://futballteam.com/sdk/callback.php', $permissions);
 
-$url =  '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
+$url =  htmlspecialchars($loginUrl);
 
 ?>
 
@@ -94,7 +94,7 @@ $url =  '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>
 <footer class="footer">
   <div class="row">
     <div class="small-12 medium-6 medium-push-6 columns">
-      <p class="logo show-for-small-only"><i class="fi-target"></i> FIGHT CLUB</p>
+      <p class="logo show-for-small-only"><i class="fi-target"></i> Futball Team Club</p>
       <form class="footer-form">
         <div class="row">
           <div class="medium-9 medium-push-3 columns">

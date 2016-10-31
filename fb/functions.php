@@ -36,7 +36,7 @@ function checkuser($fuid,$username,$email){
 
 
     if($user['admin']===0){
-        $response = "../LockerRoom.php";
+        $response = "../lockerroom.php";
     }else{
         $response = "../dashboard.php" ;
     }

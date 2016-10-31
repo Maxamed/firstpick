@@ -7,17 +7,17 @@
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
     <?php if($_SESSION['isadmin']===0){ ?>
-    <li>    <a href="LockerRoom.php" alt="Your Clubs" >Locker Room</a> </li>
+    <li>    <a href="lockerroom.php" alt="Your Clubs" >Locker Room</a> </li>
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
     <?php }else{ ?>
-      <li>    <a href="Dashboard.php" alt="Dashboard">Management</a> </li>
-      <li>   <a href="Inbox.php" alt="Inbox">Inbox</a></li>
-      <li>    <a href="PreviousMatchs.php" alt="HistoryMatchs">Match History</a> </li>
-      <li>    <a href="MatchSetup.php" >Setup a Match</a></li>
-      <li>    <a href="Pitch.php" alt="Pitch">Pitches</a></li>
+      <li>    <a href="dashboard.php" alt="Dashboard">Management</a> </li>
+      <li>   <a href="inbox.php" alt="Inbox">Inbox</a></li>
+      <li>    <a href="previousmatchs.php" alt="HistoryMatchs">Match History</a> </li>
+      <li>    <a href="matchsetup.php" >Setup a Match</a></li>
+      <li>    <a href="pitch.php" alt="Pitch">Pitches</a></li>
  <?php } ?>
-    <li>   <a href="Matchs.php" alt="upcoming"  class="is-active">Matches</a> </li>
-    <li>   <a href="Stats.php" alt="Stats">Stats</a> </li>
+    <li>   <a href="matchs.php" alt="upcoming"  class="is-active">Matches</a> </li>
+    <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
     <li>   <a href="profile.php" alt="profile">Profile</a> </li>
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
   </ul>

@@ -1,5 +1,7 @@
 
-<?php include_once 'vendors/functions.php';
+<?php
+ error_reporting(E_ALL); ini_set('display_errors', 'On');
+include_once 'vendors/functions.php';
 
 //edit profile
 if (isset($_POST['editprofile'])) {
@@ -13,13 +15,11 @@ if (isset($_POST['editprofile'])) {
 
     $msg = editUser($userDetails);
     if(isset($_POST['invitecode']) ){
-
       $msg = ProcessInvite($_POST['invitecode'],$userDetails);
-
     }
 
-  header('Location: LockerRoom.php');
-
+  header('Location: lockerroom.php');
+  exit();
 
 }
 
@@ -36,7 +36,7 @@ if (isset($_POST['usrdata'])) {
   $userDetails['ycards']       = $_POST['ycards'];
 
   $msg = editUserStats($userDetails);
-  var_dump($userDetails);die();
+//  var_dump($userDetails);die();
 
 
 
@@ -45,7 +45,7 @@ if (isset($_POST['usrdata'])) {
 
 //create club
 if (isset($_POST['createclub'])) {
-
+  //var_dump($_POST);die();
   $clubDetails = [];
   $clubDetails['name'] = filter_var($_POST['clubname'], FILTER_SANITIZE_STRING);
   $clubDetails['userid'] = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
@@ -57,6 +57,7 @@ if (isset($_POST['createclub'])) {
       setAdmin($clubDetails['userid'],$Clubid);
       AdduserToClub($clubDetails['userid'],$Clubid);
       header('Location: dashboard.php');
+      exit();
     }else{ die();}
 
 }
@@ -75,6 +76,7 @@ if (isset($_POST['creatematch'])) {
   $matchid = CreateMatch($matchDetails);
   AdduserToMatch($matchid,$matchDetails['clubid'], $matchDetails['userid']);
   header('Location: matchsetup.php');
+  exit();
   //var_dump($matchDetails);die();
 }
 
@@ -89,7 +91,7 @@ if (isset($_POST['inviteForm'])) {
 
   $inviteInfo = ClubInvites($inviteDetails);
   header('Location: dashboard.php');
-
+  exit();
 
 }
 
@@ -105,7 +107,7 @@ if (isset($_POST['savepitch'])) {
 
    $msg = SavePitch($pitchDetails);
   header('Location: pitch.php');
-
+  exit();
 }
 
 //joinClub
@@ -118,8 +120,8 @@ if (isset($_POST['joinClub'])) {
   $joinprocess['ownerid']     = filter_var($_POST['ownerid'], FILTER_SANITIZE_STRING);
 
    $msg = JoinClub($joinprocess);
-  header('Location: LockerRoom.php');
-
+  header('Location: lockerroom.php');
+  exit();
 }
 
 //RSVPMatch
@@ -134,7 +136,7 @@ if (isset($_POST['RSVPMatch'])) {
   $rsvpprocess['kickoff']     = filter_var($_POST['kickoff'], FILTER_SANITIZE_STRING);
 
    $msg = PlayMatch($rsvpprocess);
-   if(isAdmin($_POST['userid'])===0){header('Location: LockerRoom.php'); }else{header('Location: dashboard.php');}
+   if(isAdmin($_POST['userid'])===0){header('Location: lockerroom.php');exit(); }else{header('Location: dashboard.php');exit();}
 
 
 }
@@ -145,7 +147,7 @@ if (isset($_POST['AddPlayer'])) {
   $transferid  = filter_var($_POST['transferID'], FILTER_SANITIZE_STRING);
   if(AdduserToClub($uid,$cludid)){
       CleanInbox($transferid,"inboxjoin");
-      header('Location: inbox.php');
+      header('Location: inbox.php');exit();
     }
 }
 //clean inbox
@@ -154,7 +156,7 @@ if (isset($_POST['cleaninbox'])) {
   $userid  = filter_var($_POST['userid'], FILTER_SANITIZE_STRING);
   $tablename  = filter_var($_POST['tablename'], FILTER_SANITIZE_STRING);
   CleanInbox($notficationid,$tablename);
-  header('Location: inbox.php');
+  header('Location: inbox.php');exit();
 
 }
 //Add player to match
@@ -168,12 +170,9 @@ if (isset($_POST['MatchPlayer'])) {
 if(AdduserToMatch($matchid ,$cludid,$senderid)){
     ConfirmPlaying($matchid,$senderid);
     CleanRSVPInbox($senderid,$matchid);
-    header('Location: inbox.php');
+    header('Location: inbox.php');exit();
   }
 
 
 }
-
-
-
 ?>
