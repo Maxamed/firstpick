@@ -4,6 +4,10 @@ include_once 'partials/header.php';
 include_once 'partials/secure.php';
   $matchid = $_GET['matchid'];
 ?>
+<style>
+.roaster,.roaster li { list-style-type: none; padding: none;margin:none}
+
+</style>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
@@ -28,21 +32,31 @@ include_once 'partials/secure.php';
   <div class="listHeader" style="">
       <div>Create Teams</div>
   </div>
-  <ul  class="sortable vertical">
-  <?php $MatchUsers = getMatchUsers($matchid);
-//var_dump($MatchUsers);
-  if($MatchUsers===0){}else{
-  foreach ($MatchUsers as $key => $value) {
+  <ul  class="sortable team2 roaster" style="float:left;border:1px solid blue;min-height:100px;min-width:100px;">
+    <form >
+      <?php $MatchUsers = getMatchUsers($matchid);
+    //var_dump($MatchUsers);
+      if($MatchUsers===0){}else{
+      foreach ($MatchUsers as $key => $value) {
+      ?>
+      <li data-matchid="<?php echo $matchid;?>" data-userid="<?php echo $value['id'];?>">
+        <div class="singleCard">
+          <div class="card">
+            <div class="content">
+              <span class="title"><?php echo $value['username'];?></span>
+              <p>Position: <?php echo $value['position'];?></p>
+            </div>
+          </div>
+        </div>
+      </li>
 
-  ?>
-  <li data-matchid="<?php echo $matchid;?>" data-userid="<?php echo $value['id'];?>"><?php print_r($value['username']);?> - <?php print_r($value['position']);?></li>
-
-  <?php }}?>
+      <?php }}?>
+    </form>
   </ul>
-  <ul   class="team1 sortable vertical" style="width:200px;border:1px solid blue;min-height:100px;">
-  </ul>
-
-  <ul class="team2 sortable vertical" style="width:200px;border:1px solid red;min-height:100px;">
+  <ul  class="sortable team2 roaster" style="float:left;border:1px solid blue;min-height:100px;min-width:100px;">
+    <form >
+      <li></li>
+    </form>
   </ul>
 
 </div>
