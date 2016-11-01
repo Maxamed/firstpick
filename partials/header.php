@@ -25,7 +25,10 @@ if (isset($_SESSION['FBID'])) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amatuer Football League</title>
+    <meta name="description" content="Fuuty, the Amatuer football organisation site">
+    <meta property="og:title" content="Fuuty"> 
+    <meta property="og:description" content="Fuuty, the Amatuer football organisation site">
+    <title>Fuuty</title>
     <link rel="stylesheet" href="assets/css/foundation.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">

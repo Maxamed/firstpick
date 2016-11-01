@@ -46,29 +46,31 @@
           <div class="card">
             <div class="image">
               <img src="assets/img/club.jpg">
-              <span class="title"></span>
+              <span class="title"><?php print_r($ClubName['name']);?></span>
             </div>
             <div class="content">
-              <p><?php print_r($ClubName['name']);?></p>
+              <p>Match date: <?php print_r($value['date']);?></p>
               <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-              <p>Players In: <?php print_r($value['noplayers']);?></p>
-              <?php if($value['date'] <= $dateTimeNow){ ?>
-                  <p>Match Ended</p>
-                </div>
-                <div class="action">
-                  <a href='closematch.php?matchid=<?php print_r($value["id"]);?>'>Add Stats and results</a>
-                </div>
-              <?php
-            }else{ ?>
-              <p>Kick off: <?php print_r($kickoff);?> </p>
+              <p>Available spots: <?php print_r($value['noplayers']);?></p>
             </div>
             <div class="action">
-              <a href='#'>Cancel Match</a>
+              <a href='closematch.php?matchid=<?php print_r($value["id"]);?>'>Add Stats</a><br/>
+              <a data-open="matchid_<?php echo $value['id'];?>" > Cancel Match</a>
             </div>
-            <?php } ?>
           </div>
         </div>
         <!-- card end -->
+        <!-- popup -->
+        <div class="medium reveal"  class="reveal" id="matchid_<?php echo $value['id'];?>" data-reveal >
+          <h4>Kick off: <?php print_r($value['date']);?></h4>
+            <p>This action is irreversible , are you sure you want to Delete this match ?</p>
+            <form method="post" action="process.php">
+              <input type="hidden" name="deletematch" value="deletematch">
+              <input type="hidden" name="matchid" value="<?php echo $value['id'];?>">
+              <input type="submit" class="nice blue radius button" value="Delete Match">
+            </form>
+        </div>
+        <!-- popup -->
   <?php }}?>
 </div>
 <!-- modal create a match content -->

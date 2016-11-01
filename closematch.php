@@ -22,6 +22,23 @@
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
   </ul>
 </header>
+
+  <div class="row cardsList" style="margin-top:20px">
+    <div class="listHeader column" style="">
+        <div>Close this Match</div>
+    </div>
+    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
+
+      <form class="endmatch">
+        <p>Once you add all users stats, feel free to end Match below.</p>
+        <p>Please note once you end match you will not be able to add user stats.</p>
+        <input type="hidden" name="endmatch" value="endmatch">
+        <input type="hidden" name="matchID" value="<?php echo $matchid;?>">
+        <input type="submit" class="nice blue radius button" value="End Match">
+      </form>
+    </div>
+  </div>
+
 <div class="row cardsList" >
   <div class="listHeader" style="">
       <div>Add Players Stats</div>
@@ -37,7 +54,7 @@
     <div class="card">
       <div class="content">
         <span class="title"><?php print_r($value['username']);?></span>
-          <form class="endmatch">
+          <form class="usrdata endmatch">
               <input type="hidden" name="usrdata" value="usrdata">
               <input type="hidden" name="userid" value="<?php print_r($value['id']);?>">
               <input type="hidden" name="matchID" value="<?php echo $matchid;?>">
@@ -101,17 +118,15 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select></label>
-        </div>
-        <div class="action">
-          <input type="submit" class="nice blue radius button" value="Add Stats">
-        </div>
-    </form>
+      </div>
+      <div class="action">
+        <input type="submit" class="nice blue radius button" value="Add Stats">
+      </div>
+        </form>
     </div>
   </div>
   <!-- users -->
-
   <?php }}?>
-
 </div>
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>

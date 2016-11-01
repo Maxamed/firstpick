@@ -1,7 +1,7 @@
 
 <?php include_once 'partials/header.php';
      $dateTimeNow = date('Y-m-d H:i:s', time());
-     //var_dump($dateTimeNow);
+     error_reporting(E_ALL);
 ?>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -40,22 +40,18 @@
         foreach ($confirmed as $key => $value) {
           $ClubName = Clubpage($value['clubid']);
           $pitchName = GetPitchDetails($value['pitchID']);
-          //$kickoff = kickOff($value['date'],$dateTimeNow);
-        //  var_dump($dateTimeNow,$value['date']);die();
-          //if($kickoff <= 0){ print_r($kickoff.' less');}else{ print_r($kickoff.' more');}
-      ?>
+        ?>
       <!-- cards -->
       <div class="medium-3 column"  >
         <div class="card">
           <div class="image">
             <img src="assets/img/club.jpg">
-            <span class="title"></span>
+            <span class="title"><?php print_r($ClubName['name']);?></span>
           </div>
           <div class="content">
-            <p><?php print_r($ClubName['name']);?></p>
             <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
             <p>Kick off: <?php print_r($value['date']); ?> </p>
-            <p>Players In: <?php print_r($value['noplayers']);?></p>
+            <p>Players In: <?php print_r($value['noplayers']);?> - <a data-open="players_<?php echo $value['id'];?>" >view Players</a></p>
           </div>
           <div class="action">
             <form class="" action="process.php" method="post">
@@ -73,7 +69,29 @@
         </div>
       </div>
       <!-- card end -->
-      <?php }} ?>
+
+      <!-- popup -->
+      <div class="large reveal"  class="reveal" id="players_<?php echo $value['id'];?>" data-reveal >
+        <h4> Players</h4>
+        <?php
+            $MatchUsers = getMatchUsers($value['id']); 
+              foreach ($MatchUsers as $key => $value) {
+        ?>
+        <!-- users -->
+        <div class="medium-3 columns end singleCard">
+          <div class="card"><img src="https://graph.facebook.com/<?php print_r($value['Fuid']);?>/picture">
+            <div class="content">
+              <span class="title"><?php print_r($value['username']);?></span>
+              <p>Position: <?php print_r($value['position']);?></p>
+            </div>
+          </div>
+        </div>
+        <!-- users -->
+
+        <?php  } ?>
+      </div>
+      <!-- popup -->
+      <?php  }} ?>
   </div>
   <!-- end available matchs -->
 

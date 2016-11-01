@@ -77,7 +77,7 @@ function getUserStats($usrid){
       foreach ($reds as $red)       { $rred     =  $rred+$red;}         $stats['red'] = $rred;
       foreach ($yellows as $yellow) { $ryellow  =  $ryellow+$yellow;}   $stats['yellow'] = $ryellow;
       $result = $db->rawQuery("SELECT SUM(result = 'win') AS w, SUM(result = 'loss') AS l, SUM(result = 'draw') as d
-FROM matchusers");
+      FROM matchusers");
       $stats['win'] = $result[0]["w"];
       $stats['loss'] = $result[0]["l"];
       $stats['draw'] = $result[0]["d"];
@@ -119,23 +119,15 @@ function getMatchUsers($matchId){
 
   $ndb = $GLOBALS['db'];
   $UserDetails = Array();
-
-
   foreach ($ids as $key => $value) {
 
       $ndb->where("id", $value['userid']);
       $UserDetails[$key] = $ndb->get("users");
-      //var_dump($UserDetails[$key]);
   }
-  //var_dump($UserDetails);
-
   if(count($UserDetails)===0){$array=0;}else{
   $array = call_user_func_array('array_merge', array_map('array_values', $UserDetails));
   }
   return $array;
-
-
-
 }
 //get all users in a club
 function getClubsUsers($clubID){
@@ -281,7 +273,6 @@ function DoSearch($term){
   }
 
 }
-
 //get club requests results
 function getClubJoinTransfers($id){
   $db = $GLOBALS['db'];
@@ -345,7 +336,6 @@ function ProcessInvite($inviteCode,$userDetails){
   $id1 = $db->update('clubinvites', $data2);
 }
 //request to join
-//TODO: AJAX call back to tell user he already in club
 function JoinClub($membership){
   //var_dump($membership );die();
       $ndb = $GLOBALS['db'];
@@ -418,8 +408,8 @@ function CleanRSVPInbox($uid,$matchid){
   $db->where('senderid', $uid);
   $db->where('matchid', $matchid);
   $id =$db->delete("inboxrsvp") ;
-//  var_dump($id);die();
-}
+  //  var_dump($id);die();
+  }
 //get inbox for all users
 function notifications($isadmin,$id){
   if($isadmin===0){
@@ -580,6 +570,29 @@ function GetMatch($matchid){
   $db->where ("id", $matchid);
   $matchs = $db->getOne("matchday");
   return $matchs;
+}
+//get MAtch user id's
+function getMatchPlayers($matchid){
+  $db = $GLOBALS['db'];
+  $db->where('matchid', $matchid);
+  $ids = $db->get('matchusers',null,'userid');
+  return $ids;
+}
+//Cancel single match
+function CancelMatch($matchid){
+
+  $db = $GLOBALS['db'];
+  $db->where ("id", $matchid);
+  if($db->delete('matchday')) {
+    $ids = getMatchPlayers($matchid);
+    //TODO: message users tell them match is off
+    $ndb = $GLOBALS['db'];
+    foreach ($ids as $key => $value) {
+        $ndb->where("id", $value['userid']);
+        $ndb->where ("matchid", $matchid);
+        $ndb->delete('matchusers');
+    }
+  }
 }
 //get upcoming matchs
 function GetUpcoming($userid){

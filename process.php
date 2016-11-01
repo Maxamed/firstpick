@@ -79,6 +79,30 @@ if (isset($_POST['creatematch'])) {
   exit();
   //var_dump($matchDetails);die();
 }
+//delete match
+if (isset($_POST['deletematch'])) {
+
+  $matchID = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
+
+   //var_dump($matchDetails);die();
+  $v = CancelMatch($matchID);
+
+  header('Location: matchsetup.php');
+  exit();
+  //var_dump($matchDetails);die();
+}
+//END match
+if (isset($_POST['endmatch'])) {
+
+  $matchID = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
+
+   //var_dump($matchDetails);die();
+  $v = EndMatch($matchID);
+
+  header('Location: matchsetup.php');
+  exit();
+  //var_dump($matchDetails);die();
+}
 
 //Generate invite code
 if (isset($_POST['inviteForm'])) {
