@@ -1,5 +1,7 @@
 
-<?php include_once 'partials/header.php';
+<?php
+include_once 'partials/header.php';
+include_once 'partials/secure.php';
 ?>
 <header class="header">
   <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -37,7 +39,7 @@
 
   if($clubs===0){
     ?>
- 
+
   <?php }else{
   foreach ($clubs as $key => $value) {
     if($value['ownerid'] == $_SESSION['id']){$ClubStyle="owner";}else{$ClubStyle="";}

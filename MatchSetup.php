@@ -1,7 +1,9 @@
 
-<?php include_once 'partials/header.php';
+<?php
+include_once 'partials/header.php';
+include_once 'partials/secure.php';
 
-     $Pitchs = GetPitchList($_SESSION['id']);
+  $Pitchs = GetPitchList($_SESSION['id']);
   $clubUsers = getClubsUsers($_SESSION['isadmin']);
   $MatchDetails = GetClubGames($_SESSION['id'],$_SESSION['isadmin']);
   $dateTimeNow = date('Y-m-d H:i:s', time());
@@ -55,6 +57,7 @@
             </div>
             <div class="action">
               <a href='closematch.php?matchid=<?php print_r($value["id"]);?>'>Add Stats</a><br/>
+              <a href='teams.php?matchid=<?php print_r($value["id"]);?>'>Add Stats</a><br/>
               <a data-open="matchid_<?php echo $value['id'];?>" > Cancel Match</a>
             </div>
           </div>

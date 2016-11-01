@@ -1,6 +1,7 @@
 
 <?php
-  include_once 'partials/header.php';
+include_once 'partials/header.php';
+include_once 'partials/secure.php';
   $matchid = $_GET['matchid'];
 ?>
 <header class="header">
@@ -13,10 +14,10 @@
       <li>    <a href="dashboard.php" alt="Dashboard">Management</a> </li>
       <li>   <a href="inbox.php" alt="Inbox">Inbox</a></li>
       <li>    <a href="previousmatchs.php" alt="HistoryMatchs">Match History</a> </li>
-      <li>    <a href="matchsetup.php" >Setup a Match</a></li>
+      <li>    <a href="matchsetup.php"  class="is-active">Setup a Match</a></li>
       <li>    <a href="pitch.php" alt="Pitch">Pitches</a></li>
  <?php } ?>
-    <li>   <a href="matchs.php" alt="upcoming"  class="is-active">Matches</a> </li>
+    <li>   <a href="matchs.php" alt="upcoming">Matches</a> </li>
     <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
     <li>   <a href="profile.php" alt="profile">Profile</a> </li>
     <li>   <a href="logout.php" alt="logout">logout</a> </li>
