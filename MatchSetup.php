@@ -57,7 +57,7 @@ include_once 'partials/secure.php';
             </div>
             <div class="action">
               <a href='closematch.php?matchid=<?php print_r($value["id"]);?>'>Add Stats</a><br/>
-              <a href='teams.php?matchid=<?php print_r($value["id"]);?>'>Add Stats</a><br/>
+              <a href='teams.php?matchid=<?php print_r($value["id"]);?>'>Teams</a><br/>
               <a data-open="matchid_<?php echo $value['id'];?>" > Cancel Match</a>
             </div>
           </div>

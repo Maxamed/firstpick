@@ -1,30 +1,8 @@
 <!-- footer -->
-<footer class="footer">
+<!-- <footer class="footer">
   <div class="row">
     <div class="small-12 medium-6 medium-push-6 columns">
-      <p class="logo show-for-small-only"><i class="fi-target"></i> FIGHT CLUB</p>
-      <form class="footer-form">
-        <div class="row">
-          <div class="medium-9 medium-push-3 columns">
-            <label>
-              <label for="email" class="contact">Contact Us</label>
-              <input type="email" id="email" placeholder="Email Address" />
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="medium-9 medium-push-3 columns">
-            <label>
-              <textarea rows="5" id="message" placeholder="Message"></textarea>
-            </label>
-          </div>
-          <div class="row">
-            <div class="medium-9 medium-push-3 columns">
-              <button class="submit" type="submit" value="Submit">Send</button>
-            </div>
-          </div>
-        </div>
-      </form>
+      <p class="logo show-for-small-only"><i class="fi-target"></i> Futball Teams</p>
     </div>
     <div class="small-12 medium-6 medium-pull-6 columns">
       <p class="logo hide-for-small-only"><i class="fi-target"></i>Amatuer Football League</p>
@@ -42,7 +20,7 @@
       <p class="copywrite">Copywrite © 2015</p>
     </div>
   </div>
-</footer>
+</footer> -->
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
     <script src="assets/js/vendor/datepicker.js"></script>
