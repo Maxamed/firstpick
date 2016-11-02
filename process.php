@@ -108,10 +108,8 @@ if (isset($_POST['deletematch'])) {
 //END match
 if (isset($_POST['endmatch'])) {
 
-  $matchID = filter_var($_POST['matchid'], FILTER_SANITIZE_STRING);
-
-   //var_dump($matchDetails);die();
-  $v = EndMatch($matchID);
+  $matchID = filter_var($_POST['matchID'], FILTER_SANITIZE_STRING);
+  EndMatch($matchID);
 
   header('Location: matchsetup.php');
   exit();

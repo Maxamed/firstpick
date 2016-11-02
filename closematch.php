@@ -4,7 +4,7 @@ include_once 'partials/header.php';
 include_once 'partials/secure.php';
   $matchid = $_GET['matchid'];
 ?>
-<header class="header">
+<header class="header"><?php include_once 'partials/notificationbar.php'; ?>
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
     <?php if($_SESSION['isadmin']===0){ ?>
@@ -12,16 +12,13 @@ include_once 'partials/secure.php';
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
     <?php }else{ ?>
       <li>    <a href="dashboard.php" alt="Dashboard">Management</a> </li>
-      <li>   <a href="inbox.php" alt="Inbox">Inbox</a></li>
       <li>    <a href="previousmatchs.php" alt="HistoryMatchs">Match History</a> </li>
       <li>    <a href="matchsetup.php"  class="is-active">Setup a Match</a></li>
       <li>    <a href="pitch.php" alt="Pitch">Pitches</a></li>
  <?php } ?>
     <li>   <a href="matchs.php" alt="upcoming">Matches</a> </li>
     <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
-    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
-    <li>   <a href="logout.php" alt="logout">logout</a> </li>
-  </ul>
+</ul>
 </header>
 
   <div class="row cardsList" style="margin-top:20px">
@@ -30,7 +27,7 @@ include_once 'partials/secure.php';
     </div>
     <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
 
-      <form class="endmatch">
+      <form class="endmatch" method="post" action="process.php">
         <p>Once you add all users stats, feel free to end Match below.</p>
         <p>Please note once you end match you will not be able to add user stats.</p>
         <input type="hidden" name="endmatch" value="endmatch">
@@ -39,12 +36,12 @@ include_once 'partials/secure.php';
       </form>
     </div>
   </div>
-
+ 
 <div class="row cardsList" >
   <div class="listHeader" style="">
       <div>Add Players Stats</div>
   </div>
-  <?php $MatchUsers = getMatchUsers($matchid);
+  <?php $MatchUsers = getMatchUsers($matchid,0);
 //var_dump($MatchUsers);
   if($MatchUsers===0){}else{
   foreach ($MatchUsers as $key => $value) {
@@ -55,7 +52,7 @@ include_once 'partials/secure.php';
     <div class="card">
       <div class="content">
         <span class="title"><?php print_r($value['username']);?></span>
-          <form class="usrdata endmatch">
+          <form class="usrdata endmatch" method="post" action="process.php">
               <input type="hidden" name="usrdata" value="usrdata">
               <input type="hidden" name="userid" value="<?php print_r($value['id']);?>">
               <input type="hidden" name="matchID" value="<?php echo $matchid;?>">

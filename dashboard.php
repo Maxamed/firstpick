@@ -3,7 +3,7 @@
 include_once 'partials/header.php';
 include_once 'partials/secure.php';
 ?>
-<header class="header">
+<header class="header"><?php include_once 'partials/notificationbar.php'; ?>
   <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
     <?php if($_SESSION['isadmin']===0){ ?>
@@ -17,9 +17,6 @@ include_once 'partials/secure.php';
  <?php } ?>
     <li>   <a href="matchs.php" alt="upcoming" >Matches</a> </li>
     <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
-    <li>   <a href="logout.php" alt="logout">logout</a> </li>
-    <li>   <a href="profile.php"><i class="fi-torso large"></i></a></li>
-    <li>   <a href="inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
   </ul>
 </header>
 <div class="row large-12 clearfix" >

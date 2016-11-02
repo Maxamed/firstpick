@@ -8,23 +8,20 @@ include_once 'partials/secure.php';
 .roaster { list-style-type: none; padding: none;margin:none;}
 .roaster li {cursor: pointer !important;}
 </style>
-<header class="header">
+<header class="header"><?php include_once 'partials/notificationbar.php'; ?>
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
   <ul class="header-subnav">
     <?php if($_SESSION['isadmin']===0){ ?>
     <li>    <a href="lockerroom.php" alt="Your Clubs" >Locker Room</a> </li>
     <li>    <a href="createclub.php"  >Create a Club</a> </li>
     <?php }else{ ?>
-      <li>    <a href="dashboard.php" alt="Dashboard">Management</a> </li>
-      <li>   <a href="inbox.php" alt="Inbox">Inbox</a></li>
+      <li>    <a href="dashboard.php" alt="Dashboard">Management</a> </li> 
       <li>    <a href="previousmatchs.php" alt="HistoryMatchs">Match History</a> </li>
       <li>    <a href="matchsetup.php"  class="is-active">Setup a Match</a></li>
       <li>    <a href="pitch.php" alt="Pitch">Pitches</a></li>
  <?php } ?>
     <li>   <a href="matchs.php" alt="upcoming">Matches</a> </li>
     <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
-    <li>   <a href="profile.php" alt="profile">Profile</a> </li>
-    <li>   <a href="logout.php" alt="logout">logout</a> </li>
   </ul>
 </header>
 

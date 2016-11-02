@@ -26,13 +26,18 @@ if (isset($_SESSION['FBID'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Fuuty, the Amatuer football organisation site">
-    <meta property="og:title" content="Fuuty"> 
+    <meta property="og:title" content="Fuuty">
     <meta property="og:description" content="Fuuty, the Amatuer football organisation site">
     <title>Fuuty</title>
     <link rel="stylesheet" href="assets/css/foundation.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/icons.css">
-
+    <style>
+      .notificationBar {list-style-type: none; padding: none;margin:none;min-width:200px;}
+          .notificationBar li {display:inline-block}
+          .notificationBar li a{color:white;padding-right:5px;}
+          .notify {width:100%;}
+    </style>
   </head>
   <body>

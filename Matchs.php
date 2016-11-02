@@ -3,7 +3,7 @@
      $dateTimeNow = date('Y-m-d H:i:s', time());
      error_reporting(E_ALL);
 ?>
-<header class="header">
+<header class="header"><?php include_once 'partials/notificationbar.php'; ?>
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
     <ul class="header-subnav">
       <?php if($_SESSION['isadmin']===0){ ?>
@@ -17,10 +17,7 @@
    <?php } ?>
       <li>   <a href="matchs.php"    class="is-active" alt="upcoming" >Matches</a> </li>
       <li>   <a href="stats.php" alt="Stats">Stats</a> </li>
-      <li>   <a href="logout.php" alt="logout">logout</a> </li>
-      <li>   <a href="profile.php"><i class="fi-torso large"></i></a></li>
-      <li>   <a href="inbox.php"><i class="fi-mail large newEmail"></i><sup><?php echo $_SESSION['msgs'];?></sup></a></li>
-    </ul>
+  </ul>
 </header>
 <div class="container">
   <!-- available matchs thats not yours-->
@@ -74,7 +71,7 @@
       <div class="large reveal"  class="reveal" id="players_<?php echo $value['id'];?>" data-reveal >
         <h4> Players</h4>
         <?php
-            $MatchUsers = getMatchUsers($value['id']); 
+            $MatchUsers = getMatchUsers($value['id']);
               foreach ($MatchUsers as $key => $value) {
         ?>
         <!-- users -->
