@@ -5,8 +5,8 @@ include_once 'partials/secure.php';
   $matchid = $_GET['matchid'];
 ?>
 <style>
-.roaster,.roaster li { list-style-type: none; padding: none;margin:none}
-
+.roaster { list-style-type: none; padding: none;margin:none;}
+.roaster li {cursor: pointer !important;}
 </style>
 <header class="header">
     <h1 class="headline">Welcome <small><?php echo $_SESSION['username'];?></small></h1>
@@ -32,33 +32,60 @@ include_once 'partials/secure.php';
   <div class="listHeader" style="">
       <div>Create Teams</div>
   </div>
-  <ul  class="sortable team2 roaster" style="float:left;border:1px solid blue;min-height:100px;min-width:100px;">
-    <form >
-      <?php $MatchUsers = getMatchUsers($matchid);
-    //var_dump($MatchUsers);
-      if($MatchUsers===0){}else{
-      foreach ($MatchUsers as $key => $value) {
-      ?>
-      <li data-matchid="<?php echo $matchid;?>" data-userid="<?php echo $value['id'];?>">
-        <div class="singleCard">
-          <div class="card">
-            <div class="content">
-              <span class="title"><?php echo $value['username'];?></span>
-              <p>Position: <?php echo $value['position'];?></p>
+    <div class="columns medium-4 whiteBackground">
+      <h3>Team 1</h3>
+      <form method="post" action="process.php">
+        <input type="hidden" name="submitTeams" value="submitTeams">
+        <input type="hidden" name="team" value="1">
+        <input type="hidden" name="matchid" value="<?php echo $matchid;?>">
+        <ul  class="sortable team1 roaster" style="min-height:100px;min-width:100px;">
+            <?php $MatchUsers = getMatchUsers($matchid,1);
+            if($MatchUsers===0){?><li></li><?php }else{
+            foreach ($MatchUsers as $key => $value) {
+            ?>
+            <li>
+              <input type="hidden" name="userids[]" value="<?php echo $value['id'];?>">
+              <div class="singleCard">
+                <div class="card">
+                  <div class="content">
+                    <span class="title"><?php echo $value['username'];?></span>
+                    <p>Position: <?php echo $value['position'];?></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <?php }}?>
+        </ul>
+        <input type="submit" class="nice blue radius button" value="Submit Team">
+      </form>
+    </div>
+    <div class="columns medium-4 whiteBackground" >
+    <h3>Team 2</h3>
+    <form method="post" action="process.php">
+      <input type="hidden" name="submitTeams" value="submitTeams">
+      <input type="hidden" name="team" value="2">
+      <input type="hidden" name="matchid" value="<?php echo $matchid;?>">
+      <ul  class="sortable team2 roaster" style="min-height:100px;min-width:100px;">
+        <?php $MatchUsers = getMatchUsers($matchid,2);
+        if($MatchUsers===0){?><li></li><?php }else{
+        foreach ($MatchUsers as $key => $value) {
+        ?>
+        <li>
+          <input type="hidden" name="userids[]" value="<?php echo $value['id'];?>">
+          <div class="singleCard">
+            <div class="card">
+              <div class="content">
+                <span class="title"><?php echo $value['username'];?></span>
+                <p>Position: <?php echo $value['position'];?></p>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-
-      <?php }}?>
+        </li>
+        <?php }}?>
+      </ul>
+      <input type="submit" class="nice blue radius button" value="Submit Team">
     </form>
-  </ul>
-  <ul  class="sortable team2 roaster" style="float:left;border:1px solid blue;min-height:100px;min-width:100px;">
-    <form >
-      <li></li>
-    </form>
-  </ul>
-
+  </div>
 </div>
 <!-- content end -->
 <?php include 'partials/footer.php'; ?>

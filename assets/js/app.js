@@ -41,7 +41,4 @@ $('#dp2').fdatepicker({
 	disableDblClickSelection: true,
 	language: 'vi',
 	pickTime: false
-});
-$('select[multiple]').multiselect({
-  columns: 3
-});
+}); 

@@ -73,24 +73,31 @@ $url =  htmlspecialchars($loginUrl);
         <span class="title-bar-title">Amatuer Football League</span>
       </div>
         <div class="title-bar-right">
-        <a class="login footWhitefont" href="#" data-open="loginBox">Login / Register</a> -
-          <a class="login footWhitefont" href="howitworks.php" >How it works ?</a>
+        <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
+          <a class="login footWhitefont" href="#" >How it works ?</a>
           <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>
     </div>
     <!-- content -->
     <div class="content row">
-      <video poster="" id="bgvid" playsinline autoplay muted loop>
-      <source src="assets/video/video.mp4" type="video/mp4">
-      </video>
-      <img src="assets/img/topbins.png" class='logoicon text-center' />
-      <form action="results.php" method="post" class="searchbox column large-12">
-        <ul class="menu">
-          <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
-          <li>
-            <input type="submit" class="button column wide" value="find a club"></li>
-        </ul>
-      </form>
+
+
+      <div id="howtoo">
+        <h3>Keyboard</h3>
+        <section>
+            <p>Try the keyboard navigation by clicking arrow left or right!</p>
+        </section>
+        <h3>Effects</h3>
+        <section>
+            <p>Wonderful transition effects.</p>
+        </section>
+        <h3>Pager</h3>
+        <section>
+            <p>The next and previous buttons help you to navigate through your content.</p>
+        </section>
+      </div>
+
+
 
     </div>
 
@@ -144,8 +151,8 @@ $url =  htmlspecialchars($loginUrl);
 </footer>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
-    <script src="assets/js/vendor/datepicker.js"></script>
-    <script src="assets/js/vendor/multiselect.js"></script>
+    <script src="assets/js/vendor/datepicker.js"></script> 
+    <script src="assets/js/vendor/steps.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -156,6 +163,12 @@ $url =  htmlspecialchars($loginUrl);
   ga('create', 'UA-86576737-1', 'auto');
   ga('send', 'pageview');
 
+  $("#howtoo").steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slideLeft",
+      autoFocus: true
+  });
 </script>
   </body>
 </html>

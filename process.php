@@ -36,10 +36,7 @@ if (isset($_POST['usrdata'])) {
   $userDetails['ycards']       = $_POST['ycards'];
 
   $msg = editUserStats($userDetails);
-//  var_dump($userDetails);die();
-
-
-
+  //  var_dump($userDetails);die();
 
 }
 
@@ -79,6 +76,23 @@ if (isset($_POST['creatematch'])) {
   exit();
   //var_dump($matchDetails);die();
 }
+
+
+//submit teams
+if (isset($_POST['submitTeams'])) {
+   if ($_POST['team'] == 1 ){ $team    = 1; }else{ $team    = 2; }
+   $matchid = $_POST['matchid'];
+   if(isset($_POST['userids']) && is_array($_POST['userids'])){
+      $ids = [];
+      foreach($_POST["userids"] as $key => $value){
+         $ids[$key] = $value;
+       }
+   }
+   submitTeams($team,$matchid,$ids);
+   header('Location: teams.php?matchid='.$matchid);
+   exit();
+}
+
 //delete match
 if (isset($_POST['deletematch'])) {
 

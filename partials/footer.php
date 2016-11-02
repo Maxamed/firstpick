@@ -23,8 +23,7 @@
 </footer> -->
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
-    <script src="assets/js/vendor/datepicker.js"></script>
-    <script src="assets/js/vendor/multiselect.js"></script>
+    <script src="assets/js/vendor/datepicker.js"></script> 
     <script src="assets/js/app.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
