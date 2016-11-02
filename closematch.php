@@ -25,7 +25,7 @@ include_once 'partials/secure.php';
     <div class="listHeader column" style="">
         <div>Close this Match</div>
     </div>
-    <div class="small-12 columns auth-plain " style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
+    <div class="small-12 columns auth-plain" style="border:4px solid white;padding:20px;background: url(assets/img/bg.svg) repeat;background-color: white!important;">
 
       <form class="endmatch" method="post" action="process.php">
         <p>Once you add all users stats, feel free to end Match below.</p>
@@ -36,13 +36,13 @@ include_once 'partials/secure.php';
       </form>
     </div>
   </div>
- 
+
 <div class="row cardsList" >
   <div class="listHeader" style="">
       <div>Add Players Stats</div>
   </div>
   <?php $MatchUsers = getMatchUsers($matchid,0);
-//var_dump($MatchUsers);
+  //var_dump($MatchUsers);
   if($MatchUsers===0){}else{
   foreach ($MatchUsers as $key => $value) {
 

@@ -131,13 +131,14 @@
   position: relative;
   overflow: visible;
   padding-top: 2.5rem;
-  padding-bottom: 4.9rem; }
+  /*padding-bottom: 4.9rem; */
+}
   .header .headline {
     color: #ffe; }
 
 .header-subnav {
   float: none;
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
   margin: 0 auto;
   bottom: 0;

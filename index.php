@@ -83,14 +83,13 @@ $url =  htmlspecialchars($loginUrl);
       <video poster="" id="bgvid" playsinline autoplay muted loop>
       <source src="assets/video/video.mp4" type="video/mp4">
       </video>
-      <img src="assets/img/topbins.png" class='logoicon text-center' />
-      <form action="results.php" method="post" class="searchbox column large-12">
+      <!-- <form action="results.php" method="post" class="searchbox column large-12">
         <ul class="menu">
           <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
           <li>
             <input type="submit" class="button column wide" value="find a club"></li>
         </ul>
-      </form>
+      </form> -->
 
     </div>
 

@@ -47,7 +47,7 @@
           </div>
           <div class="content">
             <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/<?php print_r($pitchName['lat']);?>,<?php print_r($pitchName['lng']);?>"><?php print_r($pitchName['name']);?></a></p>
-            <p>Kick off: <?php print_r($value['date']); ?> </p>
+            <p>Kick off: <span class="ko"> <?php print_r($value['date']); ?></span></p>
             <p>Players In: <?php print_r($value['noplayers']);?> - <a data-open="players_<?php echo $value['id'];?>" >view Players</a></p>
           </div>
           <div class="action">
@@ -146,3 +146,10 @@
 </div>
 <?php include 'partials/modal.php'; ?>
 <?php include 'partials/footer.php'; ?>
+<script src='assets/js/vendor/moment.min.js'></script>
+<script>
+var d = moment($('.ko').text());
+var $tim = moment(d).fromNow();
+$('.ko' ).empty().append($tim);
+console.log($tim);
+</script>
