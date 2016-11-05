@@ -302,3 +302,4 @@ background-color: white!important;}
 .section-container  section {border-bottom:1px solid black;margin-bottom:10px}
 .section-container  section h5 {margin:0;font-weight: bold}
 .whiteBackground {border:4px solid white;padding:20px;background: url(../img/bg.svg) repeat;background-color: white!important;}
+.blackBackground {border:4px solid white;padding:20px;background: url(../img/wallpaper-blk.jpg) repeat;color:white}

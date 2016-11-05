@@ -46,52 +46,79 @@ $url =  htmlspecialchars($loginUrl);
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/icons.css">
-<style>
-  .content {min-height: 700px;}
-  video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 700px;
-      z-index: -100;
-      transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
-    transition: 1s opacity;
-    opacity: .5;
-  }
-  .cardsList {float:left;}
-  .bodyc {padding:10px;}
-  .searchbox {margin-top:0;}
+    <style>
+    .orbit-container { position: relative; }
 
-  .logoicon {margin:100px 0 0 400px}
-</style>
+.orbit-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.3); }
+
+.orbit-caption p {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  color: #fefefe;
+  font-size: 48px;
+  font-weight: 900; }
+
+@media screen and (max-width: 39.9375em) {
+  .orbit-caption p {
+    font-size: 12px;
+    font-weight: 400; } }
+.orbit-bullets {
+  display: none; }
+    </style>
   </head>
   <body>
-    <div class="title-bar">
-      <div class="title-bar-left">
-        <span class="title-bar-title">Amatuer Football League</span>
-      </div>
-        <div class="title-bar-right">
-        <a class="login footWhitefont" href="#" data-open="loginBox">Login / Register</a> -
-          <a class="login footWhitefont" href="#" >How it works ?</a>
-          <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
-        </div>
+  <div class="title-bar">
+    <div class="title-bar-left">
+      <span class="title-bar-title">Amatuer Football League</span>
     </div>
-    <!-- content -->
-    <div class="content row">
-      <video poster="" id="bgvid" playsinline autoplay muted loop>
-      <source src="assets/video/video.mp4" type="video/mp4">
-      </video>
-      <!-- <form action="results.php" method="post" class="searchbox column large-12">
-        <ul class="menu">
-          <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
-          <li>
-            <input type="submit" class="button column wide" value="find a club"></li>
-        </ul>
-      </form> -->
+    <div class="title-bar-right">
+      <a class="login footWhitefont" href="#" data-open="loginBox">Login / Register</a> -
+        <a class="login footWhitefont" href="howitworks.php" >How it works ?</a>
+    </div>
+  </div>
+  <!-- content -->
+    <div class="content row" style="margin-top:100px;margin-bottom:100px">
 
+
+    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="autoplay:false;">
+      <ul class="orbit-container">
+        <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+        <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+        <li class="is-active orbit-slide">
+          <img class="orbit-image" src="https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg" alt="Space">
+          <span class="orbit-caption"><p>Vertical aligning of text over image on Orbit Slider</p></span>
+
+        </li>
+        <li class="orbit-slide">
+          <img class="orbit-image" src="https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg" alt="Space">
+        </li>
+        <li class="orbit-slide">
+          <img class="orbit-image" src="https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg" alt="Space">
+        </li>
+        <li class="orbit-slide">
+          <img class="orbit-image" src="https://foundation.zurb.com/sites/docs/assets/img/orbit/01.jpg" alt="Space">
+        </li>
+      </ul>
+      <!-- <nav class="orbit-bullets">
+        <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+        <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+      </nav> -->
     </div>
+
+
+  </div>
 
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>

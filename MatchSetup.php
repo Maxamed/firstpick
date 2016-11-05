@@ -30,7 +30,7 @@ include_once 'partials/secure.php';
 <!-- current matchs -->
 <div class="row cardsList">
   <div class="listHeader column" style="">
-      <div>Your Matchs</div>
+      <div>Manage your club Matchs</div>
   </div>
 
     <?php $matchs = GetUserGames($id);

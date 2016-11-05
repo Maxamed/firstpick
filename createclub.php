@@ -32,7 +32,7 @@
             <p class="help-text" id="clubname">You need a club name, make it fierce.</p>
             <input type="hidden" name="userid" value="<?php echo $user['id']?>">
             <label>Club Rules</label>
-            <textarea placeholder="Lets have some order here" required name="rules" height="240"></textarea></label>
+            <textarea placeholder="Lets have some order here" required name="rules"  style="overflow-y: scroll;" rows="4" cols="50" ></textarea></label>
             <p class="help-text" id="clubrules">Rules: 1. no slide tackle?, 2. don't be late</p>
             <label>Club City <input type="text" name="clubcountry" required placeholder="city"></label>
             <p class="help-text" id="clubcountry">You need a club name, make it fierce.</p>

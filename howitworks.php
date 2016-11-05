@@ -18,12 +18,12 @@ use Facebook\HttpClients\FacebookHttpable;
 $fb = new Facebook\Facebook([
   'app_id' => '537836766412726', // Replace {app-id} with your app id
   'app_secret' => '6f528be8aa1e5b38a1ff1d0cfdd0daa5',
-  'default_graph_version' => 'v2.2',
+  'default_graph_version' => 'v2.2'
   ]);
 
 $helper = $fb->getRedirectLoginHelper();
 
- //var_dump( $_GET['state']);die();
+
 //  $_SESSION['FBRLH_state']=$_GET['state'];
 $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://futballteam.com/sdk/callback.php', $permissions);
@@ -46,61 +46,104 @@ $url =  htmlspecialchars($loginUrl);
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/icons.css">
-<style>
-  .content {min-height: 700px;}
-  video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 700px;
-      z-index: -100;
-      transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
-    transition: 1s opacity;
-    opacity: .5;
-  }
-  .cardsList {float:left;}
-  .bodyc {padding:10px;}
-  .searchbox {margin-top:0;}
-
-  .logoicon {margin:100px 0 0 400px}
-</style>
+    <style>
+      .vertical li {}
+        .vertical li a {color:black;font-weight: bold}
+    </style>
   </head>
   <body>
-    <div class="title-bar">
-      <div class="title-bar-left">
-        <span class="title-bar-title">Amatuer Football League</span>
+  <div class="title-bar">
+    <div class="title-bar-left">
+      <span class="title-bar-title">Amatuer Football League</span>
+    </div>
+    <div class="title-bar-right">
+      <a class="login footWhitefont" href="#" data-open="loginBox">Login / Register</a> -
+        <a class="login footWhitefont" href="howitworks.php" >How it works ?</a>
+    </div>
+  </div>
+  <!-- content -->
+  <div class="container" style="">
+    <div class="row cardsList">
+      <div class="listHeader" id="AsCaptain">
+          <div>As a Captin</div>
       </div>
-        <div class="title-bar-right">
-        <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
-          <a class="login footWhitefont" href="#" >How it works ?</a>
-          <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
+      <div class="row" style="margin:10px">
+        <div class="large-4 columns" data-sticky-container >
+          <div class="sticky whiteBackground" id="example" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="AsCaptain">
+            <ul class="vertical menu" data-magellan>
+              <li><a href="#first">Create a Club</a></li>
+              <li><a href="#second">Select Pitches</a></li>
+              <li><a href="#third">Invite Players</a></li>
+              <li><a href="#four">Accept / Reject Player Transfers</a></li>
+              <li><a href="#five">Create a Match</a></li>
+              <li><a href="#six">Accept / Reject Player RSVP</a></li>
+              <li><a href="#seven">Create Teams</a></li>
+              <li><a href="#eight">Finish a Match</a></li>
+              <li><a href="#nine">Add Player stats</a></li>
+            </ul>
+          </div>
         </div>
-    </div>
-    <!-- content -->
-    <div class="content row">
-
-
-      <div id="howtoo">
-        <h3>Keyboard</h3>
-        <section>
-            <p>Try the keyboard navigation by clicking arrow left or right!</p>
-        </section>
-        <h3>Effects</h3>
-        <section>
-            <p>Wonderful transition effects.</p>
-        </section>
-        <h3>Pager</h3>
-        <section>
-            <p>The next and previous buttons help you to navigate through your content.</p>
-        </section>
+        <div class="small-8 columns auth-plain whiteBackground">
+          <div class="sections">
+            <section id="first" data-magellan-target="first">
+              <h4>Create a Club</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="second" data-magellan-target="second">
+              <h4>Select Pitches</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="third" data-magellan-target="third">
+              <h4>Select Pitches</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="four" data-magellan-target="four">
+              <h4>Accept / Reject Player Transfers</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="five" data-magellan-target="five">
+              <h4>Create a Match</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="six" data-magellan-target="six">
+              <h4>Accept / Reject Player RSVP</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="seven" data-magellan-target="seven">
+              <h4>Create Teams</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="eight" data-magellan-target="eight">
+              <h4>Finish a Match</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+            <section id="nine" data-magellan-target="nine">
+              <h4>Add Player stats</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
+              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
+              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+            </section>
+          </div>
+        </div>
       </div>
-
-
-
     </div>
-
+  </div>
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>
 <!-- footer -->
@@ -151,8 +194,8 @@ $url =  htmlspecialchars($loginUrl);
 </footer>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
-    <script src="assets/js/vendor/datepicker.js"></script> 
-    <script src="assets/js/vendor/steps.js"></script>
+    <script src="assets/js/vendor/datepicker.js"></script>
+    <script src="assets/js/vendor/multiselect.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -163,12 +206,6 @@ $url =  htmlspecialchars($loginUrl);
   ga('create', 'UA-86576737-1', 'auto');
   ga('send', 'pageview');
 
-  $("#howtoo").steps({
-      headerTag: "h3",
-      bodyTag: "section",
-      transitionEffect: "slideLeft",
-      autoFocus: true
-  });
 </script>
   </body>
 </html>

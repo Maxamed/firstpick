@@ -51,7 +51,7 @@ $searchterm = $_POST["search"];
           <h4> <?php print_r($SRP[$key]['name']);?> Rules</h4>
           <p>Please read the rules before requesting to join the club:</p>
           <hr>
-          <p><?php print_r($SRP[$key]['rules']);?></p>
+          <textarea style="overflow-y: scroll;" rows="4" cols="50"><?php print_r($SRP[$key]['rules']);?></textarea>
           <hr>
           <form class="" action="process.php" method="post">
             <input type="hidden" name="joinClub" value="join">
