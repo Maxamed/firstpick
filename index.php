@@ -75,7 +75,7 @@ $url =  htmlspecialchars($loginUrl);
         <div class="title-bar-right">
           <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
           <a class="login footWhitefont" href="#" data-open="registerBox">Register</a> -
-          <a class="login footWhitefont" href="#" >How it works ?</a>
+          <a class="login footWhitefont" href="howitworks.php" >How it works ?</a>
           <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>
     </div>

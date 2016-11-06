@@ -71,18 +71,15 @@ $clubdata = Clubpage($_GET['id']);
       <!-- Main Feed -->
       <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
       <div class="large-8 columns" >
-<?php if($_SESSION['isadmin']!=0){ ?>
-        <form  method="post" action="process.php">
-            <h2>Create your unique invite code</h2>
 
+<?php
+if($_SESSION['isadmin'] == $_GET['id']){ ?>
+        <form  method="post" action="process.php">
+            <p>Create as many invite codes and send them to any new club members</p>
             <input type="hidden" name="inviteForm" value="inviteForm">
             <input type="hidden" name="clubid" value="<?php echo $clubdata['id'] ?>">
             <input type="hidden" name="ownderid" value="<?php echo $clubdata['ownerid'] ?>">
-            <label>Name</label>
-            <input type="text"   name ="name" placeholder="My trusted wingman">
-            <label>Email</label>
-            <input type="text"   name="email" placeholder="email">
-          <input type="submit" class="nice blue radius button" value="Generate Code">
+            <input type="submit" class="nice blue radius button" value="Generate Code">
           </form>
 
             <?php  $invites = GetInviteList($_SESSION['id']);
@@ -91,8 +88,6 @@ $clubdata = Clubpage($_GET['id']);
         <table style="border:1px solid red">
           <thead>
             <tr>
-              <th width="150">Invitee</th>
-              <th width="150">Email</th>
               <th width="150">Unique Code</th>
               <th width="150">Date</th>
               <th width="50">Status</th>
@@ -102,9 +97,7 @@ $clubdata = Clubpage($_GET['id']);
             <?php  foreach ($invites as $key => $value) {
             ?>
             <tr>
-              <td><?php print_r($invites[$key]['NewUser']);?></td>
-              <td><?php print_r($invites[$key]['Email']);?></td>
-              <td>http://topbins.local/invite.php?invite=<?php print_r($invites[$key]['invite']);?></td>
+              <td>http://futballteam.com/invite.php?invite=<?php print_r($invites[$key]['invite']);?></td>
               <td><?php print_r($invites[$key]['InviteDate']);?></td>
               <td>Still under progress</td>
             </tr>

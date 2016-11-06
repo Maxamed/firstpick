@@ -53,7 +53,7 @@ include_once 'partials/secure.php';
         <p>City: <?php print_r($value['country']);?></p>
         <p>Created on: <?php print_r($value['createdOn']);?></p>
       </div>
-      <div class="action" style="display:none">
+      <div class="action">
         <a href="club.php?id=<?php print_r($value['id']);?>" >View</a>
         <?php
           if($value['ownerid'] == $_SESSION['id']){

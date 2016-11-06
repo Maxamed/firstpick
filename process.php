@@ -120,13 +120,11 @@ if (isset($_POST['endmatch'])) {
 if (isset($_POST['inviteForm'])) {
 
   $inviteDetails = [];
-  $inviteDetails['name'] = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
   $inviteDetails['clubid'] = filter_var($_POST['clubid'], FILTER_SANITIZE_STRING);
   $inviteDetails['ownderid'] = filter_var($_POST['ownderid'], FILTER_SANITIZE_STRING);
-  $inviteDetails['email'] = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 
   $inviteInfo = ClubInvites($inviteDetails);
-  header('Location: dashboard.php');
+  header('Location: club.php?id='.$_POST['clubid']);
   exit();
 
 }
