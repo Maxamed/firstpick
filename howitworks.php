@@ -69,7 +69,7 @@ $url =  htmlspecialchars($loginUrl);
       </div>
       <div class="row" style="margin:10px">
         <div class="large-4 columns" data-sticky-container >
-          <div class="sticky whiteBackground" id="example" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="AsCaptain">
+          <div class="sticky whiteBackground" style="background:none!important;background-color:white!important;" id="example" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="AsCaptain">
             <ul class="vertical menu" data-magellan>
               <li><a href="#first">Create a Club</a></li>
               <li><a href="#second">Select Pitches</a></li>
@@ -83,7 +83,7 @@ $url =  htmlspecialchars($loginUrl);
             </ul>
           </div>
         </div>
-        <div class="small-8 columns auth-plain whiteBackground">
+        <div class="small-8 columns auth-plain whiteBackground"  style="background:none!important;background-color:white!important;" >
           <div class="sections">
             <section id="first" data-magellan-target="first">
               <h4>Create a Club</h4>
@@ -107,19 +107,20 @@ $url =  htmlspecialchars($loginUrl);
               <h4>Invite Players</h4>
               <p>In your Managment Dashboard section, your owned clubs will appear highlighted in white, with an option to Delete or View</p>
               <p>Go ahead and Click on View</p>
-              <img src="assets/content/yourclub.png" />
+              <img src="assets/content/youclub.png" />
               <p>This should take you to your Club page, on the club page you'll find the Generate Invite Code section</p>
               <img src="assets/content/invite.png" />
               <p>Generating an invite code will give you a unique invite to your club, so go ahead and send this to all your future users.</p>
-              <img src="assets/content/invite2.png" /> 
-              <p> </p>
-              <p> </p>
+              <img src="assets/content/invite2.png" />
             </section>
             <section id="four" data-magellan-target="four">
               <h4>Accept / Reject Player Transfers</h4>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique et nisi ultricies dictum. Aenean facilisis quam ante, vitae aliquam nunc efficitur ac. Praesent quis tempor ligula, cursus fermentum massa. Curabitur viverra ligula sit amet aliquet ullamcorper. Pellentesque lacus nulla, interdum sed dui id, interdum laoreet tortor. Suspendisse faucibus velit ut sem pulvinar porta. Sed iaculis odio fermentum cursus blandit. In ultrices semper elit in porttitor. Morbi vel suscipit felis.
-              Etiam blandit ultrices lobortis. Donec et convallis felis. Etiam vulputate pellentesque sem vitae bibendum. Proin scelerisque tempor efficitur. Nam bibendum dui vitae ex semper, a euismod mi feugiat. Aenean rhoncus mi consectetur scelerisque rhoncus. Donec malesuada urna aliquam lobortis aliquam. In cursus placerat porttitor. Nullam tempus mi nec turpis lacinia, ut venenatis est porta. Mauris semper libero eget urna eleifend tempor quis vitae nulla. Integer est mi, dictum non auctor ac, pulvinar vel metus. Morbi eget maximus lectus. Duis hendrerit est ut nulla aliquam gravida. Integer sollicitudin, tellus vitae aliquam porttitor, ligula nisi posuere arcu, eget rhoncus turpis dolor vel orci. Quisque viverra ultrices diam.
-              Etiam turpis turpis, posuere sit amet quam nec, ultrices rhoncus urna. Nullam vel blandit lorem. Sed vitae tempus quam. Phasellus volutpat sagittis congue. Nullam sollicitudin porta nibh. Morbi ultrices consectetur magna. Suspendisse dui nunc, gravida quis nibh non, pellentesque laoreet augue. Vivamus justo felis, gravida ac nisi quis, pretium fringilla sapien. Quisque vel accumsan neque, faucibus fermentum sapien. Sed pharetra pellentesque ornare. Nullam quis mauris sed mauris fermentum imperdiet. Phasellus odio elit, suscipit ac nunc a, finibus elementum lacus. Etiam sapien erat, mattis quis ultrices non, sodales eu quam. Ut in luctus purus, id finibus nunc. Praesent sit amet efficitur turpis, sed tristique tellus.
+              <p>Always keep an eye on your notification bar, there few important messages you might miss on. Such players requesting to join your club</p>
+              <img src="assets/content/notification.png" />
+              <p>Once a user requests to join your club (cause your club is awesome), their request will appear in your notification bar. You have the option to either accept or reject the user</p>
+              <img src="assets/content/request.png" />
+              <p> </p>
+              <p> </p>
             </section>
             <section id="five" data-magellan-target="five">
               <h4>Create a Match</h4>

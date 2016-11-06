@@ -46,26 +46,9 @@ $url =  htmlspecialchars($loginUrl);
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/icons.css">
-<style>
-  .content {min-height: 700px;}
-  video {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 700px;
-      z-index: -100;
-      transform: translateX(-50%) translateY(-50%);
-    background-size: cover;
-    transition: 1s opacity;
-    opacity: .5;
-  }
-  .cardsList {float:left;}
-  .bodyc {padding:10px;}
-  .searchbox {margin-top:0;}
-
-  .logoicon {margin:100px 0 0 400px}
-</style>
+    <style>
+    .medium-3.column {margin-bottom:10px;}
+    </style>
   </head>
   <body>
     <div class="title-bar">
@@ -79,69 +62,207 @@ $url =  htmlspecialchars($loginUrl);
           <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>
     </div>
-    <!-- content -->
-    <div class="content row">
-      <video poster="" id="bgvid" playsinline autoplay muted loop>
-      <source src="assets/video/video.mp4" type="video/mp4">
-      </video>
-      <!-- <form action="results.php" method="post" class="searchbox column large-12">
-        <ul class="menu">
-          <li  class="column large-9"><input type="search" name="search" placeholder="Try all for every club.."></li>
-          <li>
-            <input type="submit" class="button column wide" value="find a club"></li>
-        </ul>
-      </form> -->
 
-    </div>
+         <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit style="display:none">
+           <ul class="orbit-container">
+             <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+             <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+             <li class="orbit-slide is-active">
+               <img src="http://placehold.it/2000x750">
+             </li>
+             <li class="orbit-slide">
+               <img src="http://placehold.it/2000x750">
+             </li>
+             <li class="orbit-slide">
+               <img src="http://placehold.it/2000x750">
+             </li>
+             <li class="orbit-slide">
+               <img src="http://placehold.it/2000x750">
+             </li>
+           </ul>
+         </div>
 
+         <div class="row cardsList">
+           <div class="listHeader" style="">
+               <div>Join a Club</div>
+           </div>
+            <div class="medium-3 column">
+              <div class="card">
+                <div class="image">
+                  <img src="assets/img/club.jpg">
+                  <span class="title">FC Titans</span>
+                </div>
+                <div class="content">
+                     <p>Members: 30</p>
+                     <p>Played Matchs: 5</p>
+                     <p>City: London</p>
+                     <p>Created on: 2016-10-30</p>
+                </div>
+                <div class="action">
+                  <a  href="<?php echo $url ?>" >Join</a>
+                </div>
+              </div>
+            </div>
+
+              <div class="medium-3 column">
+                 <div class="card">
+                   <div class="image">
+                     <img src="assets/img/club.jpg">
+                     <span class="title">Desert Football</span>
+                   </div>
+                   <div class="content">
+                        <p>Members: 17</p>
+                        <p>Played Matchs: 5</p>
+                        <p>City: Abu Dhabi</p>
+                        <p>Created on: 2016-09-03</p>
+                   </div>
+                   <div class="action">
+                     <a  href="<?php echo $url ?>" >Join</a>
+                   </div>
+                 </div>
+               </div>
+
+              <div class="medium-3 column">
+                <div class="card">
+                  <div class="image">
+                    <img src="assets/img/club.jpg">
+                    <span class="title">FC Unique</span>
+                  </div>
+                  <div class="content">
+                       <p>Members: 26</p>
+                       <p>Played Matchs: 9</p>
+                       <p>City: dubai</p>
+                       <p>Created on: 2016-04-02</p>
+                  </div>
+                  <div class="action">
+                    <a  href="<?php echo $url ?>" >Join</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="medium-3 column">
+                 <div class="card">
+                   <div class="image">
+                     <img src="assets/img/club.jpg">
+                     <span class="title">FC Titans</span>
+                   </div>
+                   <div class="content">
+                        <p>Members: 19</p>
+                        <p>Played Matchs: 5</p>
+                        <p>City: dubai</p>
+                        <p>Created on: 2016-10-09</p>
+                   </div>
+                   <div class="action">
+                     <a  href="<?php echo $url ?>" >Join</a>
+                   </div>
+                 </div>
+               </div>
+        </div>
+         <div class="row cardsList">
+          <div class="listHeader" style="">
+             <div>Current games</div>
+          </div>
+          <div class="medium-3 column">
+               <div class="card">
+                 <div class="image">
+                   <img src="assets/img/club.jpg">
+                   <span class="title">Dubai Devils</span>
+                 </div>
+                 <div class="content">
+                   <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/25.03913450,55.21763520">ICC</a></p>
+                   <p>Kick off: <span class="ko">in 15 hours</span></p>
+                   <p>Players In: 22</p>
+                 </div>
+
+                 <div class="action">
+                   <a  href="<?php echo $url ?>" >Play</a>
+                 </div>
+               </div>
+             </div>
+          <div class="medium-3 column">
+          <div class="card">
+          <div class="image">
+          <img src="assets/img/club.jpg">
+          <span class="title">FC tikiTaka</span>
+          </div>
+          <div class="content">
+          <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/25.03913450,55.21763520">ICC</a></p>
+          <p>Kick off: <span class="ko">in 2 days</span></p>
+          <p>Players In: 18</p>
+          </div>
+          <div class="action">
+          <a  href="<?php echo $url ?>" >Play</a>
+          </div>
+          </div>
+          </div>
+          <div class="medium-3 column">
+               <div class="card">
+                 <div class="image">
+                   <img src="assets/img/club.jpg">
+                   <span class="title">Royal Club</span>
+                 </div>
+                 <div class="content">
+                   <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/25.03913450,55.21763520">ICC</a></p>
+                   <p>Kick off: <span class="ko">Tonight</span></p>
+                   <p>Players In: 20</p>
+                 </div>
+
+                 <div class="action">
+                   <a  href="<?php echo $url ?>" >Play</a>
+                 </div>
+               </div>
+           </div>
+          <div class="medium-3 column">
+                 <div class="card">
+                   <div class="image">
+                     <img src="assets/img/club.jpg">
+                     <span class="title">FC Sunday</span>
+                   </div>
+                   <div class="content">
+                     <p>Venue: <a target="_blank" href="https://www.google.com/maps/place/25.03913450,55.21763520">ICC</a></p>
+                     <p>Kick off: <span class="ko">Tomorrow</span></p>
+                     <p>Players In: 10</p>
+                   </div>
+
+                   <div class="action">
+                     <a  href="<?php echo $url ?>" >Play</a>
+                   </div>
+                 </div>
+               </div>
+         </div>
 <!-- content end -->
 <?php include 'partials/modal.php'; ?>
 <!-- footer -->
-<!-- footer -->
 <footer class="footer">
   <div class="row">
-    <div class="small-12 medium-6 medium-push-6 columns">
-      <p class="logo show-for-small-only"><i class="fi-target"></i> FIGHT CLUB</p>
-      <form class="footer-form">
-        <div class="row">
-          <div class="medium-9 medium-push-3 columns">
-            <label>
-              <label for="email" class="contact">Contact Us</label>
-              <input type="email" id="email" placeholder="Email Address" />
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="medium-9 medium-push-3 columns">
-            <label>
-              <textarea rows="5" id="message" placeholder="Message"></textarea>
-            </label>
-          </div>
-          <div class="row">
-            <div class="medium-9 medium-push-3 columns">
-              <button class="submit" type="submit" value="Submit">Send</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="small-12 medium-6 medium-pull-6 columns">
-      <p class="logo hide-for-small-only"><i class="fi-target"></i>Amatuer Football League</p>
+    <div class="small-12 medium-6 large-5 columns">
+      <p class="logo"><i class="fi-shield"></i> futballteam.com</p>
       <p class="footer-links">
-        <a href="#">Home</a>
-        <a href="#">How it works</a>
-        <a href="#">Faq</a>
+        <a href="inex.php">Home</a>
+        <a href="#">About</a>
+        <a href="howitworks.php">How does it work?</a>
+        <a href="#">Contact</a>
       </p>
+      <p class="copywrite">Copywrite © 2016/17</p>
+    </div>
+    <div class="small-12 medium-6 large-4 columns">
+      <ul class="contact">
+        <li><p><i class="fi-mail"></i>  coach@futballteam.com</p></li>
+      </ul>
+    </div>
+    <div class="small-12 medium-12 large-3 columns">
+      <p class="about">futballteam.com</p>
+      <p class="about subheader">give and go, sunday league football. Make it your own</p>
       <ul class="inline-list social">
         <a href="#"><i class="fi-social-facebook"></i></a>
         <a href="#"><i class="fi-social-twitter"></i></a>
         <a href="#"><i class="fi-social-linkedin"></i></a>
         <a href="#"><i class="fi-social-github"></i></a>
       </ul>
-      <p class="copywrite">Copywrite © 2015</p>
     </div>
   </div>
 </footer>
+<!-- footer -->
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/foundation.min.js"></script>
     <script src="assets/js/vendor/datepicker.js"></script>
