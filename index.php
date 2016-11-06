@@ -73,7 +73,8 @@ $url =  htmlspecialchars($loginUrl);
         <span class="title-bar-title">Amatuer Football League</span>
       </div>
         <div class="title-bar-right">
-        <a class="login footWhitefont" href="#" data-open="loginBox">Login / Register</a> -
+          <a class="login footWhitefont" href="#" data-open="loginBox">Login</a> -
+          <a class="login footWhitefont" href="#" data-open="registerBox">Register</a> -
           <a class="login footWhitefont" href="#" >How it works ?</a>
           <!-- <a class="login footWhitefont" href="#" data-open="RegBox">Register</a> - -->
         </div>

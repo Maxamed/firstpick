@@ -1,7 +1,43 @@
+<!-- new users users -->
+<div id="registerBox" class="reveal" data-reveal>
+  <div class="row">
+    <div class="large-6 columns auth-plain">
+      <div class="signup-panel left-solid">
+        <p class="welcome">Register</p>
+        <form>
+          <div class="row column log-in-form">
+            <label>Name
+              <input type="text" name="username" placeholder="Messi">
+            </label>
+              <label>Email
+                <input type="text" name="email" placeholder="somebody@example.com">
+              </label>
+            <label>Password
+              <input type="password"  name="password">
+            </label>
+            <label>Retype Password
+              <input type="password"  name="rpassword">
+            </label>
+            <p><a type="submit" class="button expanded">Log In</a></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="large-6 columns auth-plain">
+      <p class="welcome">Register with Facebook</p>
+      <div class="signup-panel newusers" style="margin-top:10px;">
+        <a href="<?php echo $url ?>" class="facebook button split"> <span></span>Register with facebook</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- registered users -->
 <div id="loginBox" class="reveal" data-reveal>
   <div class="row">
-
-    <!-- <div class="large-6 columns auth-plain">
+    <div class="large-6 columns auth-plain">
       <div class="signup-panel left-solid">
         <p class="welcome">Registered Users</p>
         <form>
@@ -20,18 +56,18 @@
             <div class="small-10 columns ">
               <input type="text" placeholder="password">
             </div>
+
+            <p class="text-center"><a href="#">Forgot your password?</a></p>
           </div>
         </form>
         <a href="#" class="button ">Log In </a>
       </div>
-    </div> -->
+    </div>
 
     <div class="large-6 columns auth-plain">
-      <div class="signup-panel newusers">
-
-        <a href="<?php echo $url ?>" class="facebook button split"> <span></span>sign in with facebook</a>
-        <button href="#" class="twitter button split"> <span></span>sign in with twitter</button>
-        <button href="#" class="google button split"> <span></span>sign in with google +</button>
+      <p class="welcome">Login with Facebook</p>
+      <div class="signup-panel newusers" style="margin-top:10px;">
+        <a href="<?php echo $url ?>" class="facebook button split"> <span></span>Login with facebook</a>
       </div>
     </div>
   </div>
